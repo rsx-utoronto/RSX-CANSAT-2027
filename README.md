@@ -14,8 +14,8 @@ This repository contains all files created by the Aerial Team of Robotics for Sp
 |---|---|
 | Yechun(Vincent) Jia | Software Team Lead |
 | Yulin Lin | Electrical Team Lead |
-| Jingshu Zhu | Mechanical Team Co-Lead |
 | Nathan Xia | Mechanical Team Co-Lead |
+| Jingshu Zhu | Mechanical Team Co-Lead |
 | Parth Bhasin | Software Team Junior Lead |
 | Remi Zhang | Software Team Member |
 | More... |  |
