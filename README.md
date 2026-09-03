@@ -8,3 +8,14 @@ This repository contains all files created by the Aerial Team of Robotics for Sp
 <p align="center">
   <img src="https://github.com/adam-kabbara/RSX-CANSAT-2026/raw/main/competition_documentation/team_assets/cansat_aas_logo.png" alt="cansat_aas_logo">
 </p>
+
+## Competition Team Members:
+| Name | Role |
+|---|---|
+| Yechun(Vincent) Jia | Software Team Lead |
+| Yulin Lin | Electrical Team Lead |
+| Jingshu Zhu | Mechanical Team Co-Lead |
+| Nathan Xia | Mechanical Team Co-Lead |
+| Parth Bhasin | Software Team Junior Lead |
+| Remi Zhang | Software Team Member |
+| More... |  |
