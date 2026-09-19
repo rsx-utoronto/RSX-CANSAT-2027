@@ -1,0 +1,8 @@
+# requirements.in
+numpy
+pyqtgraph
+PyQt6
+Pyqt6-WebEngine
+#cx_Freeze
+pip-tools
+pygame
