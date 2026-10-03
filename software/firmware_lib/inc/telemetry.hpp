@@ -28,5 +28,6 @@ namespace Telemetry{
           size_t bufferSize, 
           PQPacket& packet
      );
-     
+     std::string containerPacketToString(const ContainerPacket& packet);
+     std::string pqPacketToString(const PQPacket& packet);
 }

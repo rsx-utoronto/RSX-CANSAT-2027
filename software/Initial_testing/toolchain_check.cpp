@@ -26,7 +26,6 @@ int main() {
     std::cout << "Compiler:     unknown\n";
 #endif
 
-    // 3. Architecture — Apple Silicon should report arm64
 #if defined(__aarch64__) || defined(__arm64__)
     std::cout << "Architecture: arm64 (Apple Silicon / ARM)\n";
 #elif defined(__x86_64__)
