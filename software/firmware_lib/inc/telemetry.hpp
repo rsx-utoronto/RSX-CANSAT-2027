@@ -30,4 +30,6 @@ namespace Telemetry{
      );
      std::string containerPacketToString(const ContainerPacket& packet);
      std::string pqPacketToString(const PQPacket& packet);
+     const char* pqPacketToStringHeader();
+     const char* containerPacketToStringHeader();
 }
