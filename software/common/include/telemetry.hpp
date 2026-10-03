@@ -24,7 +24,7 @@ namespace Telemetry{
           ContainerPacket& packet
      );
      bool deserializePQPacket(
-          const uint8_t* buffer, 
+          const uint8_t* buffer,
           size_t bufferSize, 
           PQPacket& packet
      );
