@@ -17,7 +17,7 @@ static void onRx(const uint8_t* mac, const uint8_t* data, int len) {
   char tag;
   if      (memcmp(mac, CONTAINER_MAC,  6) == 0) tag = 'C';
   else if (memcmp(mac, POCKETQUBE_MAC, 6) == 0) tag = 'P';
-  else return;                     // unknown sender — drop it
+  else return;                     
 
   rxTag = tag;
   memcpy(rxBuf, data, len);
