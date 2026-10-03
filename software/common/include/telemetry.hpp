@@ -18,5 +18,15 @@ namespace Telemetry{
           uint8_t* buffer, 
           size_t bufferSize
      );
+     bool deserializeContainerPacket(
+          const uint8_t* buffer, 
+          size_t bufferSize, 
+          ContainerPacket& packet
+     );
+     bool deserializePQPacket(
+          const uint8_t* buffer, 
+          size_t bufferSize, 
+          PQPacket& packet
+     );
      
 }
