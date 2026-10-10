@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "status": "not_implemented_or_benchmarked",
+  "baseline_candidate": "fixed_wide_angle_camera_with_software_stabilization",
+  "processor": null,
+  "inputs": ["timestamped_frames", "timestamped_imu", "camera_calibration", "commanded_view_angle"],
+  "measurements": ["output_resolution", "residual_rotation_deg", "boom_visible_after_crop", "startup_to_recording_ms", "frame_rate", "dropped_frames", "cpu_load", "memory_bytes", "power_w"],
+  "constraints": ["Do not block mission control or telemetry", "Preserve acquisition timestamps", "Do not treat commanded angle as measured residual rotation", "No claimed organizer approval or real-time performance"]
+}

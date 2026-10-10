@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "parameters": {
+    "apogee_min_drop_m": [1, 10]
+  }
+}

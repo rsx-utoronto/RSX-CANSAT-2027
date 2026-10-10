@@ -1,0 +1,6 @@
+# Per-app SDK build products; reviewed board configs can be versioned later.
+/.local/
+/apps/*/build*/
+/apps/*/sdkconfig
+/apps/*/sdkconfig.old
+/apps/*/managed_components/

@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "source": "Synthetic native-parity trace and manually authored event labels; NOT flight data or approved flight thresholds.",
+  "start": "on_pad",
+  "parameters": {
+    "max_sample_age_ms": 1000,
+    "max_sample_gap_ms": 1000,
+    "max_abs_vertical_speed_mps": 150,
+    "launch_altitude_m": 10,
+    "launch_min_climb_mps": 2,
+    "launch_confirm_ms": 2000,
+    "apogee_min_drop_m": 5,
+    "apogee_min_descent_mps": 1,
+    "apogee_confirm_ms": 2000,
+    "landing_altitude_min_m": -3,
+    "landing_altitude_max_m": 3,
+    "landing_max_abs_speed_mps": 0.5,
+    "landing_max_span_m": 0.5,
+    "landing_confirm_ms": 3000,
+    "min_confirm_samples": 3
+  }
+}

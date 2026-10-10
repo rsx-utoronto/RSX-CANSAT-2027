@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "version": "6.1.0",
+  "tag": "v6.1",
+  "repository": "https://github.com/espressif/esp-idf.git",
+  "commit": "fff9895c82d744c7237be8847347bdd1b07c6643",
+  "tools_manifest_sha256": "039337e5ee2511f97d112aedb98125945625a4dd9ffb67e0cbb094edcdd298b2",
+  "idf_target": "esp32",
+  "build_generator": "Ninja",
+  "cmake_version": "4.0.3",
+  "ninja_version": "1.12.1",
+  "python_major_minor": "3.12",
+  "sdk_directory": ".local/esp-idf-v6.1",
+  "tools_directory": ".local/tools-v6.1",
+  "python_environment": "python_env/idf6.1_py3.12_env"
+}

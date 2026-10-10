@@ -1,0 +1,633 @@
+{
+  "schema_document_version": 1,
+  "payload_version": 1,
+  "status": "implemented experimental typed payload contract; not a flight-compliance certificate",
+  "requirements_source": {
+    "url": "https://cansatcompetition.com/assets/docs/competition/CanSat_Mission_Guide_2027_r1.2c.pdf",
+    "revision": "1.2c",
+    "pages": "20-21,23-29"
+  },
+  "max_payload_bytes": 220,
+  "radio_envelope_overhead_bytes": 30,
+  "byte_order": "little endian; signed fields use explicit two's-complement conversion",
+  "role_binding": "Outer envelope carries team and source/destination. Schema1 only for Container telemetry, schema2 only for PocketQube telemetry, schema3 only for ground-to-flight commands. Payload codec caller must bind schema to the already validated envelope role/kind.",
+  "schema_tags": {
+    "container": 1,
+    "pocketqube": 2,
+    "command": 3
+  },
+  "common_telemetry_fields": [
+    {
+      "name": "version",
+      "offset": 0,
+      "bytes": 1,
+      "encoding": "u8"
+    },
+    {
+      "name": "schema",
+      "offset": 1,
+      "bytes": 1,
+      "encoding": "u8"
+    },
+    {
+      "name": "mission_time_ms",
+      "offset": 2,
+      "bytes": 8,
+      "encoding": "u64le",
+      "unit": "ms",
+      "csv_field": "MISSION_TIME"
+    },
+    {
+      "name": "packet_count",
+      "offset": 10,
+      "bytes": 4,
+      "encoding": "u32le",
+      "csv_field": "PACKET_COUNT"
+    },
+    {
+      "name": "command_count",
+      "offset": 14,
+      "bytes": 4,
+      "encoding": "u32le",
+      "csv_field": "COMMAND_COUNT"
+    },
+    {
+      "name": "mode",
+      "offset": 18,
+      "bytes": 1,
+      "encoding": "u8 ASCII F/S",
+      "csv_field": "MODE"
+    },
+    {
+      "name": "valid",
+      "offset": 19,
+      "bytes": 4,
+      "encoding": "u32le bitmask"
+    },
+    {
+      "name": "altitude_mm",
+      "offset": 23,
+      "bytes": 4,
+      "encoding": "i32le",
+      "unit": "mm AGL",
+      "validity_bit": 0,
+      "csv_field": "ALTITUDE"
+    },
+    {
+      "name": "pressure_pa",
+      "offset": 27,
+      "bytes": 4,
+      "encoding": "u32le",
+      "unit": "Pa",
+      "validity_bit": 1,
+      "csv_field": "PRESSURE"
+    },
+    {
+      "name": "temperature_milli_c",
+      "offset": 31,
+      "bytes": 4,
+      "encoding": "i32le",
+      "unit": "0.001 degC",
+      "validity_bit": 2,
+      "csv_field": "TEMPERATURE"
+    },
+    {
+      "name": "battery_mv",
+      "offset": 35,
+      "bytes": 4,
+      "encoding": "u32le",
+      "unit": "mV",
+      "validity_bit": 3,
+      "csv_field": "BATT_V / VOLTAGE"
+    },
+    {
+      "name": "battery_current_ma",
+      "offset": 39,
+      "bytes": 4,
+      "encoding": "i32le",
+      "unit": "mA; signed",
+      "validity_bit": 4,
+      "csv_field": "BATT_I / CURRENT"
+    },
+    {
+      "name": "mechanism_state",
+      "offset": 43,
+      "bytes": 1,
+      "encoding": "u8 bitmask",
+      "csv_field": "MECH_STATE"
+    },
+    {
+      "name": "mechanism_known",
+      "offset": 44,
+      "bytes": 1,
+      "encoding": "u8 bitmask"
+    },
+    {
+      "name": "command_echo_length",
+      "offset": 45,
+      "bytes": 1,
+      "encoding": "u8; 0..24"
+    },
+    {
+      "name": "command_echo",
+      "offset": 46,
+      "bytes": 24,
+      "encoding": "ASCII; zero-padded",
+      "csv_field": "CMD_ECHO"
+    }
+  ],
+  "container": {
+    "payload_bytes": 71,
+    "radio_bytes": 101,
+    "validity_mask": 31,
+    "tail": [
+      {
+        "name": "state",
+        "offset": 70,
+        "bytes": 1,
+        "encoding": "u8",
+        "values": {
+          "LAUNCH_PAD": 0,
+          "ASCENT": 1,
+          "APOGEE": 2,
+          "PQ_RELEASE": 3
+        }
+      }
+    ],
+    "mechanisms": {
+      "allowed_known_bits": 3,
+      "bits": {
+        "deployment_mechanism_activated": 0,
+        "pocketqube_clear": 1
+      }
+    }
+  },
+  "pocketqube": {
+    "base_payload_bytes": 177,
+    "max_payload_bytes": 220,
+    "base_radio_bytes": 207,
+    "max_radio_bytes": 250,
+    "validity_mask": 2097151,
+    "fields": [
+      {
+        "name": "gyro_mdeg_s_x",
+        "offset": 70,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 deg/s",
+        "validity_bit": 5,
+        "csv_field": "ROT_RATE_X"
+      },
+      {
+        "name": "gyro_mdeg_s_y",
+        "offset": 74,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 deg/s",
+        "validity_bit": 6,
+        "csv_field": "ROT_RATE_Y"
+      },
+      {
+        "name": "gyro_mdeg_s_z",
+        "offset": 78,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 deg/s",
+        "validity_bit": 7,
+        "csv_field": "ROT_RATE_Z"
+      },
+      {
+        "name": "accel_mm_s2_x",
+        "offset": 82,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 m/s^2",
+        "validity_bit": 8,
+        "csv_field": "ACCEL_X"
+      },
+      {
+        "name": "accel_mm_s2_y",
+        "offset": 86,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 m/s^2",
+        "validity_bit": 9,
+        "csv_field": "ACCEL_Y"
+      },
+      {
+        "name": "accel_mm_s2_z",
+        "offset": 90,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "0.001 m/s^2",
+        "validity_bit": 10,
+        "csv_field": "ACCEL_Z"
+      },
+      {
+        "name": "mag_milligauss_x",
+        "offset": 94,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "mG",
+        "validity_bit": 11,
+        "csv_field": "MAG_X"
+      },
+      {
+        "name": "mag_milligauss_y",
+        "offset": 98,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "mG",
+        "validity_bit": 12,
+        "csv_field": "MAG_Y"
+      },
+      {
+        "name": "mag_milligauss_z",
+        "offset": 102,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "mG",
+        "validity_bit": 13,
+        "csv_field": "MAG_Z"
+      },
+      {
+        "name": "latitude_nanodeg",
+        "offset": 106,
+        "bytes": 8,
+        "encoding": "i64le",
+        "unit": "1e-9 degree",
+        "validity_bit": 14,
+        "csv_field": "GNSS_LATITUDE"
+      },
+      {
+        "name": "longitude_nanodeg",
+        "offset": 114,
+        "bytes": 8,
+        "encoding": "i64le",
+        "unit": "1e-9 degree",
+        "validity_bit": 15,
+        "csv_field": "GNSS_LONGITUDE"
+      },
+      {
+        "name": "gnss_altitude_mm",
+        "offset": 122,
+        "bytes": 4,
+        "encoding": "i32le",
+        "unit": "mm in receiver-provided altitude datum",
+        "validity_bit": 16,
+        "csv_field": "GNSS_ALTITUDE"
+      },
+      {
+        "name": "gnss_satellites",
+        "offset": 126,
+        "bytes": 2,
+        "encoding": "u16le",
+        "unit": "count",
+        "validity_bit": 17,
+        "csv_field": "GNSS_SATS"
+      },
+      {
+        "name": "gnss_time_length",
+        "offset": 128,
+        "bytes": 1,
+        "encoding": "u8; 0..32"
+      },
+      {
+        "name": "gnss_time",
+        "offset": 129,
+        "bytes": 32,
+        "encoding": "ASCII; zero-padded",
+        "unit": "receiver-provided text; no conversion inferred",
+        "validity_bit": 18,
+        "csv_field": "GNSS_TIME"
+      },
+      {
+        "name": "solar_mv_1",
+        "offset": 161,
+        "bytes": 4,
+        "encoding": "u32le",
+        "unit": "mV",
+        "validity_bit": 19,
+        "csv_field": "SOLAR_1"
+      },
+      {
+        "name": "solar_mv_2",
+        "offset": 165,
+        "bytes": 4,
+        "encoding": "u32le",
+        "unit": "mV",
+        "validity_bit": 20,
+        "csv_field": "SOLAR_2"
+      }
+    ],
+    "mechanisms": {
+      "allowed_known_bits": 15,
+      "bits": {
+        "solar_1_deployed": 0,
+        "solar_2_deployed": 1,
+        "boom_deployed": 2,
+        "camera_recording": 3
+      }
+    },
+    "extensions": {
+      "combined_data_budget": 43,
+      "order": [
+        "stabilization",
+        "science"
+      ],
+      "start_offset": 169,
+      "each_header": [
+        {
+          "name": "profile",
+          "encoding": "u16le",
+          "bytes": 2
+        },
+        {
+          "name": "profile_version",
+          "encoding": "u8",
+          "bytes": 1
+        },
+        {
+          "name": "data_length",
+          "encoding": "u8",
+          "bytes": 1
+        }
+      ],
+      "data_encoding": "opaque bounded bytes; no profiles selected",
+      "empty_rule": "profile=0, profile_version=0, data_length=0",
+      "nonempty_rule": "profile and profile_version nonzero; data_length1..43; combined lengths<=43",
+      "unknown_profile_policy": "Retain bounded bytes with their profile/version. No interpretation or CSV flattening until profile is registered.",
+      "reserved_slots": [
+        "STABILIZATION_PROFILE",
+        "SCIENCE_PROFILE"
+      ]
+    }
+  },
+  "validity_contract": {
+    "zero_means": "Value zero is meaningful only when its validity bit is set. Cleared bits require canonical zero numeric storage and empty padded text.",
+    "mask_rules": "Unknown validity/mechanism bits rejected; set mechanism_state bits must be known. Coordinates require latitude and longitude validity together.",
+    "physical_sanity": "Valid pressure must be positive; valid temperature>=-273.150 degC; latitude[-90,+90], longitude[-180,+180] degrees. Other sensor ranges are representation bounds, not approved flight thresholds.",
+    "freshness": "The acquisition/application layer decides validity using sensor status, age and calibration. This codec has no sensor clock or stale-data detector.",
+    "text": "Lengths bounded; ASCII excluding whitespace/control/comma; zero padding mandatory. Echo begins uppercase and uses uppercase letters, digits, underscore, sign, dot or colon."
+  },
+  "commands": {
+    "prefix": [
+      {
+        "name": "version",
+        "offset": 0,
+        "bytes": 1,
+        "value": 1
+      },
+      {
+        "name": "schema",
+        "offset": 1,
+        "bytes": 1,
+        "value": 3
+      },
+      {
+        "name": "opcode",
+        "offset": 2,
+        "bytes": 1
+      }
+    ],
+    "catalog": [
+      {
+        "id": 1,
+        "name": "CAL",
+        "type": "Calibrate",
+        "targets": [
+          "C"
+        ],
+        "body": [],
+        "bytes": 3
+      },
+      {
+        "id": 2,
+        "name": "ARM",
+        "type": "Arm",
+        "targets": [
+          "C"
+        ],
+        "body": [],
+        "bytes": 3
+      },
+      {
+        "id": 3,
+        "name": "ST",
+        "type": "SetUtc",
+        "targets": [
+          "C"
+        ],
+        "body": [
+          {
+            "name": "unix_ms",
+            "encoding": "u64le",
+            "offset": 3,
+            "bytes": 8,
+            "unit": "Unix UTC milliseconds; not elapsed mission time"
+          }
+        ],
+        "bytes": 11
+      },
+      {
+        "id": 4,
+        "name": "SIM",
+        "type": "Simulation",
+        "targets": [
+          "C",
+          "P"
+        ],
+        "body": [
+          {
+            "name": "action",
+            "encoding": "u8",
+            "offset": 3,
+            "bytes": 1,
+            "values": {
+              "enable": 1,
+              "activate": 2,
+              "disable": 3
+            }
+          }
+        ],
+        "bytes": 4
+      },
+      {
+        "id": 5,
+        "name": "SIMP",
+        "type": "SimulatedPressure",
+        "targets": [
+          "C",
+          "P"
+        ],
+        "body": [
+          {
+            "name": "pa",
+            "encoding": "u32le",
+            "offset": 3,
+            "bytes": 4,
+            "minimum": 1,
+            "unit": "Pa"
+          }
+        ],
+        "bytes": 7
+      },
+      {
+        "id": 6,
+        "name": "MEC",
+        "type": "Deploy",
+        "targets": [
+          "C",
+          "P"
+        ],
+        "body": [
+          {
+            "name": "mechanism",
+            "encoding": "u8",
+            "offset": 3,
+            "bytes": 1,
+            "values": {
+              "container_release": 1,
+              "solar_1": 2,
+              "solar_2": 3,
+              "boom": 4
+            },
+            "target_rule": "C permits1 only; P permits2,3,4 only"
+          }
+        ],
+        "bytes": 4
+      },
+      {
+        "id": 7,
+        "name": "RECORD",
+        "type": "Recording",
+        "targets": [
+          "P"
+        ],
+        "body": [
+          {
+            "name": "action",
+            "encoding": "u8",
+            "offset": 3,
+            "bytes": 1,
+            "values": {
+              "start": 1,
+              "stop": 2
+            }
+          }
+        ],
+        "bytes": 4
+      },
+      {
+        "id": 8,
+        "name": "VIEW",
+        "type": "RotateView",
+        "targets": [
+          "P"
+        ],
+        "body": [
+          {
+            "name": "delta_mdeg",
+            "encoding": "i32le",
+            "offset": 3,
+            "bytes": 4,
+            "minimum": -360000,
+            "maximum": 360000,
+            "exclude": [
+              0
+            ],
+            "unit": "0.001 degree; right-hand about nadir +Z"
+          }
+        ],
+        "bytes": 7
+      }
+    ],
+    "wire_catalog_policy": "Mission operations only; no generic GPIO, servo-angle, reset, memory-write or debug command. Recording/view commands are team-defined mission extensions.",
+    "execution_boundary": "Decoder validates syntax, enums, length and target, not authorization or state. An application dispatcher must separately enforce SIM ENABLE then ACTIVATE, pressure injection only when active, launch/calibration timing, mechanism policy and feedback. No actuation occurs in these codecs.",
+    "rotation_policy": "Single-turn nonzero relative view command. +/-360degrees is a team-defined protocol bound, not a tested mechanical limit. Duplicate/reboot handling must preserve command identity; never replay with a new ID automatically.",
+    "echo": "commandEcho produces a bounded comma-free token; VIEW numeric argument is milli-degrees, ST milliseconds, SIMP pascals. Telemetry echo is application supplied after processing, not transport MAC receipt."
+  },
+  "counter_and_time_ownership": {
+    "packet_count": "Application-owned cumulative telemetry-transmission counter, separate from radio message_id; persistence/overflow handling not implemented by codec.",
+    "command_count": "Proposed semantic: authenticated syntactically valid unique commands admitted to processing; retries excluded, policy rejection still processed. Confirm scoring interpretation before flight. No increment logic implemented here.",
+    "mission_time_ms": "Application-owned elapsed mission clock, recoverable across resets; NOT UTC Unix milliseconds.",
+    "set_utc": "A separate UTC reference command; mapping to mission clock is a recovery/application concern."
+  },
+  "csv_mapping": {
+    "status": "Schema mapping only. No CSV exporter, serial manager migration or GUI wiring in this slice.",
+    "filename_templates": [
+      "Flight_<TEAM_ID>C.csv",
+      "Flight_<TEAM_ID>P.csv"
+    ],
+    "record_terminator": "CR",
+    "identifier": "outer team number plus C/P suffix",
+    "container_order": [
+      "ID",
+      "MISSION_TIME",
+      "PACKET_COUNT",
+      "COMMAND_COUNT",
+      "MODE",
+      "ALTITUDE",
+      "PRESSURE",
+      "TEMPERATURE",
+      "BATT_V",
+      "BATT_I",
+      "MECH_STATE",
+      "STATE",
+      "CMD_ECHO"
+    ],
+    "pocketqube_order": [
+      "ID",
+      "MODE",
+      "MISSION_TIME",
+      "PACKET_COUNT",
+      "COMMAND_COUNT",
+      "ALTITUDE",
+      "TEMPERATURE",
+      "PRESSURE",
+      "VOLTAGE",
+      "CURRENT",
+      "GNSS_TIME",
+      "GNSS_ALTITUDE",
+      "GNSS_LATITUDE",
+      "GNSS_LONGITUDE",
+      "GNSS_SATS",
+      "ROT_RATE_X",
+      "ROT_RATE_Y",
+      "ROT_RATE_Z",
+      "ACCEL_X",
+      "ACCEL_Y",
+      "ACCEL_Z",
+      "MAG_X",
+      "MAG_Y",
+      "MAG_Z",
+      "SOLAR_1",
+      "SOLAR_2",
+      "MECH_STATE",
+      "CMD_ECHO",
+      "IMAGE_STABILIZATION",
+      "SCIENCE_EXP"
+    ],
+    "wire_to_display": "mm -> m; milli-C -> C; mV -> V; milli-degrees/s -> degrees/s; mm/s^2 -> m/s^2; nanodegrees -> degrees. mA/mG already canonical for the telemetry tables.",
+    "open_slots": [
+      "INVALID_READING_EXPORT_POLICY",
+      "STABILIZATION_CSV_COLUMNS",
+      "SCIENCE_CSV_COLUMNS",
+      "GUIDE_PRECISION_CLARIFICATION"
+    ],
+    "precision_conflicts": [
+      "CTR21 versus Container telemetry voltage precision (0.01V versus0.1V).",
+      "PQ27 expresses A while telemetry table uses mA; wire chooses signed mA.",
+      "PQ31 versus telemetry table solar precision (0.1V versus0.01V)."
+    ],
+    "state_mapping": "Do not cast internal ContainerPhase directly. Release requested is not PQ_RELEASE until qualified clearance; landed has no published CSV state and telemetry stops. Final dispatcher/export mapping requires explicit review."
+  },
+  "selection_status": "User confirmed explicit validity flags with precise scaled-integer units, bounded versioned extensions while fields remain undefined, and mission-only commands on 2026-10-10. Other detailed wire choices remain experimental engineering decisions.",
+  "limits": [
+    "No hardware activation or command execution.",
+    "No sensor-unit conversion from floating samples implemented; callers must explicitly range-check and quantize.",
+    "Validity is not measured accuracy.",
+    "GNSS text limited to32bytes; excess is rejected, never truncated.",
+    "No extension data interpretation until a profile/version is defined."
+  ]
+}

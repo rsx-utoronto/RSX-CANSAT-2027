@@ -1,0 +1,85 @@
+{
+  "wire_version": 1,
+  "status": "experimental COM core and typed mission payload codecs implemented; GUI/dispatcher integration pending",
+  "max_radio_bytes": 250,
+  "header_bytes": 26,
+  "checksum_bytes": 4,
+  "max_payload_bytes": 220,
+  "byte_order": "little endian",
+  "crc": "CRC-32/ISO-HDLC over header+payload; integrity only, not authentication",
+  "header": [
+    {
+      "field": "magic_CS",
+      "offset": 0,
+      "bytes": 2
+    },
+    {
+      "field": "version",
+      "offset": 2,
+      "bytes": 1
+    },
+    {
+      "field": "kind",
+      "offset": 3,
+      "bytes": 1
+    },
+    {
+      "field": "team",
+      "offset": 4,
+      "bytes": 2
+    },
+    {
+      "field": "source",
+      "offset": 6,
+      "bytes": 1
+    },
+    {
+      "field": "destination",
+      "offset": 7,
+      "bytes": 1
+    },
+    {
+      "field": "sender_session",
+      "offset": 8,
+      "bytes": 4
+    },
+    {
+      "field": "destination_session",
+      "offset": 12,
+      "bytes": 4
+    },
+    {
+      "field": "message_id",
+      "offset": 16,
+      "bytes": 4
+    },
+    {
+      "field": "correlation_id",
+      "offset": 20,
+      "bytes": 4
+    },
+    {
+      "field": "payload_length",
+      "offset": 24,
+      "bytes": 2
+    }
+  ],
+  "node_ids": {
+    "ground": 0,
+    "container": 1,
+    "pocketqube": 2
+  },
+  "message_kinds": {
+    "telemetry": 1,
+    "command": 2,
+    "result": 3
+  },
+  "golden_command_hex": "43530102d20400010b0000001600000001000000000000000300a500ff517683f1",
+  "payload_policy": "Typed mission telemetry and commands are defined in mission_payloads.json and mission_payloads.hpp. NodeCom remains payload-agnostic: applications must select the correct schema against the validated message kind and node. Command decoding is not authorization or execution. Result payload remains one ResultCode byte.",
+  "session_policy": "Nonzero boot/session identities and authenticated peer sessions supplied explicitly. No discovery or persistence implementation; recreate service with new configuration after boot/session change. Never reuse a session with a reset message counter.",
+  "capacity_policy": "Skeleton bounds, not tuned flight settings: RX budget8/tick, reply queue8, received telemetry queue8, command queue4, result event queue16, receipts8; never evict unfinished receipts.",
+  "retry_policy": "One outstanding command per flight peer; max_attempts counts queued radio submissions, not immediate API rejections. Retries keep identity. TTL produces UNKNOWN, never proof of non-execution.",
+  "usb_policy": "Existing C/P LF codec retained unchanged; future readable typed USB records and CR-terminated competition export need a separate size and schema review.",
+  "configuration_policy": "No team, MAC, channel, boot sessions, flight retry timings, pins or private keys selected.",
+  "mission_payload_schema": "mission_payloads.json"
+}

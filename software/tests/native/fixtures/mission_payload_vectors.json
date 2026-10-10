@@ -1,0 +1,274 @@
+{
+  "fixture_only": true,
+  "cases": [
+    {
+      "name": "container",
+      "mode": "c",
+      "values": {
+        "mission_time_ms": 4000,
+        "packet_count": 42,
+        "command_count": 7,
+        "mode": "F",
+        "valid": 31,
+        "altitude_mm": 123456,
+        "pressure_pa": 98765,
+        "temperature_milli_c": -5000,
+        "battery_mv": 4200,
+        "battery_current_ma": -12,
+        "mechanism_state": 2,
+        "mechanism_known": 3,
+        "command_echo": "ARM",
+        "state": 2
+      }
+    },
+    {
+      "name": "pocket",
+      "mode": "p",
+      "values": {
+        "mission_time_ms": 4000,
+        "packet_count": 42,
+        "command_count": 7,
+        "mode": "S",
+        "valid": 2097151,
+        "altitude_mm": -1200,
+        "pressure_pa": 101325,
+        "temperature_milli_c": 22000,
+        "battery_mv": 4200,
+        "battery_current_ma": 125,
+        "mechanism_state": 5,
+        "mechanism_known": 15,
+        "command_echo": "VIEW-90000",
+        "gyro_mdeg_s": [
+          123,
+          -456,
+          0
+        ],
+        "accel_mm_s2": [
+          0,
+          9810,
+          -1
+        ],
+        "mag_milligauss": [
+          123,
+          456,
+          -789
+        ],
+        "latitude_nanodeg": 43500000000,
+        "longitude_nanodeg": -79400000000,
+        "gnss_altitude_mm": 100250,
+        "gnss_satellites": 12,
+        "gnss_time": "123456.789",
+        "solar_mv": [
+          4123,
+          4056
+        ],
+        "stabilization": {
+          "profile": 0,
+          "version": 0,
+          "data": []
+        },
+        "science": {
+          "profile": 0,
+          "version": 0,
+          "data": []
+        }
+      }
+    },
+    {
+      "name": "pocket_max",
+      "mode": "p",
+      "values": {
+        "mission_time_ms": 4000,
+        "packet_count": 42,
+        "command_count": 7,
+        "mode": "S",
+        "valid": 2097151,
+        "altitude_mm": -1200,
+        "pressure_pa": 101325,
+        "temperature_milli_c": 22000,
+        "battery_mv": 4200,
+        "battery_current_ma": 125,
+        "mechanism_state": 5,
+        "mechanism_known": 15,
+        "command_echo": "VIEW-90000",
+        "gyro_mdeg_s": [
+          123,
+          -456,
+          0
+        ],
+        "accel_mm_s2": [
+          0,
+          9810,
+          -1
+        ],
+        "mag_milligauss": [
+          123,
+          456,
+          -789
+        ],
+        "latitude_nanodeg": 43500000000,
+        "longitude_nanodeg": -79400000000,
+        "gnss_altitude_mm": 100250,
+        "gnss_satellites": 12,
+        "gnss_time": "123456.789",
+        "solar_mv": [
+          4123,
+          4056
+        ],
+        "stabilization": {
+          "profile": 1,
+          "version": 1,
+          "data": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "science": {
+          "profile": 2,
+          "version": 3,
+          "data": [
+            255,
+            254,
+            253,
+            252,
+            251,
+            250,
+            249,
+            248,
+            247,
+            246,
+            245,
+            244,
+            243,
+            242,
+            241,
+            240,
+            239,
+            238,
+            237,
+            236,
+            235,
+            234,
+            233
+          ]
+        }
+      }
+    },
+    {
+      "name": "cal",
+      "mode": "cmd_c",
+      "opcode": 1,
+      "argument_struct": "",
+      "argument": null
+    },
+    {
+      "name": "arm",
+      "mode": "cmd_c",
+      "opcode": 2,
+      "argument_struct": "",
+      "argument": null
+    },
+    {
+      "name": "utc",
+      "mode": "cmd_c",
+      "opcode": 3,
+      "argument_struct": "Q",
+      "argument": 1791648000123
+    },
+    {
+      "name": "sim_enable",
+      "mode": "cmd_c",
+      "opcode": 4,
+      "argument_struct": "B",
+      "argument": 1
+    },
+    {
+      "name": "sim_activate",
+      "mode": "cmd_p",
+      "opcode": 4,
+      "argument_struct": "B",
+      "argument": 2
+    },
+    {
+      "name": "sim_disable",
+      "mode": "cmd_p",
+      "opcode": 4,
+      "argument_struct": "B",
+      "argument": 3
+    },
+    {
+      "name": "pressure",
+      "mode": "cmd_c",
+      "opcode": 5,
+      "argument_struct": "I",
+      "argument": 101325
+    },
+    {
+      "name": "release",
+      "mode": "cmd_c",
+      "opcode": 6,
+      "argument_struct": "B",
+      "argument": 1
+    },
+    {
+      "name": "solar1",
+      "mode": "cmd_p",
+      "opcode": 6,
+      "argument_struct": "B",
+      "argument": 2
+    },
+    {
+      "name": "solar2",
+      "mode": "cmd_p",
+      "opcode": 6,
+      "argument_struct": "B",
+      "argument": 3
+    },
+    {
+      "name": "boom",
+      "mode": "cmd_p",
+      "opcode": 6,
+      "argument_struct": "B",
+      "argument": 4
+    },
+    {
+      "name": "record_on",
+      "mode": "cmd_p",
+      "opcode": 7,
+      "argument_struct": "B",
+      "argument": 1
+    },
+    {
+      "name": "record_off",
+      "mode": "cmd_p",
+      "opcode": 7,
+      "argument_struct": "B",
+      "argument": 2
+    },
+    {
+      "name": "rotate",
+      "mode": "cmd_p",
+      "opcode": 8,
+      "argument_struct": "i",
+      "argument": -90000
+    }
+  ]
+}

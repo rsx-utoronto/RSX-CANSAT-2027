@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "unconfigured_do_not_flash",
+  "hardware_available": false,
+  "esp_idf_version": "6.1.0",
+  "module_policy": {
+    "preferred_family": "ESP32-WROOM-32UE",
+    "scope": ["container", "pocketqube", "ground_radio"],
+    "status": "user_preferred_for_majority_not_final_per_target",
+    "idf_target": "esp32",
+    "full_part_number": null,
+    "flash_mb": null,
+    "psram_mb": null,
+    "antenna": "external_connector",
+    "carrier_board": "ESP32-DevKitC V4",
+    "exceptions_require_review": true
+  },
+  "targets": {
+    "container": {"board": null, "framework": "esp-idf", "pins": {}, "espnow_channel": null, "peer_mac": null},
+    "pocketqube": {"board": null, "framework": "esp-idf", "pins": {}, "espnow_channel": null, "peer_mac": null},
+    "ground_radio": {"board": null, "framework": "esp-idf", "pins": {}, "espnow_channel": null, "peer_mac": null}
+  },
+  "vision": {"status": "experimental", "processor": null, "camera": null}
+}
