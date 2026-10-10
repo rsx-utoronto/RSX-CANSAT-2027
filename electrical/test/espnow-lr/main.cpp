@@ -2,37 +2,33 @@
 #include <WiFi.h>
 #include <esp_now.h>
 
+// Compile-time check: If this fails to build, PlatformIO is still targeting Core 2!
+static_assert(ESP_ARDUINO_VERSION_MAJOR >= 3, "Not building with Arduino core 3");
+
 uint8_t broadcastAddress[] = {0xF0, 0x16, 0x1D, 0x93, 0xBF, 0xB4};
 
-const int myNumber = 2;
+const int myNumber = 69;
 bool messageSent = false;
 
-// Universal Receive Callback: Smart data parsing
-#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
+// ---- Core 3.x Receive Callback ----
+// The first argument must be 'const esp_now_recv_info_t *'
 void onDataReceive(const esp_now_recv_info_t *info, const uint8_t *data, int len)
-#else
-void onDataReceive(const uint8_t *mac_addr, const uint8_t *data, int len)
-#endif
 {
   Serial.print("-> Reply Received: ");
 
-  // If the other board sent a raw 1-byte number (like 0 or 1)
   if (len == 1)
   {
-    uint8_t numericByte = data[0];
-    Serial.println(numericByte); // Prints a clean "0" or "1"
+    Serial.println(data[0]);
   }
-  // If the other board sent a raw 4-byte integer
   else if (len == 4)
   {
     int numericInt;
     memcpy(&numericInt, data, sizeof(numericInt));
-    Serial.println(numericInt); // Prints a clean 4-byte integer
+    Serial.println(numericInt);
   }
-  // Otherwise, treat it as an alphabet text message string
   else
   {
-    String receivedMessage = ""; // Explicitly declared inside this block
+    String receivedMessage = "";
     for (int i = 0; i < len; i++)
     {
       receivedMessage += (char)data[i];
@@ -41,47 +37,62 @@ void onDataReceive(const uint8_t *mac_addr, const uint8_t *data, int len)
   }
 }
 
-// Send Status Callback: Confirms if the number left your board successfully
-void onDataSent(const uint8_t *mac_addr, esp_now_send_status_t status)
+// ---- Core 3.x Send Callback ----
+// The first argument must be 'const esp_now_send_info_t *'
+void onDataSent(const esp_now_send_info_t *tx_info, esp_now_send_status_t status)
 {
   Serial.print("<- Send Status: ");
   if (status == ESP_NOW_SEND_SUCCESS)
   {
-    Serial.printf("Delivered successfully! Value sent: %d (Odd)\n", myNumber);
+    Serial.printf("Delivered successfully! Value sent: %d\n", myNumber);
     Serial.println("Waiting for reply from the other board...");
   }
   else
   {
     Serial.println("Delivery Failed. (Is the target board powered on?)");
-    messageSent = false; // Reset so it tries to resend in the loop if it failed
+    messageSent = false;
   }
 }
 
 void setup()
 {
   Serial.begin(115200);
+  delay(1500); // Give the serial monitor window time to connect after resetting
 
-  // Set device as a Wi-Fi Station
+  Serial.println("\n--- RUNTIME FIRMWARE VERSION TEST ---");
+// This macro test checks what core the compiled binary is actively executing on
+#ifdef ESP_ARDUINO_VERSION_MAJOR
+  Serial.printf("CORE STATUS: Running on Arduino Core v%d.%d.%d\n",
+                ESP_ARDUINO_VERSION_MAJOR,
+                ESP_ARDUINO_VERSION_MINOR,
+                ESP_ARDUINO_VERSION_PATCH);
+
+  if (ESP_ARDUINO_VERSION_MAJOR >= 3)
+  {
+    Serial.println("TEST PASSED: The microcontroller is forcing Core 3 framework execution!");
+  }
+  else
+  {
+    Serial.println("TEST FAILED: Microcontroller is still executing an older Core 2 framework!");
+  }
+#else
+  Serial.println("TEST FAILED: Ancient framework core version (Pre-Core 2) detected.");
+#endif
+  Serial.println("-------------------------------------\n");
+
   WiFi.mode(WIFI_STA);
 
-  // Initialize ESP-NOW
   if (esp_now_init() != ESP_OK)
   {
     Serial.println("ESP-NOW initialization failed");
     return;
   }
 
-  // Register the Send Callback
+  // Register callbacks natively under Core 3.x
   esp_now_register_send_cb(onDataSent);
-
-// Register the Receive Callback
-#if defined(ESP_ARDUINO_VERSION_MAJOR) && ESP_ARDUINO_VERSION_MAJOR >= 3
-  esp_now_register_recv_cb(esp_now_recv_cb_t(onDataReceive));
-#else
   esp_now_register_recv_cb(onDataReceive);
-#endif
 
-  // Register Peer (The target board)
+  // Peer configuration
   esp_now_peer_info_t peerInfo = {};
   memcpy(peerInfo.peer_addr, broadcastAddress, 6);
   peerInfo.channel = 0;
@@ -92,24 +103,25 @@ void setup()
     Serial.println("Failed to add peer");
     return;
   }
-
-  Serial.println("System Ready! Sending number 67...");
 }
 
 void loop()
 {
+  // Main function: Sends the payload if it hasn't been sent yet
   if (!messageSent)
   {
-    messageSent = true;
-
     esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *)&myNumber, sizeof(myNumber));
 
-    if (result != ESP_OK)
+    if (result == ESP_OK)
     {
-      Serial.println("Error initiating send transaction");
-      messageSent = false;
+      Serial.println("Sent with success");
+      messageSent = true;
     }
-  }
+    else
+    {
+      Serial.println("Error sending the data");
+    }
 
-  delay(100);
+    delay(5000); // Wait 5 seconds before a retry if transmission fails
+  }
 }
