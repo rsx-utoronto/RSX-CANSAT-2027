@@ -1,5 +1,19 @@
 .pio/
 .vscode/
+
+# C/C++ build output
+*.o
+*.obj
+*.d
+*.a
+*.elf
+*.bin
+*.hex
+*.map
+.sconsign*.dblite
+project.checksum
+idedata.json
+
 __pycache__/
 *.pyc
 .DS_Store
