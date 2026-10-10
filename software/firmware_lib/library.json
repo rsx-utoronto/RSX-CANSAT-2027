@@ -1,0 +1,8 @@
+{
+    "name": "firmware_lib",
+    "version": "0.1.0",
+    "build": { "includeDir": "inc", "srcDir": "src" },
+    "dependencies": {
+      "adafruit/Adafruit BMP5xx Library": "^1.0.3"
+    }
+  }
