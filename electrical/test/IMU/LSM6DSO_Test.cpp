@@ -1,5 +1,4 @@
 #include <Wire.h>
-
 #include "SparkFunLSM6DSO.h"
 
 LSM6DSO myIMU;
@@ -17,7 +16,7 @@ void setup() {
     }
   }
 
-  myIMU.initialize(BASIC_SETTINGS);
+  myIMU.initialize(BASIC_SETTINGS); // 8g not 2g according to the library's settings, doesn't fulfill resolution requirements -> switch to 2g
 
   Serial.println("LSM6DSO detected!");
 }
