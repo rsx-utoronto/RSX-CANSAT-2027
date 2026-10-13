@@ -1,7 +1,6 @@
 .pio/
 .vscode/
 
-# C/C++ build output
 *.o
 *.obj
 *.d
@@ -17,3 +16,17 @@ idedata.json
 __pycache__/
 *.pyc
 .DS_Store
+
+*-backups/
+_autosave-*
+*.lck
+~*.lck
+fp-info-cache
+*.kicad_prl
+*.bak
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.sch-bak
+*-cache.lib
+*.000
+\#auto_saved_files#
