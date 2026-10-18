@@ -4,27 +4,22 @@
 
 
 
-// Replace with receiver's MAC Address
 
-uint8_t receiverAddress[] = {0x94, 0xB5, 0x55, 0x26, 0x27, 0x34};
-
+uint8_t receiverAddress[] = {0x8C, 0x94, 0xDF, 0x57, 0x46, 0x4C};
 
 
 typedef struct struct_message {
 
     char deviceName[32];
 
-    int sensorValue;
-
-    float temperature;
-
-    bool status;
+    int packetNumber;
 
     unsigned long timestamp;
 
 } struct_message;
 
-
+int totalPackets = 100;
+int packetNumber = 0;
 
 struct_message outgoingMessage;
 
@@ -79,19 +74,20 @@ void setup() {
 
     }
 
+    
+    delay(5000);
+    Serial.println("Sending packets!");
+
 }
 
 
 
 void loop() {
+    if (packetNumber >= totalPackets) return;
 
-    strcpy(outgoingMessage.deviceName, "Sensor Node 1");
+    strcpy(outgoingMessage.deviceName, "Transmitterrr");
 
-    outgoingMessage.sensorValue = random(0, 100);
-
-    outgoingMessage.temperature = random(200, 300) / 10.0;
-
-    outgoingMessage.status = true;
+    outgoingMessage.packetNumber = packetNumber++; // lolz
 
     outgoingMessage.timestamp = millis();
 
