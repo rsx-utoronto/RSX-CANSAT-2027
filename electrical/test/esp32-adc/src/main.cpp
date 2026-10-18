@@ -5,7 +5,7 @@ const int solar1_raw = 36;  // pin 4 = GPIO36
 const int solar2_raw = 39;  // pin 5 = GPIO39
 const float R_top = 13000.0;
 const float R_bot = 10000.0;
-const float div_decode = (R_top + R_bot) / R_bot;
+const float div_decode = (R_top + R_bot) / R_bot - 0.327; //calibration
 
 void setup() {
   Serial.begin(115200);  // communicate at 115200 baud
@@ -23,9 +23,11 @@ void loop() {
   float solar2_V = (pin39_mV / 1000.0) * div_decode;
 
   Serial.print("Solar1: ");
-  Serial.println(solar1_V, 3);
+  Serial.print(solar1_V, 3);
+  Serial.println(" V");
   Serial.print("Solar2: ");
-  Serial.println(solar2_V, 3);
+  Serial.print(solar2_V, 3);
+  Serial.println(" V");
 
   delay(500);
 }
