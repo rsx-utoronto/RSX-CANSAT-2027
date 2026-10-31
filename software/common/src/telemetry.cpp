@@ -23,7 +23,7 @@ namespace Telemetry{
                     }
                     void putBytes(const char* bytes, size_t count){
                          if (!ok_ || position_ + count > bufferSize_) return;
-                         if (bytes==nullptr || count>bufferSize-position_) {ok_=false; return;}
+                         if (bytes==nullptr || count>bufferSize_-position_) {ok_=false; return;}
                          std::memcpy(buffer_ + position_, bytes, count);
                          position_ += count;
                     }
