@@ -22,6 +22,6 @@ private:
   float    pressure_pa_ = 0.0f;
   float    temp_c_      = 0.0f;
   bool     ok_          = false;
-  //uint8_t  fail_streak_ = 0;
-  //uint32_t fail_total_  = 0;
+  uint8_t  fail_streak_ = 0;
+  uint32_t fail_total_  = 0;
 };
