@@ -12,6 +12,9 @@
 .sconsign*.dblite
 project.checksum
 idedata.json
+**/include/README
+**/lib/README
+**/test/README
 
 __pycache__/
 *.pyc
