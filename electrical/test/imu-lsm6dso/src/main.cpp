@@ -31,6 +31,7 @@ void loop() {
   Serial.print(myIMU.readFloatAccelY(), 3);
   Serial.print(", ");
   Serial.println(myIMU.readFloatAccelZ(), 3);
+  Serial.println(myIMU.getAccelRange());
 
   Serial.print("Gyro (deg/s): ");
   Serial.print(myIMU.readFloatGyroX(), 3);
@@ -38,7 +39,9 @@ void loop() {
   Serial.print(myIMU.readFloatGyroY(), 3);
   Serial.print(", ");
   Serial.println(myIMU.readFloatGyroZ(), 3);
+  Serial.println(myIMU.getGyroRange());
 
   Serial.println("---");
   delay(500);
 }
+
