@@ -11,7 +11,7 @@ struct ContainerPacket {
   uint32_t mission_time_ms;
   uint32_t packet_count;
   uint16_t command_count;
-  char     mode;
+  Mode     mode;
   float    altitude_m;
   uint32_t pressure_pa;
   float    temperature_c;
@@ -28,7 +28,7 @@ struct PQPacket{
   uint32_t packet_count;
   uint16_t command_count;
   char     cmd_echo[12];
-  char     mode;
+  Mode     mode;
   float    altitude_m;
   uint32_t pressure_pa;
   float    temperature_c;
@@ -55,8 +55,9 @@ struct PQPacket{
   float    solar_1_v;
   float    solar_2_v;
   uint8_t  mech_state;
-  //IMAGE_STABILIZATION 
-  //SCIENCE_EXP
+  //32 or 64?
+  char     image_stabilization[32];
+  char     science_exp[32];
 };
 #pragma pack(pop)
 
