@@ -19,6 +19,7 @@ void setup() {
   }
 
   myIMU.initialize(BASIC_SETTINGS);
+  myIMU.setAccelRange(2);
 
   Serial.println("LSM6DSO detected!");
 }
