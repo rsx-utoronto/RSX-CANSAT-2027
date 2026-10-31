@@ -16,7 +16,7 @@ typedef struct struct_message {
 int freq = 4; // Hz
 int totalPackets = 100;
 int packetsReceived = 0;
-unsigned long firstPacketTimestamp = -1;
+unsigned long firstPacketTimestamp;
 bool logged = false;
 struct_message incomingMessage;
 
@@ -73,11 +73,12 @@ void setup() {
 
 
 void loop() {
-    if (!logged && (millis() - firstPacketTimestamp) >= (double) totalPackets / freq + 1) {
+    int timeElapsed = millis() - firstPacketTimestamp;
+    int totalTransmitTime = 1000 * ((double) totalPackets / freq);
+    if (!logged && packetsReceived > 0 && timeElapsed >= totalTransmitTime + 1) {
         int packetsLost = totalPackets - packetsReceived;
         Serial.printf("Packets lost: %d\n", packetsLost);
         Serial.printf("% Packets lost: %f\n", (double) packetsLost / totalPackets);
         logged = true;
     }
-
 }
