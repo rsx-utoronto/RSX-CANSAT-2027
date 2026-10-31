@@ -1,0 +1,327 @@
+(footprint "691137710006"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "691137710006-1")
+	(tags "Connector")
+	(property "Reference" "REF**"
+		(at 12.5 0.25 0)
+		(layer "F.SilkS")
+		(uuid "3e6fb486-d8f4-466c-988d-04f389325f42")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "691137710006"
+		(at 12.5 0.25 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "823022dd-8ff5-4a56-bd01-c2916989e057")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.we-online.com/catalog/datasheet/691137710006.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6c81dab7-7f4b-4492-a9e1-1af568547baf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "WR-TBL Terminal block - Wire protector - THT MRT12P5/6VE Serie 1377 - 5,0mm pitch - Monoblock THT - Green - Horizontal cable entry Wire Protector 11.5mm height - 06p"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3c8520db-85a9-425d-beec-94e515562baf")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "11.5"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1bd0abe0-b500-450e-b803-3b03d875b1dc")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "Wurth Elektronik"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "865651a4-fa2a-4376-b1d6-b80bffc89b6d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "691137710006"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ebc99119-fe71-4a79-8386-ad21e1d374fa")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "710-691137710006"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3d05f4b6-86ab-4ac2-9684-cce70a2f0314")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Wurth-Elektronik/691137710006?qs=lBTPRtX1sU%252BmlZqh2c5BNw%3D%3D"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c92babfb-e0e2-4e13-b1f8-00fe17c575a8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Part Number" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1be41793-a4ba-411b-9e50-ffea1e920b79")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Price/Stock" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3446728b-adbb-47b7-8e91-a9bb5d2d67d2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.5 -3.5)
+		(end 27.5 -3.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "fb6e6b1a-d7a9-401a-80c9-a504f551cb02")
+	)
+	(fp_line
+		(start -2.5 4)
+		(end -2.5 -3.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5dde55bf-665c-46cc-ad85-2c511375653d")
+	)
+	(fp_line
+		(start 27.5 -3.5)
+		(end 27.5 4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8fc9d548-285d-42c2-b386-ac505d0a100f")
+	)
+	(fp_line
+		(start 27.5 4)
+		(end -2.5 4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c68168b4-bbc3-44f6-a4b5-142296030689")
+	)
+	(fp_line
+		(start -3.5 -4.5)
+		(end 28.5 -4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "2c6a884a-ba3b-43c1-b92e-df2a3be88812")
+	)
+	(fp_line
+		(start -3.5 5)
+		(end -3.5 -4.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "31ba1de3-fdf5-4763-a86e-7aab76c73311")
+	)
+	(fp_line
+		(start 28.5 -4.5)
+		(end 28.5 5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "48abc878-88d3-4936-b6b5-458b02aef586")
+	)
+	(fp_line
+		(start 28.5 5)
+		(end -3.5 5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "1acb4334-7e1e-460b-9045-d550ab6c12b3")
+	)
+	(fp_line
+		(start -2.5 -3.5)
+		(end 27.5 -3.5)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "56142e67-26ec-4257-9e99-904a8cefb9f3")
+	)
+	(fp_line
+		(start -2.5 4)
+		(end -2.5 -3.5)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "dc4956bd-a790-440a-969c-f5b540628258")
+	)
+	(fp_line
+		(start 27.5 -3.5)
+		(end 27.5 4)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "acc3b5ff-3f27-4564-98f2-741c42a609fc")
+	)
+	(fp_line
+		(start 27.5 4)
+		(end -2.5 4)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b478d070-76c4-43ab-8b8b-084e7abcf892")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 12.5 0.25 0)
+		(layer "F.Fab")
+		(uuid "e393d511-7a8f-45eb-81e4-b13630eda7d7")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d18f4921-7b29-4a71-ac56-6483338faa7b")
+	)
+	(pad "2" thru_hole circle
+		(at 5 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "11ac7638-16bd-4387-afa1-f4cc5c3fa4b9")
+	)
+	(pad "3" thru_hole circle
+		(at 10 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "048f363c-619f-4f2f-8366-087c632fac74")
+	)
+	(pad "4" thru_hole circle
+		(at 15 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d9c771ba-9b4e-467b-bfee-f620356e499d")
+	)
+	(pad "5" thru_hole circle
+		(at 20 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5e5d1ffa-6b39-46db-a857-31de04ca48cd")
+	)
+	(pad "6" thru_hole circle
+		(at 25 0)
+		(size 1.95 1.95)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "50002552-033c-4a61-ba39-35adfeec0d22")
+	)
+	(embedded_fonts no)
+)

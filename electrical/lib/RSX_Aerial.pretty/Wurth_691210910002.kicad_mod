@@ -1,0 +1,247 @@
+(footprint "Wurth_691210910002"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "simple 2-pin terminal block, pitch 5.08mm, revamped version of bornier2")
+	(tags "terminal block bornier2")
+	(property "Reference" "REF**"
+		(at 0.635 -3.81 0)
+		(layer "F.SilkS")
+		(uuid "d79413d0-5172-4411-b970-a16f3999b1cb")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Wurth_691210910002"
+		(at 0 5.08 0)
+		(layer "F.Fab")
+		(uuid "38369199-76e6-41d4-8dbb-8579154e4cfb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6ae7dff6-6dec-43e5-b089-e34a18c69608")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "332158aa-176b-4f6c-94e4-c7b5367d221e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.286 -3.302)
+		(end -2.286 3.429)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "de97300e-bf8a-4cb3-ba9d-4d7a3c7b7ac0")
+	)
+	(fp_line
+		(start -2.286 3.429)
+		(end 3.302 3.429)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "ed269818-cfe8-4093-b09f-38f3660fa41e")
+	)
+	(fp_line
+		(start 3.302 -3.302)
+		(end -2.286 -3.302)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "e7534ce6-ea11-4e08-aa27-cbf92662f8c4")
+	)
+	(fp_line
+		(start 3.302 2.54)
+		(end -2.286 2.54)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5c6f1094-9e6b-411d-b408-eecfaa87441e")
+	)
+	(fp_line
+		(start 3.302 3.429)
+		(end 3.302 -3.302)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "bb7d38f2-5893-437c-950a-ebb429f43773")
+	)
+	(fp_line
+		(start -2.413 -3.429)
+		(end -2.413 3.556)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "a0fb6966-3f89-4f55-b613-d2df76c63300")
+	)
+	(fp_line
+		(start -2.413 -3.429)
+		(end 3.429 -3.429)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "caadb73b-093e-4dd7-9502-8f03533d0ec2")
+	)
+	(fp_line
+		(start 3.429 3.556)
+		(end -2.413 3.556)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ab603641-2896-4d79-ad73-8656e327525a")
+	)
+	(fp_line
+		(start 3.429 3.556)
+		(end 3.429 -3.429)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "4cfe3554-c5cf-41e7-b8e0-b3e44fc99ffa")
+	)
+	(fp_line
+		(start -2.159 -3.175)
+		(end -2.159 3.302)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "da5bb964-0b74-4f6d-a3a3-e88e246738e0")
+	)
+	(fp_line
+		(start -2.159 2.55)
+		(end 3.175 2.55)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "8119a57b-2359-4446-b532-9350e6fc0ee0")
+	)
+	(fp_line
+		(start -2.159 3.302)
+		(end 3.175 3.302)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "cfb4a717-c0a8-4066-8176-2ba19b851d3e")
+	)
+	(fp_line
+		(start 3.175 -3.175)
+		(end -2.159 -3.175)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "99e37a80-288e-4f96-8551-b7717794203d")
+	)
+	(fp_line
+		(start 3.175 3.302)
+		(end 3.175 -3.175)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "09d46dae-0d67-428e-8e8e-0444af9eab17")
+	)
+	(fp_text user "1"
+		(at -2.667 2.6 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "9630142d-a0c0-4c34-8872-814d7f12eb12")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+				(bold yes)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "0f7d1668-4202-453b-a598-e2d2518d37f3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at -0.762 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ad1ce0c7-cb84-4639-b2a6-2fa3d4bb7fd8")
+	)
+	(pad "2" thru_hole circle
+		(at 1.778 0)
+		(size 2 2)
+		(drill 1.1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3fc121bb-2e33-414a-87f6-6030de2669b0")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/Wurth_691210910002_rev1.stp"
+		(offset
+			(xyz 0.5 0 2.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

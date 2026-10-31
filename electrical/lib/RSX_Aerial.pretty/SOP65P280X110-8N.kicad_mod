@@ -1,0 +1,344 @@
+(footprint "SOP65P280X110-8N"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "INA236AIDDFR")
+	(tags "Integrated Circuit")
+	(property "Reference" "REF**"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(uuid "6d6692df-cdcc-4655-a028-20d1176d9e34")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Value" "SOP65P280X110-8N"
+		(at 0 0 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "7181565a-2b9e-4948-9cad-d4fb53ecf460")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+			)
+		)
+	)
+	(property "Datasheet" "https://www.ti.com/lit/ds/symlink/ina236.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f49cd38b-7bda-4cc2-9e02-51b47ecc3930")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "INA236"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f6cdb77e-7119-4ca6-bff1-1d77a8652c25")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Height" "1.1"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6552f3fc-8273-478e-8bfc-2cb0ac5bc878")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Name" "Texas Instruments"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4f44734d-b23f-4231-bebd-b5a4b146b79b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Manufacturer_Part_Number" "INA236AIDDFR"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bbbf362c-6230-48b0-922d-15c3ac5d6f0e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Part Number" "595-INA236AIDDFR"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f1450745-4469-4847-87d8-484661cb1d54")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/Texas-Instruments/INA236AIDDFR?qs=amGC7iS6iy%252BrvgC7WgsvdQ%3D%3D"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "82f73d8e-6c40-40ef-9350-85b1f1ee1505")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Part Number" "INA236AIDDFR"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "195a4e0b-97c9-4933-a8f4-4bd9720a134c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Arrow Price/Stock" "https://www.arrow.com/en/products/ina236aiddfr/texas-instruments?utm_currency=USD&region=nac"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5581ce1d-75e1-4c1f-94bb-6eda016c2adf")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.85 -1.55)
+		(end -0.8 -1.55)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5e0e2324-7d18-4045-ae19-4545538b3cd5")
+	)
+	(fp_line
+		(start -0.45 -1.45)
+		(end 0.45 -1.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "c3e04558-38d9-456b-9a35-84b5758e9996")
+	)
+	(fp_line
+		(start -0.45 1.45)
+		(end -0.45 -1.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "71d67212-5e28-4c91-af3d-f97efe36742e")
+	)
+	(fp_line
+		(start 0.45 -1.45)
+		(end 0.45 1.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "aa88a1d1-bc20-4ee3-976c-60346369b10b")
+	)
+	(fp_line
+		(start 0.45 1.45)
+		(end -0.45 1.45)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8144a4c2-df0a-43d5-9ad2-484b829fdd39")
+	)
+	(fp_line
+		(start -2.1 -1.725)
+		(end 2.1 -1.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "9ffbd483-d87d-48ec-9a14-9633dd020373")
+	)
+	(fp_line
+		(start -2.1 1.725)
+		(end -2.1 -1.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "824f72d0-84e1-41e4-93d9-1cb8fe153a10")
+	)
+	(fp_line
+		(start -0.8 -1.45)
+		(end 0.8 -1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "f3470d60-1e6c-4cf6-832e-9eeb3b65a3b9")
+	)
+	(fp_line
+		(start -0.8 -0.8)
+		(end -0.15 -1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "51a918b5-466a-4b79-9b9b-5d727b42ffe2")
+	)
+	(fp_line
+		(start -0.8 1.45)
+		(end -0.8 -1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "dbc67bf1-31b2-47a6-a3d8-9d41c9f30361")
+	)
+	(fp_line
+		(start 0.8 -1.45)
+		(end 0.8 1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "65316f31-21f4-480c-a363-c02d88d4f67d")
+	)
+	(fp_line
+		(start 0.8 1.45)
+		(end -0.8 1.45)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "5a53e2aa-9dfc-4456-b1b1-da3cf85948af")
+	)
+	(fp_line
+		(start 2.1 -1.725)
+		(end 2.1 1.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "cb7f0526-4c59-494a-a171-ec169f031a1d")
+	)
+	(fp_line
+		(start 2.1 1.725)
+		(end -2.1 1.725)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "Dwgs.User")
+		(uuid "71990507-5bc4-457c-b3d0-087803857ec7")
+	)
+	(pad "1" smd rect
+		(at -1.325 -0.975 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "ca0477d6-0507-4af4-9aaf-707c70bf4973")
+	)
+	(pad "2" smd rect
+		(at -1.325 -0.325 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "421c9f39-d1c2-4fab-a7f7-d6061fe09bdd")
+	)
+	(pad "3" smd rect
+		(at -1.325 0.325 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "410dbfab-149e-4500-a763-5cf6b4dba502")
+	)
+	(pad "4" smd rect
+		(at -1.325 0.975 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "aadb8d7f-ef3e-402e-bdfc-367489234b5e")
+	)
+	(pad "5" smd rect
+		(at 1.325 0.975 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "c5080ec7-83e8-4d28-8373-6e0cef2a57e1")
+	)
+	(pad "6" smd rect
+		(at 1.325 0.325 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "457472d6-1c32-4332-a3ef-c0643edd4885")
+	)
+	(pad "7" smd rect
+		(at 1.325 -0.325 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "91192c92-0981-4255-83aa-4dfc4633d1f3")
+	)
+	(pad "8" smd rect
+		(at 1.325 -0.975 90)
+		(size 0.45 1.05)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(thermal_bridge_angle 45)
+		(uuid "1dbd0144-9fab-4f0d-909f-66070fa19333")
+	)
+	(embedded_fonts no)
+)

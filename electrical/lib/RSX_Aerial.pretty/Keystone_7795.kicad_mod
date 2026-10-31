@@ -1,0 +1,133 @@
+(footprint "Keystone_7795"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 3.683 -1.905 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "d73b49b6-08ec-45da-b400-7bb455f3f043")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Keystone_7795"
+		(at -2.667 -5.969 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "b6d9e253-2268-4fdf-8a91-0bbc8bba5aba")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "fbd3633f-fae5-4cc7-853b-c212817cea75")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2fb2ca25-dc06-4112-88cc-22aa60dc0e41")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -1.4 -1.4)
+		(end 8.4 6.4)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "002b22ee-5c30-4bfe-a8b2-783cc8e3ac81")
+	)
+	(fp_rect
+		(start 8.5 -1.5)
+		(end -1.5 6.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0ddd0b43-df6a-4eb1-9858-1954f4566769")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -1.016 -4.064 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "a080b9e9-5424-44a7-b5d6-e879fd324b69")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 2.5 2.5)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e11c5292-bdb1-4400-ad57-6d1aec81f5a4")
+	)
+	(pad "2" thru_hole circle
+		(at 0 5)
+		(size 2.5 2.5)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3991067d-4e75-4e18-90a6-f6a1b0db0fad")
+	)
+	(pad "3" thru_hole circle
+		(at 7 5)
+		(size 2.5 2.5)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4a5820e0-a08e-444f-a0e2-f76f38fee254")
+	)
+	(pad "4" thru_hole circle
+		(at 7 0)
+		(size 2.5 2.5)
+		(drill 1.85)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b4cd6175-8162-499e-ad28-5210b70524c8")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/keystone-PN7795.STEP"
+		(offset
+			(xyz 3.5 1.5 -5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

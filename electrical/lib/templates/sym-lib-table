@@ -1,0 +1,11 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "RSX_Aerial")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial.kicad_sym")(options "")(descr "Aerial modules, ICs and other CanSat parts"))
+  (lib (name "RSX_Aerial_Capacitors")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Capacitors.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_Diodes")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Diodes.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_Fuses")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Fuses.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_Headers")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Headers.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_Inductors")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Inductors.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_LEDs")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_LEDs.kicad_sym")(options "")(descr ""))
+  (lib (name "RSX_Aerial_Resistors")(type "KiCad")(uri "${KIPRJMOD}/../../lib/RSX_Aerial_Resistors.kicad_sym")(options "")(descr ""))
+)

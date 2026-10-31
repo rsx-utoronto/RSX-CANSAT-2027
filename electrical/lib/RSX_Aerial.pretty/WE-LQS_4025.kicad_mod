@@ -1,0 +1,140 @@
+(footprint "WE-LQS_4025"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -3.485 0)
+		(layer "F.SilkS")
+		(uuid "885e7cbd-69e9-47ca-8439-8e4a6f6d0aac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "WE-LQS_4025"
+		(at 0 3.365 0)
+		(layer "F.Fab")
+		(uuid "12890bae-3028-47f4-9508-26e869eed7d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "8fb3d4c5-0b0f-46f5-87cf-f82de0ce3f5a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "aacbd128-68ef-483e-a231-06629c31d2e2")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -2.1 -2.1)
+		(end 2.1 -2.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "f60fc01b-f4f8-4f8b-b60d-a51cee3ed2b3")
+	)
+	(fp_line
+		(start -2.1 2.1)
+		(end 2.1 2.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "d5e520be-c26b-41d8-ac97-a021fc50095b")
+	)
+	(fp_poly
+		(pts
+			(xy -2.45 -2.3) (xy 2.45 -2.3) (xy 2.45 2.3) (xy -2.45 2.3)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.CrtYd")
+		(uuid "28691b81-22fd-4fcc-bea4-c8a9b26f9f99")
+	)
+	(fp_line
+		(start -2 -2)
+		(end 2 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "11494b12-4f32-4f13-90cf-f31beb7c9e0e")
+	)
+	(fp_line
+		(start -2 2)
+		(end -2 -2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9d7eedad-b17a-46fc-abf2-4c26ef6c01ff")
+	)
+	(fp_line
+		(start 2 -2)
+		(end 2 2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "17622834-d0ae-4e48-8183-549ba434f1a5")
+	)
+	(fp_line
+		(start 2 2)
+		(end -2 2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "06c66e07-f52e-4c94-8335-edf59f3464b9")
+	)
+	(pad "1" smd rect
+		(at -1.525 0)
+		(size 1.5 3.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "b6c01a39-484e-497f-807a-77472fdfa04e")
+	)
+	(pad "2" smd rect
+		(at 1.525 0)
+		(size 1.5 3.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(solder_mask_margin 0.102)
+		(uuid "f598e7a4-40eb-449c-a276-61df8fbc073f")
+	)
+	(embedded_fonts no)
+)

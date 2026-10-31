@@ -1,0 +1,133 @@
+(footprint "OP-075-M5"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 15 -8.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "b575842e-3367-4a88-b163-8f8cbf0453a6")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "OP-075-M5"
+		(at -5 -10.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "1861da9a-fe85-427b-8618-45a53eaa1320")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "853e7d73-9e76-4955-a26c-b63142292905")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2fb80891-d9a4-4440-b0e0-cc3a8f15e6f5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2.4 -9.1)
+		(end 13.4 7.4)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "87746bf4-331b-492d-aaea-eecb6c693009")
+	)
+	(fp_rect
+		(start 13.5 -9.2)
+		(end -2.5 7.5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "d6503908-7cb6-4670-a0af-133db30cc31c")
+	)
+	(fp_text user "${REFERENCE}"
+		(at -6.3 -7.7 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "ca04fc6b-f933-4437-b83e-310fe94a6981")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 -0.5)
+		(size 4 4)
+		(drill 2.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5160d4f8-c317-4026-9add-1e3506fe06e3")
+	)
+	(pad "2" thru_hole circle
+		(at 0 5)
+		(size 4 4)
+		(drill 2.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "bc4857af-f158-4c03-be34-fd7c4014c65c")
+	)
+	(pad "3" thru_hole circle
+		(at 11 5)
+		(size 4 4)
+		(drill 2.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "68a8d5d6-1498-4ac4-aca0-d737397c44a6")
+	)
+	(pad "4" thru_hole circle
+		(at 11 -0.5)
+		(size 4 4)
+		(drill 2.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "6b7c8914-0f40-4126-be85-4e5c96162a63")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/OP-075-M5.STEP"
+		(offset
+			(xyz -0.5 8.8 -3.9)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

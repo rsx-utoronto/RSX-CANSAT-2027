@@ -1,0 +1,183 @@
+(footprint "J_Wurth_WR-WTB_62000311622"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "2.00 mm Male Vertical Shrouded Header, body 8x4.7x9.5mm, https://www.we-online.com/en/components/products/datasheet/62000311622?ki")
+	(tags "THT")
+	(property "Reference" "REF**"
+		(at 2 -3 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "88fbe499-a71e-4ab8-96f0-71f207f56cdd")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "J_Wurth_WR-WTB_62000311622"
+		(at 2 4.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "64c7b76f-9c5d-4e4c-adc3-37913b9d4497")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 3 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "4d076b7d-09d5-4d1a-aacc-353812699efb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 3 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f6fa74d0-af50-418f-8d53-7ea72206756b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start 0.65 -2.335)
+		(end -0.65 -2.335)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "81ed5099-a631-4b7c-b45a-f80877e5b244")
+	)
+	(fp_rect
+		(start -2.11 -1.86)
+		(end 6.11 3.06)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "1ec29d4f-5f0e-48e6-b761-4506bcd2c3f9")
+	)
+	(fp_rect
+		(start -2.5 -2.25)
+		(end 6.5 3.45)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "bfb6587c-930b-4455-99c2-e70481708a23")
+	)
+	(fp_line
+		(start 0 -1)
+		(end -0.5 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "82ad55f8-6a8d-4c54-9e70-6019c9147232")
+	)
+	(fp_line
+		(start 0 -1)
+		(end 0.5 -1.75)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "5a9f630c-ffa6-4df8-a288-b9c1a6eb3625")
+	)
+	(fp_rect
+		(start -2 -1.75)
+		(end 6 2.95)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "57e4ef67-90ee-4818-87bc-bbe1db7be197")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 2 0.6 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "4e8591e2-0450-4fe1-b2ad-b28abf590f88")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0 180)
+		(size 1.3 1.3)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(thermal_bridge_angle 45)
+		(uuid "013ea66c-c153-4a3b-a0da-56f17b8a8bfb")
+	)
+	(pad "2" thru_hole circle
+		(at 2 0 180)
+		(size 1.3 1.3)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8d0bac9f-330c-452b-8b35-e50694b8f371")
+	)
+	(pad "3" thru_hole circle
+		(at 4 0 180)
+		(size 1.3 1.3)
+		(drill 0.8)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8dd80f88-2703-430e-b8c7-460a971ed7cc")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/J_Wurth_WR-WTB_62000311622.wrl"
+		(hide yes)
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KIPRJMOD}/../../lib/3d/J_Wurth_WR-WTB_62000311622.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

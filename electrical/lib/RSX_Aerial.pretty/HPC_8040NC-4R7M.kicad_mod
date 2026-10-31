@@ -1,0 +1,164 @@
+(footprint "HPC_8040NC-4R7M"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 5.75 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "e342fa58-ad4e-4026-9625-5b8331749e61")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "HPC_8040NC-4R7M"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "7f89b7cb-87ea-4221-922d-2c7f2505b968")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eaaf2256-80c1-45d8-8a56-74cc42155da6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ed2cff83-f3e7-4f3f-8eec-b2faf890ac56")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -4 -4)
+		(end -3.65 -4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "b160aea2-0393-4712-adff-2fb9439d4c12")
+	)
+	(fp_line
+		(start -4 4)
+		(end -4 -4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "36a0df07-5ef2-4a21-a495-3ff0b77791f7")
+	)
+	(fp_line
+		(start -4 4)
+		(end -3.65 4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "cbb76f8b-07ce-45f7-9d4c-2be8d55e23c3")
+	)
+	(fp_line
+		(start 3.65 -4)
+		(end 4 -4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "2eb6a6fc-00e7-4478-b301-dcda1cd81dd0")
+	)
+	(fp_line
+		(start 3.65 4)
+		(end 4 4)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "59772b2c-1b0d-45dd-b3f3-d85ce5cf0cce")
+	)
+	(fp_line
+		(start 4 -4)
+		(end 4 4)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "490ad873-045c-41a4-a30d-e34124d3e2b5")
+	)
+	(fp_rect
+		(start -4.25 -5)
+		(end 4.25 5)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "062cb337-619f-4d3f-9100-07ae6aad9fec")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "6c7f4652-f4fe-49dc-af9d-3437613087ec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 3.325 90)
+		(size 2.85 6.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "3bb3b34d-7b9b-409f-8704-c443421e86a8")
+	)
+	(pad "2" smd rect
+		(at 0 -3.325 90)
+		(size 2.85 6.6)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "07c7ec9f-be2c-44a9-9340-b89f14a978ec")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/HPC_8040NC-4R7M.step"
+		(offset
+			(xyz 0 0 0.1)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -0 -0 -0)
+		)
+	)
+)
