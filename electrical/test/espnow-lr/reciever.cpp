@@ -4,8 +4,11 @@
 #include <esp_mac.h>
 
 #define MAX_PACKETS 200
-#define TIMEOUT_MS 3000 // no packets for this long => close out the phase
-#define WIFI_CHANNEL 11 // Changed to Channel 11 to avoid heavy neighborhood interference
+#define TIMEOUT_MS 3000
+#define WIFI_CHANNEL 11
+
+#define MODE_STANDARD 0
+#define MODE_LR 1
 
 typedef struct struct_message
 {
@@ -14,32 +17,56 @@ typedef struct struct_message
   float temperature;
   bool status;
   unsigned long timestamp;
-  uint8_t mode; // 0 = standard, 1 = Long Range
+  uint8_t mode;
   uint16_t seq;
-  uint16_t total; // packets the sender transmits in this mode
+  uint16_t total;
 } struct_message;
 
 struct ModeStats
 {
   uint32_t received;
   int32_t rssiSum;
-  uint16_t total; // reported by sender
+  uint16_t total;
   unsigned long lastRx;
-  bool seen[MAX_PACKETS]; // dedupe by sequence number
+  bool seen[MAX_PACKETS];
 };
 
 ModeStats stats[2];
 bool reported[2] = {false, false};
+volatile uint8_t currentReceiverMode = MODE_STANDARD;
 portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 
 const char *modeName(int m) { return m == 1 ? "LONG RANGE" : "STANDARD"; }
+
+// switches from standard to long range
+void setReceiverHardwareProtocol(uint8_t mode)
+{
+  esp_wifi_stop();
+
+  if (mode == MODE_LR)
+  {
+    esp_wifi_set_protocol(WIFI_IF_STA, WIFI_PROTOCOL_LR);
+    Serial.println("\n[HARDWARE SWITCH] Radio changed entirely to LONG RANGE mode.");
+  }
+  else
+  {
+    esp_wifi_set_protocol(WIFI_IF_STA, WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N);
+    Serial.println("\n[HARDWARE SWITCH] Radio changed entirely to STANDARD mode.");
+  }
+
+  esp_wifi_start();
+  esp_wifi_set_channel(WIFI_CHANNEL, WIFI_SECOND_CHAN_NONE);
+}
 
 void resetAll()
 {
   portENTER_CRITICAL(&mux);
   memset(stats, 0, sizeof(stats));
   reported[0] = reported[1] = false;
+  currentReceiverMode = MODE_STANDARD;
   portEXIT_CRITICAL(&mux);
+
+  setReceiverHardwareProtocol(MODE_STANDARD);
   Serial.println("--- Stats Reset: Ready for a new test run ---");
 }
 
@@ -53,10 +80,13 @@ void OnDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingData, in
   if (msg.mode > 1 || msg.seq >= MAX_PACKETS)
     return;
 
+  // Ignore incoming packets if they don't match our current hardware protocol mode
+  if (msg.mode != currentReceiverMode)
+    return;
+
   int rssi = info->rx_ctrl->rssi;
 
-  // New test run starting (sender was reset) after a finished run: clear stats
-  if (msg.mode == 0 && msg.seq == 0 && reported[0] && reported[1])
+  if (msg.mode == MODE_STANDARD && msg.seq == 0 && reported[0] && reported[1])
   {
     resetAll();
   }
@@ -80,9 +110,7 @@ void OnDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingData, in
 
   if (isNew)
   {
-    // Extract the MAC address bytes dynamically from the incoming info struct
     const uint8_t *mac = info->src_addr;
-
     Serial.printf("[%s %u/%u] seq=%u RSSI: %d dBm | %s | MAC: %02X:%02X:%02X:%02X:%02X:%02X | Temp: %.2f C\n",
                   modeName(msg.mode), (unsigned)count, msg.total, msg.seq,
                   rssi, msg.deviceName,
@@ -97,9 +125,9 @@ void setup()
   delay(1000);
 
   WiFi.mode(WIFI_STA);
-  WiFi.STA.begin(); // Forces network interface initialization
 
-  esp_wifi_set_channel(WIFI_CHANNEL, WIFI_SECOND_CHAN_NONE);
+  // Initialize explicitly to STANDARD mode first
+  setReceiverHardwareProtocol(MODE_STANDARD);
 
   if (esp_now_init() != ESP_OK)
   {
@@ -108,7 +136,7 @@ void setup()
   }
 
   esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
-  Serial.println("Receiver ready. Waiting for ESP-NOW data...");
+  Serial.println("Receiver ready. Waiting for Standard ESP-NOW data...");
 
   Serial.print("My (RECEIVER) STA MAC Address is: ");
   Serial.println(WiFi.macAddress());
@@ -151,6 +179,15 @@ void loop()
       portENTER_CRITICAL(&mux);
       reported[m] = true;
       portEXIT_CRITICAL(&mux);
+
+      if (m == MODE_STANDARD)
+      {
+        portENTER_CRITICAL(&mux);
+        currentReceiverMode = MODE_LR;
+        portEXIT_CRITICAL(&mux);
+
+        setReceiverHardwareProtocol(MODE_LR);
+      }
     }
   }
 

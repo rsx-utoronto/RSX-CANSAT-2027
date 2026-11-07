@@ -2,11 +2,12 @@
 #include <WiFi.h>
 #include <esp_wifi.h>
 
+// Ensure this MAC array matches your receiver board's active output address exactly
 uint8_t receiverAddress[] = {0x68, 0x09, 0x47, 0x07, 0xCF, 0x70};
 
 #define PACKETS_PER_MODE 60
-#define SEND_INTERVAL_MS 300 // Increased from 100 to 300ms to stop overloading the receiver queue
-#define WIFI_CHANNEL 11      // Changed from 1 to 11 to get away from crowded WiFi router signals
+#define SEND_INTERVAL_MS 250
+#define WIFI_CHANNEL 11
 
 #define MODE_STANDARD 0
 #define MODE_LR 1
@@ -28,13 +29,16 @@ esp_now_peer_info_t peerInfo = {};
 
 volatile uint8_t currentMode = MODE_STANDARD;
 uint32_t packetsSent[2] = {0, 0};
-volatile uint32_t macAckFailed[2] = {0, 0};
 
+// FIX: Removed 'volatile' qualifier from the array to eliminate the C++ deprecation warning
+uint32_t macAckFailed[2] = {0, 0};
+
+// FIX: Updated to the modern Core v3.x callback signature using 'wifi_tx_info_t'
 void OnDataSent(const wifi_tx_info_t *tx_info, esp_now_send_status_t status)
 {
   if (status != ESP_NOW_SEND_SUCCESS)
   {
-    macAckFailed[currentMode]++;
+    macAckFailed[currentMode] = macAckFailed[currentMode] + 1;
   }
 }
 
@@ -56,7 +60,7 @@ void runPhase(uint8_t mode)
   setProtocolForMode(mode);
   delay(500);
 
-  Serial.printf("\n--- Sending %d packets in %s mode ---\n",
+  Serial.printf("\n--- Sending %d packets in %s mode (at 4 Hz) ---\n",
                 PACKETS_PER_MODE, mode == MODE_LR ? "LONG RANGE" : "STANDARD");
 
   for (uint16_t seq = 0; seq < PACKETS_PER_MODE; seq++)
@@ -93,14 +97,12 @@ void setup()
   Serial.begin(115200);
   delay(2000);
 
-  // Set the station mode and spin up the interface
+  // Initialize network interface
   WiFi.mode(WIFI_STA);
-  WiFi.STA.begin(); // Forces network interface initialization to prevent 00:00:00:00:00:00
 
   esp_wifi_set_channel(WIFI_CHANNEL, WIFI_SECOND_CHAN_NONE);
   esp_wifi_set_protocol(WIFI_IF_STA, WIFI_PROTOCOL_11B | WIFI_PROTOCOL_11G | WIFI_PROTOCOL_11N | WIFI_PROTOCOL_LR);
 
-  // PRINT SENDER MAC ADDRESS HERE
   Serial.print("\n>>> MY SENDER MAC ADDRESS IS: ");
   Serial.println(WiFi.macAddress());
   Serial.println();
@@ -110,7 +112,9 @@ void setup()
     Serial.println("Error initializing ESP-NOW");
     return;
   }
-  esp_now_register_send_cb(OnDataSent);
+
+  // Safe explicit cast matching core expectation
+  esp_now_register_send_cb(esp_now_send_cb_t(OnDataSent));
 
   memcpy(peerInfo.peer_addr, receiverAddress, 6);
   peerInfo.channel = WIFI_CHANNEL;
@@ -126,9 +130,9 @@ void setup()
   Serial.println("ESP-NOW Transmitter Ready, starting test in 3 s...");
   delay(3000);
 
-  runPhase(MODE_STANDARD);
+  runPhase(MODE_STANDARD); // Sends the first 60 Standard packets at 4 Hz
   delay(1500);
-  runPhase(MODE_LR);
+  runPhase(MODE_LR); // Sends the second 60 Long Range packets at 4 Hz
 
   Serial.println("\n========== SENDER SUMMARY ==========");
   Serial.printf("Standard: %u packets sent\n", (unsigned)packetsSent[MODE_STANDARD]);
