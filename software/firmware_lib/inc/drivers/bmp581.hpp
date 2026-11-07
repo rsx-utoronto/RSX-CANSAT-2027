@@ -12,9 +12,9 @@ public:
   // values are kept so callers never see garbage.
   bool update();
 
-  float pressurePa()   const { return pressure_pa_; }   // Pa, not hPa
-  float temperatureC() const { return temp_c_; }
-  bool  healthy()      const { return ok_ && fail_streak_ < 5; }
+  float get_pressurePa()   const { return pressure_pa_; }   // Pa, not hPa
+  float get_temperatureC() const { return temp_c_; }
+  bool  get_health()      const { return ok_ && fail_streak_ < 5; }
   uint32_t readFailures() const { return fail_total_; }
 
 private:

@@ -1,10 +1,11 @@
-
 #include <Arduino.h>
 #include <Wire.h>
 #include <Adafruit_BMP5xx.h>
 
 #define SDA_PIN 21
 #define SCL_PIN 22
+
+#define SEA_LEVEL_PRESSURE 1013.25
 
 Adafruit_BMP5xx bmp;
 
@@ -80,6 +81,12 @@ void loop()
         Serial.print("Pressure: ");
         Serial.print(bmp.pressure);
         Serial.println(" hPa");
+
+        float altitude = bmp.readAltitude(SEA_LEVEL_PRESSURE);
+        Serial.print("Altitude: ");
+        // one decimal place
+        Serial.print(altitude, 1);
+        Serial.println(" m");
     }
     else
     {
@@ -90,3 +97,4 @@ void loop()
 
     delay(1000);
 }
+
