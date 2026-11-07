@@ -5,8 +5,7 @@
 
 
 
-uint8_t receiverAddress[] = {0x8C, 0x94, 0xDF, 0x57, 0x46, 0x4C};
-
+uint8_t receiverAddress[] = {0xB0, 0xCB, 0xD8, 0x8E, 0xE4, 0x4C};
 
 typedef struct struct_message {
 
@@ -75,7 +74,7 @@ void setup() {
     }
 
     
-    delay(5000);
+    delay(7000);
     Serial.println("Sending packets!");
 
 }

@@ -17,6 +17,7 @@ int freq = 4; // Hz
 int totalPackets = 100;
 int packetsReceived = 0;
 unsigned long firstPacketTimestamp;
+int rssiSum = 0;
 bool logged = false;
 struct_message incomingMessage;
 
@@ -31,14 +32,9 @@ void OnDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingData, in
     }
 
     packetsReceived++;
+    rssiSum += rssi;
 
-
-    Serial.println("=== Message Received ===");
-    Serial.printf("Device: %s\n", incomingMessage.deviceName);
-    Serial.printf("Packet #: %d\n", incomingMessage.packetNumber);
-    Serial.printf("Timestamp: %lu\n", incomingMessage.timestamp);
-    Serial.printf("RSSI: %d dBm\n", rssi);
-    Serial.println("========================");
+    Serial.printf("%d,%lu,%d\n", incomingMessage.packetNumber, incomingMessage.timestamp, rssi);
 
 }
 
@@ -77,8 +73,10 @@ void loop() {
     int totalTransmitTime = 1000 * ((double) totalPackets / freq);
     if (!logged && packetsReceived > 0 && timeElapsed >= totalTransmitTime + 1) {
         int packetsLost = totalPackets - packetsReceived;
+        double rssiAvg = (double) rssiSum / packetsReceived; 
         Serial.printf("Packets lost: %d\n", packetsLost);
         Serial.printf("% Packets lost: %f\n", (double) packetsLost / totalPackets);
+        Serial.printf("Average RSSI: %f", rssiAvg);
         logged = true;
     }
 }
