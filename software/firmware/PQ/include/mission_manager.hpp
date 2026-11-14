@@ -13,9 +13,14 @@
 // panelsDue() / boomDue(), acts, then calls the matching clear function.
 // The camera control loop reads targetHeadingOffsetDeg().
 //
-// **CHECK:** nothing calls this class yet. main.cpp must call begin() once
-// in setup() and update() every loop, and the command handler must call
-// requestBoomDeploy() / requestCameraRotate().
+// TODO: nothing calls this class yet. main.cpp must call begin() once in
+// setup() and update() every loop.
+// TODO: write the command handler. It must parse the MEC commands, set
+// CMD_ECHO (e.g. CAM+90), and call requestBoomDeploy() /
+// requestCameraRotate().
+// TODO: add the plan's phases (Release -> Damp -> Lock -> Turn -> Landed).
+// They decide when SpinController changes mode and when CameraPointing
+// locks on. Today only software/tools/spin_sim runs them.
 
 #include <stdint.h>
 
