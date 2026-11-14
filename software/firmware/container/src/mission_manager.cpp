@@ -19,6 +19,8 @@ void MissionManager::setSimStatus(SimModeStatus status) { sim_status = status; }
 
 void MissionManager::setOpMode(OperatingMode mode) { op_mode = mode; }
 
+
+
 FlightState MissionManager::updateState(const SensorReadings& readings) {
     // Only count each altitude sample once. The main loop can run many times
     // between barometer samples (or SIMP packets in simulation mode).
