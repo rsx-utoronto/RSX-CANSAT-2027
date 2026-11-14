@@ -11,12 +11,14 @@ namespace Telemetry{
      bool serializeContainerPacket(
           const ContainerPacket& packet, 
           uint8_t* buffer, 
-          size_t bufferSize
+          size_t bufferSize,
+          size_t& bytesWritten
      );
      bool serializePQPacket(
           const PQPacket& packet, 
           uint8_t* buffer, 
-          size_t bufferSize
+          size_t bufferSize,
+          size_t& bytesWritten
      );
      bool deserializeContainerPacket(
           const uint8_t* buffer, 
