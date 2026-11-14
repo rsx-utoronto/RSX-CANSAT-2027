@@ -1,18 +1,3 @@
-// common/include/espnow_link.hpp
-//
-// ESP-NOW transport, shared by all three boards.
-//
-// Topology (X3): both flight nodes peer to the ground station; the
-// ground station peers to both flight nodes. The flight nodes never
-// talk to each other.
-//
-//   Container  ──telemetry──▶  Ground Station
-//              ◀──commands───
-//   PocketQube ──telemetry──▶  Ground Station
-//              ◀──commands───
-//
-// Registration is required to SEND to a MAC. Receiving is not gated by
-// registration, which is why isKnownPeer() exists — see X4/X5.
 
 #pragma once
 #include <stdint.h>

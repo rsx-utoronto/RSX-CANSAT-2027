@@ -1,0 +1,280 @@
+(footprint "PQ2617BHA-XXXK"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "CPRX3231L Series of high current inductors")
+	(tags "Inductor, SMD, High current ")
+	(property "Reference" "REF**"
+		(at -10.16 -10.16 0)
+		(layer "F.SilkS")
+		(uuid "dcb05477-989d-4767-8df5-3bbac66f522f")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+				(bold yes)
+			)
+		)
+	)
+	(property "Value" "PQ2617BHA-XXXK"
+		(at 5.08 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "91bc31ca-4954-421c-b916-f840ed7365e4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at -3.545 6.415 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1e19a7f3-de0b-4402-9bc6-7fe455395740")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at -7.28 0 270)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "6e2a53f5-571a-4c9f-bcf8-40223295932e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "dpn" ""
+		(at 5.08 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "76615389-43f6-4a79-9edf-f3cc61792176")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Device" ""
+		(at -5.08 0 270)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "37f02466-d28b-47ec-af7d-d67a9b7d6c23")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Pins" ""
+		(at -5.08 0 270)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f0e12c06-fe34-4086-8bbc-9b91eb49cca3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Sim.Type" ""
+		(at -5.08 0 270)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1b8a11c6-5106-49e4-91aa-d323e2b50ca9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -15.08 -8.89)
+		(end -15.08 8.89)
+		(stroke
+			(width 0.5)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "49ed7eba-6699-4af2-8cd5-13d48e857c6e")
+	)
+	(fp_line
+		(start -15.08 8.89)
+		(end -5.08 8.89)
+		(stroke
+			(width 0.5)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "72957005-7c38-427b-9d0c-c2d4328daecd")
+	)
+	(fp_line
+		(start -5.08 -8.89)
+		(end -15.08 -8.89)
+		(stroke
+			(width 0.5)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "ad1e3509-d105-4db7-9dd8-61924e8dac74")
+	)
+	(fp_rect
+		(start -5.08 -13.73)
+		(end 14.92 13.73)
+		(stroke
+			(width 0.5)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "4d79d0e7-9232-4b41-b916-3857b237f3ca")
+	)
+	(fp_line
+		(start -15.367 -9.271)
+		(end -5.461 -9.271)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "a9e9add3-461f-4fee-85b5-8abfecda9e61")
+	)
+	(fp_line
+		(start -15.367 9.271)
+		(end -15.367 -9.271)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "1c181673-ecac-4cc9-879f-4b86e2ac4506")
+	)
+	(fp_line
+		(start -5.461 -14.097)
+		(end 15.24 -14.097)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "1afffdfd-9e4d-4720-b94d-123505a88c72")
+	)
+	(fp_line
+		(start -5.461 -9.271)
+		(end -5.461 -14.097)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "c1783576-2e65-46c2-8b9e-ccd13bb35f77")
+	)
+	(fp_line
+		(start -5.461 9.271)
+		(end -15.367 9.271)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "e2c96e52-f807-455a-8516-7b64b7be3f68")
+	)
+	(fp_line
+		(start -5.461 14.097)
+		(end -5.461 9.271)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "b94c53cc-40c5-4b74-adbb-79ba3f577110")
+	)
+	(fp_line
+		(start 15.24 -14.097)
+		(end 15.24 14.097)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "c5e5d278-bf85-4608-8457-b3222df0375f")
+	)
+	(fp_line
+		(start 15.24 14.097)
+		(end -5.461 14.097)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.CrtYd")
+		(uuid "6062b393-9d7a-4587-a297-2f744cdbbaa1")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 5.08 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "e751f10d-bb98-4302-a656-16e94a3ee8f1")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -10 -5.2 270)
+		(size 5.55 5.59)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.05)
+		(thermal_bridge_angle 45)
+		(uuid "c7132eb7-1da9-4687-a000-b89d9eb41d52")
+	)
+	(pad "2" smd roundrect
+		(at -10 5.2 270)
+		(size 5.33 5.59)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.05)
+		(thermal_bridge_angle 45)
+		(uuid "51dd893c-3dea-4470-bab4-3120931d2099")
+	)
+	(pad "3" smd roundrect
+		(at 12.065 0 270)
+		(size 6.35 5.28)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.05)
+		(thermal_bridge_angle 45)
+		(uuid "1a394d8b-1aaa-4fd2-83cc-292ade963582")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/PQ2617BHA.stp"
+		(offset
+			(xyz 5 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 90 0)
+		)
+	)
+)

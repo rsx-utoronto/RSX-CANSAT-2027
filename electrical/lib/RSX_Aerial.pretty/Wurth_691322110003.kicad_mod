@@ -1,0 +1,226 @@
+(footprint "Wurth_691322110003"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "WR-TBL Serie 3221 - 3.50 mm Horizontal PCB Header Max Height = 7mm , Pitch 3.5mm , 3pins")
+	(property "Reference" "REF**"
+		(at 0 -2.635 0)
+		(layer "F.SilkS")
+		(uuid "aae7b950-2282-4f43-81a5-6e14cd5914ec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Wurth_691322110003"
+		(at 4.12 9.365 0)
+		(layer "F.Fab")
+		(uuid "cef80d60-b6ac-4408-a97f-9eade2605a1d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2e993ac2-9143-4b63-9f2b-a4394f892967")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "058f9633-08ca-429a-88c5-0691473e870d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -6.05 -1.3)
+		(end -4.05 -1.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "7455240e-d17a-458b-8814-76dd420a7812")
+	)
+	(fp_line
+		(start -6.05 8.1)
+		(end -6.05 -1.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "6f4e7af0-c96b-4b1e-a127-b09f48ed5640")
+	)
+	(fp_line
+		(start -2.95 -1.3)
+		(end -0.55 -1.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "22cd9528-c75b-4748-9afd-81b20e812cc6")
+	)
+	(fp_line
+		(start 0.55 -1.3)
+		(end 2.95 -1.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "09b1cab1-ac21-4f3f-aa15-0d0fe5086ff8")
+	)
+	(fp_line
+		(start 4.05 -1.3)
+		(end 6.05 -1.3)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "39c1d568-2316-4f33-9291-2af849fb6888")
+	)
+	(fp_line
+		(start 6.05 -1.3)
+		(end 6.05 8.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "4ac2b174-c14b-498b-87e3-bf2b595a024c")
+	)
+	(fp_line
+		(start 6.05 8.1)
+		(end -6.05 8.1)
+		(stroke
+			(width 0.2)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8c2da8bf-4325-4fc1-aeb7-c2b213627132")
+	)
+	(fp_circle
+		(center -4.85 1.6)
+		(end -4.75 1.6)
+		(stroke
+			(width 0.4)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "734e2416-cc50-4b0e-9fee-31ce7097a85c")
+	)
+	(fp_poly
+		(pts
+			(xy -6.25 -1.5) (xy 6.25 -1.5) (xy 6.25 8.3) (xy -6.25 8.3)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.CrtYd")
+		(uuid "717d7080-e40b-4af4-9177-74854ff8833f")
+	)
+	(fp_line
+		(start -5.95 -1.2)
+		(end -5.95 8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "41d7cae5-af29-4396-8920-67501c922de8")
+	)
+	(fp_line
+		(start -5.95 8)
+		(end 5.95 8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "bbad9ba8-6a9d-4849-97c7-4216df20d284")
+	)
+	(fp_line
+		(start 5.95 -1.2)
+		(end -5.95 -1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "411e1ec2-9b68-4fb8-bc58-dc2152ba6ca3")
+	)
+	(fp_line
+		(start 5.95 8)
+		(end 5.95 -1.2)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fe7912a6-a8a9-4034-977b-3d3edcb908bb")
+	)
+	(pad "1" thru_hole circle
+		(at -3.5 0)
+		(size 2.1 2.1)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "a6639152-38aa-4bc0-9c21-604779ae078c")
+	)
+	(pad "2" thru_hole circle
+		(at 0 0)
+		(size 2.1 2.1)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "4e8f465b-9166-4ae4-96ed-7aa74b78a1e1")
+	)
+	(pad "3" thru_hole circle
+		(at 3.5 0)
+		(size 2.1 2.1)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "38949e45-46e2-4459-972a-3119da1e89e3")
+	)
+	(embedded_fonts no)
+	(model "C:/Users/aweso/Documents/KiCad/8.0/3dmodels/691322110003/691322110003.step"
+		(offset
+			(xyz 0 -2.5 3.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

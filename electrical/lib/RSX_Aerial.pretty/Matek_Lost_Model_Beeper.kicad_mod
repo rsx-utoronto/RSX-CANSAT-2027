@@ -1,0 +1,143 @@
+(footprint "Matek_Lost_Model_Beeper"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "5426d3b4-35a9-40e1-b6e9-2c2ff2855c3a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Matek_Lost_Model_Beeper"
+		(at 0 1 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "283971c0-2805-4e1a-be5b-b1748528ca69")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f4c9a678-4b75-4400-84cd-6db79cd036ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "49c5e18d-d41a-4248-8da7-70b2323da523")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start 0 0)
+		(end 13 18)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "de8662f8-7a45-4c83-8e30-0067f3479145")
+	)
+	(fp_rect
+		(start -0.25 -0.25)
+		(end 13.25 18.25)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "c9cf70ca-79e6-4973-85d6-87f829f23008")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "8bfb7ff4-d9db-4500-b5e1-a97bf42fcd92")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 1.42 16.73)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "52a57414-17cc-4dbe-afe4-deee5dd0ae25")
+	)
+	(pad "2" thru_hole circle
+		(at 3.96 16.73)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "1a435d26-42e6-4f4f-83ca-3f71e3ae804e")
+	)
+	(pad "3" thru_hole circle
+		(at 6.5 16.73)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "daa233ac-f659-488e-a11c-c7e3c6505ebe")
+	)
+	(pad "4" thru_hole circle
+		(at 9.04 16.73)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "49d093da-5983-4302-a323-d2db5164cd46")
+	)
+	(pad "5" thru_hole circle
+		(at 11.58 16.73)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "44ea652d-f782-4db8-9701-5033ac97387c")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/Matek Lost Model Beeper.step"
+		(offset
+			(xyz 6.5 -9 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

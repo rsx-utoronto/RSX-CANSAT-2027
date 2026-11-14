@@ -1,0 +1,216 @@
+(footprint "745C101103JP"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 1.27 -3.937 0)
+		(layer "F.SilkS")
+		(uuid "eda08767-622e-4ad6-a679-c568a9c233f8")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "745C101103JP"
+		(at 3.81 -5.842 0)
+		(layer "F.Fab")
+		(uuid "3f2a5148-330e-4089-8e68-b1a6934e64e9")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "30a9a384-92ab-4f6b-a560-7169995edc52")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "56b2396e-3180-4a77-928c-8b97816f0d33")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -0.635 -3.556)
+		(end -0.635 0.635)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "b4104dd1-a715-4bb8-94a1-1280a87b64d6")
+	)
+	(fp_line
+		(start -0.635 0.635)
+		(end 5.715 0.635)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "ee51f4e8-1947-4b90-b675-4c51b5019e49")
+	)
+	(fp_line
+		(start 5.715 -3.556)
+		(end -0.635 -3.556)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "9c2a8bf1-0e4f-4fc7-9dd2-b3b94b6ada65")
+	)
+	(fp_line
+		(start 5.715 0.635)
+		(end 5.715 -3.556)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "c842821d-c520-4223-ab1e-d4db690bd43b")
+	)
+	(fp_line
+		(start -0.508 -3.429)
+		(end 5.588 -3.429)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "48aca250-965c-4258-ac66-d03a04fd5295")
+	)
+	(fp_line
+		(start -0.508 0.508)
+		(end -0.508 -3.429)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "0bca6f0d-d7c0-46c6-82af-1622244f39ab")
+	)
+	(fp_line
+		(start 5.588 -3.429)
+		(end 5.588 0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "cad69045-66d6-4e74-b49c-a5093a1f3334")
+	)
+	(fp_line
+		(start 5.588 0.508)
+		(end -0.508 0.508)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "88014df6-8b3a-4d45-ac9f-6ff6d74aeb3d")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 2.54 -1.524 0)
+		(layer "F.Fab")
+		(uuid "0933b21a-4f95-4ee5-b4b0-87c7f850072d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at 0 0)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "693b44ce-d513-4012-b9ba-37eabfebd559")
+	)
+	(pad "2" smd rect
+		(at 1.27 0)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "78057f32-ab6b-4c3a-acb0-d78f5cb687b5")
+	)
+	(pad "3" smd rect
+		(at 2.54 0)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "60ef46ea-f61b-4e3c-bde3-0e8506b6500a")
+	)
+	(pad "4" smd rect
+		(at 3.81 0)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "40fb3da2-73bc-4605-a612-fab92a883c22")
+	)
+	(pad "5" smd rect
+		(at 5.08 0)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "aa7fe582-4324-4054-93f9-5ec6ab83aa71")
+	)
+	(pad "6" smd rect
+		(at 5.08 -3)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "6a7596be-b5ec-46e4-b455-7031aa761eb7")
+	)
+	(pad "7" smd rect
+		(at 3.81 -3)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "b3ed866c-5855-4a90-bb14-5b6afc513818")
+	)
+	(pad "8" smd rect
+		(at 2.54 -3)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "c26cc4b1-e4e7-4afd-af32-27a76e16e010")
+	)
+	(pad "9" smd rect
+		(at 1.27 -3)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "bc7195ad-eadd-4c2b-88e3-0a441b4eb36b")
+	)
+	(pad "10" smd rect
+		(at 0 -3)
+		(size 0.9 0.9)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "4ca7faf9-684a-4fce-ae0a-95ae00c383de")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/R_Array_Convex_5x1206.step"
+		(offset
+			(xyz 2.54 1.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 90)
+		)
+	)
+)

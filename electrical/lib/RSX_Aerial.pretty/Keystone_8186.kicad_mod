@@ -1,0 +1,151 @@
+(footprint "Keystone_8186"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at -10.5 -7 0)
+		(layer "F.SilkS")
+		(uuid "1fc80fa4-4ca5-43fe-96d9-21aba8ba251d")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "KEYSTONE_8186"
+		(at 13.335 0.889 0)
+		(layer "F.Fab")
+		(uuid "2cf82196-eeec-4201-a41b-0d66ade95a94")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "eb97896f-96a8-4ce6-8267-cf31c9893ca9")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "f55f796a-2041-4edd-8b81-2ec0074073dd")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -12 -6)
+		(end 7.5 9)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "51016ec9-4784-44bb-98d4-4f2a0ba20ab4")
+	)
+	(fp_rect
+		(start -12 -6)
+		(end 7.5 9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "83af8b1e-d0fc-4fcb-a766-3cfad37ca5d2")
+	)
+	(fp_line
+		(start 0 -3.95)
+		(end 0 6.858)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "ca0102fc-e507-4fe4-bfda-6c1e4b0e9249")
+	)
+	(pad "1" thru_hole circle
+		(at -5.207 -3.937)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "3fe36b16-ba84-4287-b4a9-ce5898c03c1e")
+	)
+	(pad "1" thru_hole circle
+		(at -5.207 6.858)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "39f3e540-d7df-44d1-ba41-4fa4df165439")
+	)
+	(pad "1" thru_hole circle
+		(at 0 -3.937)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "2422755f-ea73-4c33-af82-4fea3604c1d4")
+	)
+	(pad "1" thru_hole circle
+		(at 0 6.858)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "d29a76c7-6bd5-4f5f-b404-31a828a5d72d")
+	)
+	(pad "1" thru_hole circle
+		(at 5.207 -3.937)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "4cfc0610-bf5f-44ad-9225-6617260e97d4")
+	)
+	(pad "1" thru_hole circle
+		(at 5.207 6.858)
+		(size 4 4)
+		(drill 2.57)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(solder_mask_margin 0.102)
+		(uuid "678f1ba7-206d-4e7c-82b6-67e29b492a4a")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/Keystone_8186.step"
+		(offset
+			(xyz 30 -6 -10.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 90)
+		)
+	)
+)

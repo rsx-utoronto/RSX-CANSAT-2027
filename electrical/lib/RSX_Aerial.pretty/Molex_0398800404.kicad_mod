@@ -1,0 +1,192 @@
+(footprint "Molex_0398800404"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "simple 4-pin terminal block, pitch 5.08mm, revamped version of bornier4")
+	(tags "terminal block bornier4")
+	(property "Reference" "REF**"
+		(at 7.6 -7 0)
+		(layer "F.SilkS")
+		(uuid "5a6e5213-e921-46aa-87e8-11752b609d36")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "Molex_0398800404"
+		(at 9.398 2.54 0)
+		(layer "F.Fab")
+		(uuid "ad5d37c1-76d6-4187-a5ac-312191e8fec6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7d804935-446a-4f7e-9b3b-5801905c5778")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a4c462ea-0e7f-4a3e-8273-0bc72032c910")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -2.54 -6.5)
+		(end -2.54 5.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "72344b1a-4ec9-44e6-908b-cb80f9f0e6cb")
+	)
+	(fp_line
+		(start -2.54 -6.5)
+		(end 18.7 -6.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0a8f235c-fef0-439f-9e06-ef5b1aae1239")
+	)
+	(fp_line
+		(start -2.54 5.5)
+		(end 18.7 5.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "0c292f35-5294-4be5-8948-45e4b777de65")
+	)
+	(fp_line
+		(start 18.7 4.3)
+		(end -2.54 4.3)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "3adaca41-2982-4f58-a0e8-9912f5240e58")
+	)
+	(fp_line
+		(start 18.7 5.5)
+		(end 18.7 -6.5)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "98fd7d4b-ec4c-438c-b08e-21d1e309394d")
+	)
+	(fp_rect
+		(start 18.8 -6.6)
+		(end -2.65 5.6)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "e7e9931d-c8f8-4ded-8ad8-32e19067a610")
+	)
+	(fp_line
+		(start 18.7 4.3)
+		(end -2.55 4.3)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "2a73d513-4164-4498-b095-923f97aaa1f4")
+	)
+	(fp_rect
+		(start -2.55 -6.5)
+		(end 18.7 5.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "a0ce299c-111d-41fa-becb-d4cfb2d95f86")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 7.62 0 0)
+		(layer "F.Fab")
+		(uuid "fc8d934a-f235-40f9-985d-f5554a9a58bb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 3 3)
+		(drill 1.52)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "aeab1e2a-6efb-49cd-8807-e35ed780e41a")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 0)
+		(size 3 3)
+		(drill 1.52)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7f41ead8-ae24-4829-9780-aae198ea2f64")
+	)
+	(pad "3" thru_hole circle
+		(at 10.16 0)
+		(size 3 3)
+		(drill 1.52)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7a4c648f-b1d5-4880-a7be-27024034e6bb")
+	)
+	(pad "4" thru_hole circle
+		(at 15.24 0)
+		(size 3 3)
+		(drill 1.52)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "322f5b63-c5e3-48bb-bd48-811734a692f1")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/398800404.stp"
+		(offset
+			(xyz 7.81 6.35 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

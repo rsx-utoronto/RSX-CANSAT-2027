@@ -1,11 +1,11 @@
 // reads voltage on solar panel
 #include <Arduino.h>  //gives access to arduino functions
 
-const int solar1_raw = 36;  // pin 4 = GPIO36
-const int solar2_raw = 39;  // pin 5 = GPIO39
-const float R_top = 13000.0;
-const float R_bot = 10000.0;
-const float div_decode = (R_top + R_bot) / R_bot - 0.327; //calibration
+const int solar1_raw = 36;     // pin 4 = GPIO36
+const int solar2_raw = 39;     // pin 5 = GPIO39
+const float R_top = 130000.0;  // 130kOhm
+const float R_bot = 100000.0;  // 100kOhm
+const float div_decode = (R_top + R_bot) / R_bot;
 
 void setup() {
   Serial.begin(115200);  // communicate at 115200 baud

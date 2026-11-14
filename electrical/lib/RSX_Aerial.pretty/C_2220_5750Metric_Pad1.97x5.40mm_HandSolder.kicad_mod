@@ -1,0 +1,195 @@
+(footprint "C_2220_5750Metric_Pad1.97x5.40mm_HandSolder"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Capacitor SMD 2220 (5750 Metric), square (rectangular) end terminal, IPC-7351 nominal with elongated pad for handsoldering. (Body size from: http://datasheets.avx.com/AVX-HV_MLCC.pdf), generated with kicad-footprint-generator")
+	(tags "capacitor handsolder")
+	(property "Reference" "REF**"
+		(at 0 -3.25 0)
+		(layer "F.SilkS")
+		(uuid "6dd9c461-5a12-4758-bd03-a2615055ebbc")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+				(bold yes)
+			)
+		)
+	)
+	(property "Value" "C_2220_5750Metric_Pad1.97x5.40mm_HandSolder"
+		(at 0 3.65 0)
+		(layer "F.Fab")
+		(uuid "8716b031-4a22-4932-ae5f-b49aefcf55ad")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "02c1c337-e964-41f8-b259-cbe08815b585")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "39dc1e4c-5dc1-4fbd-b2e8-3c0c444ccc0e")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_line
+		(start -1.415748 -2.61)
+		(end 1.415748 -2.61)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "935bb9d3-7d79-464b-a3bf-263bcd8a0809")
+	)
+	(fp_line
+		(start -1.415748 2.61)
+		(end 1.415748 2.61)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "942056ca-20ca-40eb-9009-b8cfbfd85bea")
+	)
+	(fp_line
+		(start -3.88 -2.95)
+		(end 3.88 -2.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "22e18725-5a5c-4faa-ab80-771d777be5a1")
+	)
+	(fp_line
+		(start -3.88 2.95)
+		(end -3.88 -2.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "5ca089c7-691d-46a5-b868-5f9ecb143da6")
+	)
+	(fp_line
+		(start 3.88 -2.95)
+		(end 3.88 2.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "7878c3a7-7b89-4dad-99a7-5bd32ac69ddb")
+	)
+	(fp_line
+		(start 3.88 2.95)
+		(end -3.88 2.95)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(layer "F.CrtYd")
+		(uuid "639d0839-2191-44ba-a080-013079771a2c")
+	)
+	(fp_line
+		(start -2.85 -2.5)
+		(end 2.85 -2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "7f09f587-ee18-4f1c-ac5d-6eaaf8870db4")
+	)
+	(fp_line
+		(start -2.85 2.5)
+		(end -2.85 -2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "fa669cca-cf24-4d45-91d8-77f4309faf27")
+	)
+	(fp_line
+		(start 2.85 -2.5)
+		(end 2.85 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "9ce781d7-6d03-4664-b5c1-99baa6615d81")
+	)
+	(fp_line
+		(start 2.85 2.5)
+		(end -2.85 2.5)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "af0e1c89-b790-4d45-828d-4d82425e2ce3")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "5b63f6c0-562d-457b-ba2a-5f4e10a1fe47")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -2.6375 0)
+		(size 1.975 5.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.126582)
+		(uuid "0d4e9637-9d6c-4c5c-8d79-0f1d07f5dc21")
+	)
+	(pad "2" smd roundrect
+		(at 2.6375 0)
+		(size 1.975 5.4)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.126582)
+		(uuid "83e23219-ddde-4df8-84c0-d665b05af015")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/K-METALCAP_L6.0_W5.3_T5.5_FORM-J_NORMAL_STRUCTURE.stp"
+		(offset
+			(xyz 2.75 -2.5 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

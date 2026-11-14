@@ -1,0 +1,159 @@
+(footprint "TestPoint_Keystone_5010-5014_Multipurpose_DL"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "Keystone Miniature THM Test Point 5010-5014, http://www.keyelco.com/product-pdf.cfm?p=1319")
+	(tags "Through Hole Mount Test Points")
+	(property "Reference" "REF**"
+		(at 0 -2.286 0)
+		(layer "F.SilkS")
+		(uuid "763165f3-6e26-4bf6-9902-b0d16a225d48")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "TestPoint_Keystone_5010-5014_Multipurpose_DL"
+		(at 0 2.75 0)
+		(layer "F.Fab")
+		(uuid "56644be9-5fb8-4c82-9d04-616838f3d87a")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "84ec734c-ad4b-4907-9f33-692971e0212f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "01b31c18-c377-4696-a318-80e013e2cfc8")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 0 0)
+		(end 1.75 0)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "06a78986-a023-4b52-9249-292e0b35fe08")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 2 0)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "8253805b-072d-4d63-b5ac-37c28c8a65ca")
+	)
+	(fp_line
+		(start -1.25 -0.4)
+		(end 1.25 -0.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "a883fbb8-4cbc-4a38-9374-5981403ca9c1")
+	)
+	(fp_line
+		(start -1.25 0.4)
+		(end -1.25 -0.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "edff9e66-0ea0-4ffe-87a9-c85c8edcb2d8")
+	)
+	(fp_line
+		(start 1.25 -0.4)
+		(end 1.25 0.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "b993e777-85b7-4de9-b800-14ac3e2f897a")
+	)
+	(fp_line
+		(start 1.25 0.4)
+		(end -1.25 0.4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.Fab")
+		(uuid "e57b63d7-6105-426c-9fd3-c2c702f42015")
+	)
+	(fp_circle
+		(center 0 0)
+		(end 1.6 0)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "82ef2234-6e88-4697-994c-c154e9047441")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "48c6d4c1-2cfe-4570-98da-af10fc03acc4")
+		(effects
+			(font
+				(size 0.6 0.6)
+				(thickness 0.09)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 2.8 2.8)
+		(drill 1.6)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "462b15d9-910f-41c6-9eb7-155dba777f33")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

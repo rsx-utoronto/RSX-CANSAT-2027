@@ -5,7 +5,7 @@
 	(uuid "48cd0a8c-b182-4e32-8997-6e0c1728d213")
 	(paper "A4")
 	(lib_symbols
-		(symbol "Device:LSM6DSOTR"
+		(symbol "RSX_Aerial:LSM6DSOTR"
 			(pin_names
 				(offset 0.254)
 			)
@@ -34,7 +34,7 @@
 					)
 				)
 			)
-			(property "Footprint" "LGA-14L_2P5X3X0P86_STM"
+			(property "Footprint" "RSX_Aerial:LGA-14L_2P5X3X0P86_STM"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -58,7 +58,7 @@
 					)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Accelerometer, Gyroscope, 6 Axis Sensor I2C, SPI Output"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -69,10 +69,33 @@
 					)
 				)
 			)
-			(property "ki_locked" ""
+			(property "MFR" "STMicroelectronics"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "LSM6DSOTR"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DPN" "497-18181-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -90,7 +113,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "LGA-14L_2P5X3X0P86_STM LGA-14L_2P5X3X0P86_STM-M LGA-14L_2P5X3X0P86_STM-L"
+			(property "ki_fp_filters" "LGA-14L_2P5X3X0P86_STM"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -241,6 +264,42 @@
 					)
 				)
 				(pin power_in line
+					(at 0 -12.7 0)
+					(length 7.62)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -15.24 0)
+					(length 7.62)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
 					(at 50.8 -15.24 180)
 					(length 7.62)
 					(name "VDD"
@@ -330,6 +389,24 @@
 						)
 					)
 				)
+				(pin input line
+					(at 50.8 -2.54 180)
+					(length 7.62)
+					(name "SCL"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 				(pin bidirectional line
 					(at 50.8 0 180)
 					(length 7.62)
@@ -349,18 +426,168 @@
 					)
 				)
 			)
-			(symbol "LSM6DSOTR_1_1"
-				(pin power_out line
-					(at 0 -12.7 0)
-					(length 7.62)
-					(name "GND"
+			(embedded_fonts no)
+		)
+		(symbol "RSX_Aerial_Capacitors:0u1"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0u1"
+				(at 0.635 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "RSX_Aerial:C_0603_1608Metric"
+				(at 0.9652 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "CAP CER 0.1UF 50V X7R 0603"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MFR" "TDK Corporation"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DPN" "445-1314-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "C1608X7R1H104K080AA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "0u1_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "0u1_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "6"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -369,34 +596,16 @@
 					)
 				)
 				(pin passive line
-					(at 0 -15.24 0)
-					(length 7.62)
-					(name "GND"
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name ""
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 50.8 -2.54 180)
-					(length 7.62)
-					(name "SCL"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -776,172 +985,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "rsx_Capacitors:10n"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "10n"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "rsx_capacitors:C_0603_1608Metric"
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/609/CL10B103KB8NNNC_Spec.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "CAP CER 10000PF 50V X7R 0603"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "DPN" "1276-1009-1-ND"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "10n_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "10n_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 	)
 	(junction
 		(at 138.43 102.87)
@@ -1035,7 +1078,7 @@
 		)
 		(uuid "c67ad305-c8e6-4db5-8085-78ea4bf1419b")
 	)
-	(global_label "GPIO21"
+	(global_label "SDA"
 		(shape input)
 		(at 138.43 87.63 0)
 		(fields_autoplaced yes)
@@ -1047,7 +1090,7 @@
 		)
 		(uuid "29d36131-348b-4839-8310-dffa3bbbcf8f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 148.3095 87.63 0)
+			(at 144.9833 87.63 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1059,7 +1102,7 @@
 			)
 		)
 	)
-	(global_label "GPIO22"
+	(global_label "SCL"
 		(shape input)
 		(at 138.43 90.17 0)
 		(fields_autoplaced yes)
@@ -1071,7 +1114,7 @@
 		)
 		(uuid "56c1bd5c-30a4-4fbd-8470-db92e18d4f88")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 148.3095 90.17 0)
+			(at 144.9228 90.17 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1156,6 +1199,84 @@
 			(project "IMU"
 				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
 					(reference "#FLG01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 100.33 119.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2dd732ac-3bb6-4f7b-b39b-954b6f1249c8")
+		(property "Reference" "#FLG02"
+			(at 100.33 117.475 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 100.33 114.3 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "808ab5b0-856a-4632-a17d-b3b9ca92395f")
+		)
+		(instances
+			(project "IMU"
+				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
+					(reference "#FLG02")
 					(unit 1)
 				)
 			)
@@ -1397,7 +1518,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LSM6DSOTR")
+		(lib_id "RSX_Aerial:LSM6DSOTR")
 		(at 87.63 87.63 0)
 		(unit 1)
 		(body_style 1)
@@ -1428,7 +1549,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LGA-14L_2P5X3X0P86_STM"
+		(property "Footprint" "RSX_Aerial:LGA-14L_2P5X3X0P86_STM"
 			(at 87.63 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -1452,7 +1573,40 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Accelerometer, Gyroscope, 6 Axis Sensor I2C, SPI Output"
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFR" "STMicroelectronics"
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "LSM6DSOTR"
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DPN" "497-18181-1-ND"
 			(at 87.63 87.63 0)
 			(hide yes)
 			(show_name no)
@@ -1667,6 +1821,84 @@
 			(project "IMU"
 				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
 					(reference "#PWR07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 100.33 119.38 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8ded8a11-50f5-4366-ad60-a88408d2925d")
+		(property "Reference" "#PWR09"
+			(at 100.33 125.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 100.33 124.46 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 100.33 119.38 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "114d5076-1620-40f2-878a-112574ef53fb")
+		)
+		(instances
+			(project "IMU"
+				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
+					(reference "#PWR09")
 					(unit 1)
 				)
 			)
@@ -1909,7 +2141,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rsx_Capacitors:10n")
+		(lib_id "RSX_Aerial_Capacitors:0u1")
 		(at 67.31 101.6 0)
 		(unit 1)
 		(body_style 1)
@@ -1931,7 +2163,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "0u1"
 			(at 71.12 102.8699 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1942,7 +2174,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "rsx_capacitors:C_0603_1608Metric"
+		(property "Footprint" "RSX_Aerial:C_0603_1608Metric"
 			(at 68.2752 105.41 0)
 			(hide yes)
 			(show_name no)
@@ -1953,7 +2185,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/609/CL10B103KB8NNNC_Spec.pdf"
+		(property "Datasheet" "~"
 			(at 67.31 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -1964,7 +2196,7 @@
 				)
 			)
 		)
-		(property "Description" "CAP CER 10000PF 50V X7R 0603"
+		(property "Description" "CAP CER 0.1UF 50V X7R 0603"
 			(at 67.31 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -1975,7 +2207,29 @@
 				)
 			)
 		)
-		(property "DPN" "1276-1009-1-ND"
+		(property "DPN" "445-1314-1-ND"
+			(at 67.31 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFR" "TDK Corporation"
+			(at 67.31 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
 			(at 67.31 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -2002,7 +2256,7 @@
 		)
 	)
 	(symbol
-		(lib_id "rsx_Capacitors:10n")
+		(lib_id "RSX_Aerial_Capacitors:0u1")
 		(at 138.43 106.68 0)
 		(unit 1)
 		(body_style 1)
@@ -2024,7 +2278,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "0u1"
 			(at 142.24 107.9499 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -2035,7 +2289,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "rsx_capacitors:C_0603_1608Metric"
+		(property "Footprint" "RSX_Aerial:C_0603_1608Metric"
 			(at 139.3952 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -2046,7 +2300,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/609/CL10B103KB8NNNC_Spec.pdf"
+		(property "Datasheet" "~"
 			(at 138.43 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -2057,7 +2311,7 @@
 				)
 			)
 		)
-		(property "Description" "CAP CER 10000PF 50V X7R 0603"
+		(property "Description" "CAP CER 0.1UF 50V X7R 0603"
 			(at 138.43 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -2068,7 +2322,29 @@
 				)
 			)
 		)
-		(property "DPN" "1276-1009-1-ND"
+		(property "DPN" "445-1314-1-ND"
+			(at 138.43 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MFR" "TDK Corporation"
+			(at 138.43 106.68 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "C1608X7R1H104K080AA"
 			(at 138.43 106.68 0)
 			(hide yes)
 			(show_name no)

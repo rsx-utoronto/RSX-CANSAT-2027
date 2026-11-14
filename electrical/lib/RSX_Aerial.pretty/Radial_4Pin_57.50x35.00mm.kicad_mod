@@ -1,0 +1,156 @@
+(footprint "Radial_4Pin_57.50x35.00mm"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(descr "CAP FILM RDL 4 LEAD")
+	(tags "C Rect series Radial pin pitch 52.50mm  length 57.5mm width 35mm Capacitor")
+	(property "Reference" "REF**"
+		(at -6.75 -11.5 0)
+		(layer "F.SilkS")
+		(uuid "419ad852-5ca0-460a-80ae-3f5706d24f92")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Radial_4Pin_57.50x35.00mm"
+		(at 26.25 3.75 0)
+		(layer "F.Fab")
+		(uuid "a641baad-3e31-4302-83b8-8e0a6d7a1db4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c3952173-9d75-4c9d-ab95-2bb2c896d893")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "db718f53-921b-439a-8b54-739501ceeeec")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -3 -28.3)
+		(end 55.5 8)
+		(stroke
+			(width 0.3)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "00a57c27-73b1-4789-a5f3-f6159af7f1e6")
+	)
+	(fp_rect
+		(start -3.25 -28.5)
+		(end 55.75 8.25)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "dc38a603-842e-4636-8827-8ee801765955")
+	)
+	(fp_rect
+		(start -2.5 -27.820447)
+		(end 55.005341 7.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "3269bf59-c911-4442-9510-49b6bd760eb8")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 26 -19.25 0)
+		(layer "F.Fab")
+		(uuid "148bf2a7-fa76-4d42-b308-460c375ef4a6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 26 -1.45 0)
+		(layer "F.Fab")
+		(uuid "c0194925-991c-4ca4-94d9-cd9967189520")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 0 -20.3)
+		(size 2.8 2.8)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2b3a826f-1cf6-4879-8f4b-3f8eaebf6367")
+	)
+	(pad "1" thru_hole circle
+		(at 0 0)
+		(size 2.8 2.8)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "05c93206-5d45-4d5d-af08-8c4f4b8028d8")
+	)
+	(pad "2" thru_hole circle
+		(at 52.5 -20.3)
+		(size 2.8 2.8)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "ed25294b-f8c6-4c3b-bab9-7c8360fa90ed")
+	)
+	(pad "2" thru_hole circle
+		(at 52.5 0)
+		(size 2.8 2.8)
+		(drill 1.4)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "47c7ee2e-208d-4d51-a4a0-b07a0b606395")
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/../../lib/3d/B32778Z4117K000.STEP"
+		(offset
+			(xyz -2.6 -7.32 0.5)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
+	)
+)

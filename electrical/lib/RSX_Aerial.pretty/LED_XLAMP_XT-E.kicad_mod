@@ -1,0 +1,124 @@
+(footprint "LED_XLAMP_XT-E"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "XLAMP_XT-E"
+		(at 0.5 0.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "249154b2-efc0-4c9f-b05f-a5e3e280cbb6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "0.5W"
+		(at 0.175 2 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "219228f4-1b2a-477b-8a24-ce64d7a909ec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "e5186350-7c43-48d7-91a7-a165a329d5d0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "c0ea3fd7-fc2e-4dbd-a099-3de7e728f14f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2.125 6)
+		(end 1.75 9.925)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "271ceba4-a210-4486-bd36-9913ad6f109f")
+	)
+	(fp_circle
+		(center -2.63 6.24)
+		(end -2.48 6.04)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "ddec719b-4ae7-44af-87d0-7486b23ff217")
+	)
+	(fp_rect
+		(start -2.232028 5.867972)
+		(end 1.839863 10.039863)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "9ce425c2-1a7c-4b77-8e34-22f8e53ebf45")
+	)
+	(fp_text user "D*"
+		(at 0.175 3.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "26a0f301-6a1e-4c2f-9b1a-b5c78a26b360")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -1.575 8 180)
+		(size 0.5 3.3)
+		(layers "F.Cu" "F.Mask" "B.SilkS" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "5b7a65ff-15dc-4148-9256-ffb490759fcd")
+	)
+	(pad "2" smd roundrect
+		(at 1.225 8 180)
+		(size 0.5 3.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.25)
+		(uuid "0f08796d-66e9-4c55-83f7-206eaf5120d6")
+	)
+	(pad "Thermal" smd roundrect
+		(at -0.175 8 180)
+		(size 1.299996 3.3)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(roundrect_rratio 0.192308284)
+		(uuid "ab300dd4-1f8b-42b0-889b-b55f5d1c8881")
+	)
+	(embedded_fonts no)
+)
