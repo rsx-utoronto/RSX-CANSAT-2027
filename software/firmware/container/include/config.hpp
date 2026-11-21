@@ -4,8 +4,46 @@
 
 #include "firmware_boot.hpp"
 
+// Container configuration: hardware assignments, radio settings and mission
+// thresholds. This header is plain C++ (no Arduino includes) so the host
+// tests in software/tests can compile the mission logic against it.
+
 namespace FirmwareConfig {
 constexpr FirmwareBoot::NodeRole kNodeRole = FirmwareBoot::NodeRole::Container;
+
+// ---------------------------------------------------------------------------
+// Team and radio
+// ---------------------------------------------------------------------------
+// **CHECK:** placeholder. Set to the team number the competition assigns.
+// It appears in the telemetry ID ("1000C") and commands addressed to any
+// other team number are ignored (requirement X5).
+constexpr uint16_t kTeamId = 1000;
+
+// **CHECK:** the competition assigns each team an ESP-NOW channel (X2).
+constexpr uint8_t kEspNowChannel = 1;
+
+// **CHECK:** MAC of OUR ground-station radio, printed by its boot banner.
+// Must never be the broadcast address FF:FF:FF:FF:FF:FF (X6); EspNowLink
+// refuses it. All zeros means "not set yet" and nothing will be delivered.
+constexpr uint8_t kGroundStationMac[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+// ---------------------------------------------------------------------------
+// Telemetry timing (CTR15, CTR16)
+// ---------------------------------------------------------------------------
+constexpr uint32_t kTelemetryFastPeriodMs = 250;   // 4 Hz from power-on.
+constexpr uint32_t kTelemetrySlowPeriodMs = 1000;  // 1 Hz after release.
+constexpr uint32_t kSlowRateDelayMs       = 5000;  // Switch 5 s after release.
+
+// ---------------------------------------------------------------------------
+// Persistence (F1, F2, F8)
+// ---------------------------------------------------------------------------
+// How often the flight record is saved to flash during normal running. It is
+// also saved immediately on every state change and command that changes it.
+constexpr uint32_t kPersistPeriodMs = 1000;
+// After a reset, the restored packet count is bumped by this much. Packets
+// sent after the last save are not on record, and this margin keeps the
+// count from ever going backwards (at 4 Hz, one second is 4 packets).
+constexpr uint32_t kPacketCountResetMargin = 8;
 
 // ---------------------------------------------------------------------------
 // Sensor bus
@@ -35,6 +73,15 @@ constexpr uint8_t kPowerMonitorAddr = 0x40;
 constexpr float kShuntOhms = 0.1f;
 
 // ---------------------------------------------------------------------------
+// Release mechanism (CTR10, CTR11, CTR12)
+// ---------------------------------------------------------------------------
+// **CHECK:** the release actuator and both sensors are not designed yet.
+// -1 means "not fitted": the firmware still tracks the mechanism state but
+// drives and reads no pins. See release_mechanism.hpp.
+constexpr int kReleaseDeployedSensorPin = -1;  // CTR11: mechanism fully deployed.
+constexpr int kPqClearedSensorPin       = -1;  // CTR12: PQ cleared the rail.
+
+// ---------------------------------------------------------------------------
 // Altitude processing
 // ---------------------------------------------------------------------------
 // Number of samples in the altitude moving-average window. At the BMP581's
@@ -49,16 +96,20 @@ constexpr uint32_t kSensorPeriodMs = 100;
 // ---------------------------------------------------------------------------
 // Flight-state detection (MissionManager::updateState)
 // ---------------------------------------------------------------------------
-// **CHECK:** every threshold below is a placeholder until the 2027 mission
-// profile and competition guide are final. All altitudes are metres above
-// the launch pad. Tune them against simulation-mode test runs.
-constexpr float kLaunchAltitudeM  = 20.0f;   // Above this and climbing -> ASCENT.
-constexpr float kLaunchSpeedMps   = 5.0f;    // Minimum climb rate for ASCENT.
-constexpr float kApogeeDropM      = 5.0f;    // Fall this far below max -> APOGEE.
-// **CHECK:** if the flight peaks below this altitude, PQ_RELEASE follows
-// straight after APOGEE. Decide whether that is the behaviour we want.
-constexpr float kReleaseAltitudeM = 400.0f;  // Descend below this -> PQ_RELEASE.
+// **CHECK:** the launch/apogee/landing thresholds are first guesses. All
+// altitudes are metres above the launch pad. Tune them against
+// simulation-mode runs with the judges' pressure profile.
+constexpr float kLaunchAltitudeM = 20.0f;   // Above this and climbing -> ASCENT.
+constexpr float kLaunchSpeedMps  = 5.0f;    // Minimum climb rate for ASCENT.
+constexpr float kApogeeDropM     = 5.0f;    // Fall this far below max -> APOGEE.
+// C3: release the PocketQube when the container has descended to 90 % of
+// the peak altitude. This one comes straight from the guide.
+constexpr float kReleaseFraction = 0.9f;
+// Landing (CTR16: stop transmitting when landed): vertical speed stays
+// below kLandedSpeedMps for kLandedConfirmMs.
+constexpr float    kLandedSpeedMps  = 1.0f;
+constexpr uint32_t kLandedConfirmMs = 5000;
 // A transition only happens after its condition holds for this many
-// consecutive updates, so a single noisy reading can't change the state.
+// consecutive samples, so a single noisy reading can't change the state.
 constexpr uint8_t kStateConfirmSamples = 3;
 }  // namespace FirmwareConfig

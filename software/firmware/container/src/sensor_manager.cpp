@@ -37,8 +37,8 @@ bool SensorManager::begin() {
 
   // Restore the launch-pad reference from an earlier boot, if one was saved.
   // Without this, a reset mid-flight would measure altitude from sea level.
-  // **CHECK:** only the reference pressure survives a reset. Max altitude
-  // and the filter start empty, so apogee detection restarts from scratch.
+  // Max altitude is restored separately by main.cpp from the flight record
+  // (see restoreMaxAltitude()); the smoothing filter itself starts empty.
   Preferences prefs;
   if (prefs.begin(kNvsNamespace, /*readOnly=*/true)) {
     const float saved = prefs.getFloat(kNvsGroundKey, NAN);
@@ -128,6 +128,10 @@ void SensorManager::resetAltitudeFilter() {
   r_.altitude_m = 0.0f;
   r_.max_altitude_m = 0.0f;
   r_.vertical_speed_mps = 0.0f;
+}
+
+void SensorManager::restoreMaxAltitude(float max_altitude_m) {
+  if (max_altitude_m > r_.max_altitude_m) r_.max_altitude_m = max_altitude_m;
 }
 
 float SensorManager::pressureToAltitude(float pa) const {

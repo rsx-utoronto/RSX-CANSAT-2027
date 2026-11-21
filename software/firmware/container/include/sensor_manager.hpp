@@ -17,10 +17,8 @@
 // sending telemetry (the telemetry layer copies readings() into a
 // ContainerPacket), or driving actuators.
 //
-// **CHECK:** nothing calls this class yet. main.cpp must call begin() in
-// setup(), then update() and MissionManager::updateState() every loop. The
-// host test test_boot_skeleton.py forbids I2C use in main.cpp, so update
-// that test in the same change.
+// main.cpp calls begin() in setup(), then update() every loop before
+// MissionManager::updateState().
 //
 // **CHECK:** none of this has run on real hardware. Verify altitude,
 // battery voltage and current against known values before flight.
@@ -30,20 +28,7 @@
 #include "config.hpp"
 #include "drivers/bmp581.hpp"
 #include "drivers/ina236.hpp"
-
-// One snapshot of everything the container measures. Units are in the names.
-struct SensorReadings {
-  float    altitude_m         = 0.0f;  // Smoothed, metres above the launch pad.
-  float    max_altitude_m     = 0.0f;  // Highest smoothed altitude seen.
-  float    vertical_speed_mps = 0.0f;  // Positive when climbing.
-  uint32_t pressure_pa        = 0;     // Real or simulated, whichever is in use.
-  float    temperature_c      = 0.0f;  // Barometer die temperature.
-  float    battery_v          = 0.0f;
-  uint16_t battery_ma         = 0;     // Clamped to 0 if current reads negative.
-  bool     baro_ok            = false; // Barometer answering and reading.
-  bool     power_ok           = false; // INA236 answering and reading.
-  uint32_t sample_time_ms     = 0;     // millis() of the last altitude sample.
-};
+#include "sensor_readings.hpp"
 
 class SensorManager {
 public:
@@ -82,6 +67,11 @@ public:
   // leaving simulation mode, so real and simulated samples are never
   // averaged together.
   void resetAltitudeFilter();
+
+  // Restores the peak altitude saved before a processor reset. Without it,
+  // a reset during descent would make the current altitude the new "peak",
+  // and the 90 %-of-peak release (C3) would trigger far too low.
+  void restoreMaxAltitude(float max_altitude_m);
 
 private:
   // Altitude in metres of pressure pa above the launch-pad reference.

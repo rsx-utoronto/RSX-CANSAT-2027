@@ -23,11 +23,11 @@ rotates the camera view. Radio is **ESP-NOW** only (backup XBee optional).
 | `platformio.ini` | **Single root PlatformIO project.** Envs: `ground_station` (default), `pq`, `container`. |
 | `software/firmware/{container,PQ,ground}/` | Per-role `include/` + `src/`. Each env compiles only its own `src/`. |
 | `software/firmware_lib/` | Shared library (symlinked into every env): `inc/` headers, `src/` sources, `library.json` deps. |
-| `software/firmware_lib/inc/protocol.hpp` | Packed binary `ContainerPacket` / `PQPacket` structs sent over ESP-NOW. |
-| `software/firmware_lib/inc/espnow_link.hpp` | ESP-NOW transport API (**`src/espnow_link.cpp` is still empty**). |
+| `software/firmware_lib/inc/protocol.hpp` | Binary `PQPacket` (and the retired `ContainerPacket`; the container now sends ASCII CSV). |
+| `software/firmware_lib/inc/espnow_link.hpp` | ESP-NOW transport (implemented in `src/espnow_link.cpp`). |
 | `software/firmware_lib/inc/drivers/` | Sensor drivers: `bmp581` (barometer), `ina236` (voltage/current). |
 | `software/common/src/telemetry.cpp` | Incomplete serializer; **not part of any build**. |
-| `software/tests/test_boot_skeleton.py` | Host-only checks (C++17 compiler + Python). |
+| `software/tests/` | Host tests, container logic harness, hardware simulation-flight script. See `software/tests/README.md`. |
 | `software/Initial_testing/` | Old experiments. Not built. Leave alone. |
 | `ground_station/gui-2026/` | **Preserved** last-year GUI. Do not modify. |
 | `ground_station/gui-new/` | GUI under active development (Python 3.13, PyQt6 + pyqtgraph). |
@@ -42,7 +42,7 @@ Run from the repository root. On Windows, `pio` lives at
 ```sh
 pio run -e container            # build one role
 pio run -e ground_station -e pq -e container   # build all three
-python -m unittest discover -s software/tests -p 'test_boot_skeleton.py' -v
+python -m unittest discover -s software/tests -p 'test_*.py' -v
 ```
 
 - `firmware_lib` is shared: after changing it, build **all three** envs.
@@ -51,13 +51,17 @@ python -m unittest discover -s software/tests -p 'test_boot_skeleton.py' -v
 - The GUI has its own tests: `python -m unittest discover -s tests` from
   `ground_station/gui-new` (see `ground_station/README.md` for venv setup).
 
-### Constraint from the host tests
+### Constraints from the host tests
 
-`test_boot_skeleton.py` asserts that each role's `src/main.cpp` does **not** call
-`Wire.`/`SPI.`/`WiFi.`/`EspNowLink::`, `pinMode`, `xTaskCreate`, or use `while (`,
-and it compiles `main.cpp` with only `firmware_boot.cpp`. The `main.cpp` files are
-deliberately still boot-only. Wiring real logic into `main.cpp` **requires updating
-that test in the same change**. Say so in your plan.
+- `test_boot_skeleton.py` asserts that the **PQ and ground-station** `main.cpp` files
+  stay boot-only: no `Wire.`/`SPI.`/`WiFi.`/`EspNowLink::`, `pinMode`, `xTaskCreate`
+  or `while (`. Each is compiled with only `firmware_boot.cpp`. Wiring real logic into
+  either one **requires moving that role out of `BOOT_ONLY_ROLES` in the same change**,
+  as was done for the container.
+- `test_container_logic.py` compiles `mission_manager.cpp`, `container_telemetry.cpp`
+  and `command_parser.cpp` on the PC with `-Wall -Wextra -Werror`. Keep those files
+  (and the headers they include, including `config.hpp`) free of Arduino headers.
+  Hardware code goes in other modules.
 
 ## Architecture
 
@@ -65,24 +69,34 @@ that test in the same change**. Say so in your plan.
   never talk to each other. Peer with the GS MAC explicitly, filter received packets by
   MAC, **never use the broadcast address**. ESP-NOW payload max is 250 bytes. Team
   channel is assigned by the competition (X2).
-- **Wire format** is team-defined (binary is fine). The **ground station** converts it to
-  the CSV formats in the guide (GS13). Keep `protocol.hpp` in sync on both ends.
+- **Wire format** is team-defined. The **container sends ASCII CSV lines** (exactly the
+  judges' column format, no terminator, one line per ESP-NOW packet). The ground radio
+  bridge frames packets as `
+`-terminated text, and a binary packet can contain `
+`.
+  The PQ format is still to be decided (`PQPacket` in `protocol.hpp` is binary).
+- **Commands** use the existing GUI format `CMD,<team>,<OP>[,<value>]`, as ASCII over
+  ESP-NOW. The container also accepts them on USB serial, for bench testing.
 - **ESP-NOW receive callbacks run in the Wi-Fi task**: copy bytes, set a flag, return.
   Never block or do I2C inside them.
 
 ### Container firmware (most developed role)
 
-- `SensorManager` (`container/include/sensor_manager.hpp`) owns the BMP581 and the
-  INA236. It produces a `SensorReadings` snapshot: smoothed altitude above the pad,
-  max altitude, vertical speed, pressure (Pa), temperature, battery V/mA, and health
-  flags. It handles simulation pressure (SIMP) and saves the CAL ground reference to
-  NVS (`Preferences`, namespace `sensors`).
-- `MissionManager` (`container/include/mission_manager.hpp`) owns the flight state
-  machine. `updateState(readings)` advances `LAUNCH_PAD → ASCENT → APOGEE →
-  PQ_RELEASE`, forward only, with each step confirmed over `kStateConfirmSamples`
-  samples.
-- `config.hpp` holds pins, addresses and thresholds. Unconfirmed values are marked.
-- Neither class is called from `main.cpp` yet.
+`container/src/main.cpp` is a thin, non-blocking loop: commands → sensors → state →
+persist → telemetry. The modules (headers in `container/include/`):
+
+| Module | Role | Host-testable |
+|---|---|---|
+| `sensor_manager` | BMP581 + INA236 → `SensorReadings` (`sensor_readings.hpp`): smoothed altitude, max, vertical speed, Pa, °C, V, mA. SIMP substitution. Saves the CAL reference (NVS `sensors`). | no |
+| `mission_manager` | `IDLE →(ARM) LAUNCH_PAD → ASCENT → APOGEE → PQ_RELEASE`, release at 90 % of peak (C3), landing flag, SIM ENABLE/ACTIVATE (F6). | yes |
+| `container_telemetry` | CSV line formatting, and the rate schedule: 4 Hz, 1 Hz from 5 s after release, off after landing. | yes |
+| `command_parser` | Parses `CMD,…` lines and builds CMD_ECHO. | yes |
+| `flight_store` | State, packet count, mission time, max altitude, mech state and UTC in NVS (`flight`). Saved on events and once a second. `RST` clears it. | no |
+| `release_mechanism` | MECH_STATE bits. Actuator and sensors are **stubs** until the hardware exists. | no |
+
+`IDLE` is internal ("not armed") and is reported as `LAUNCH_PAD` in telemetry. Safety
+rules in `main.cpp`: `CAL` only on the pad; `SIM` can't be turned on after launch;
+`RST` only on the pad, after landing, or during simulation.
 
 ## Requirements that drive software (keep these in mind)
 
@@ -93,8 +107,7 @@ MECH_STATE (hex: bit0 mechanism activated, bit1 PQ released), STATE, CMD_ECHO`
 (no commas in any field). CTR21 asks for battery voltage to 0.01 V.
 
 **STATE values the judges expect:** `LAUNCH_PAD`, `ASCENT`, `APOGEE`, `PQ_RELEASE`.
-Our firmware also has an internal `IDLE` (not armed). Decide how it is reported.
-`protocol.hpp`'s `OpState` has no `IDLE`.
+Our internal `IDLE` (not armed) is reported as `LAUNCH_PAD`.
 
 **Minimum commands (CTR28):** `SIM` (ENABLE then ACTIVATE, both required before
 simulation mode, F6), `SIMP` (pressure value, sent at 1 Hz), `CAL` (zero altitude),
@@ -121,18 +134,18 @@ voltages to 0.01 V, MECH_STATE bits 0–3, IMAGE_STABILIZATION, SCIENCE_EXP).
 Search the code for `**CHECK:**`. Each one marks something that must be verified
 before flight. The most important ones:
 
-1. **Release logic does not match C3 yet.** `MissionManager` releases below a fixed
-   `kReleaseAltitudeM` (400 m placeholder); the guide requires release at **90 % of
-   peak altitude** (`altitude <= 0.9 * max_altitude` during descent).
-2. Flight state, packet count and mission time are not yet saved across resets (F1,
-   F2, F8). Only the CAL ground reference is saved.
-3. `ARM` command handling, CTR16 rate switching (4 Hz → 1 Hz 5 s after release) and
-   landing detection (stop transmitting) are not implemented.
-4. `FlightState`/`OperatingMode` (container) duplicate `OpState`/`Mode`
-   (`protocol.hpp`). Merge them before telemetry uses both.
-5. Container I2C pins and the INA236 address are unknown until the container board is
-   drawn (`electrical/boards/container/` is empty). The INA236 driver is untested.
-6. `espnow_link.cpp` is empty. The PQ and ground roles are boot-only skeletons.
+1. **Release hardware:** `release_mechanism.cpp` drives nothing yet, and while no
+   CTR12 sensor is fitted, "released" is assumed to follow "activated".
+2. **Placeholders in `config.hpp`:** team ID, ESP-NOW channel and ground-station MAC
+   (until the MAC is set, telemetry goes to USB serial only), I2C pins, INA236 address.
+   The container board isn't drawn yet. The INA236 driver is untested on hardware.
+3. **Mission time across resets** loses up to ~1 s until the RTC is added (planned).
+   Mission time counts from the last `RST`, so `RST` belongs in the launch checklist.
+4. **Thresholds** (launch, apogee, landing) are first guesses. Tune them with the
+   judges' simulation profile (`software/tests/container_sim_flight.py`).
+5. **MEC** only implements `REL…`. Agree the full format with the GUI.
+6. The PQ and ground roles are still boot-only skeletons. Nothing has been run on a
+   board yet.
 
 ## Working conventions
 

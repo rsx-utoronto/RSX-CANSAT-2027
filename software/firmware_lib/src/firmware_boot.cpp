@@ -20,7 +20,7 @@ const char* roleName(NodeRole role) {
 
 }  // namespace
 
-void begin(NodeRole role) {
+void begin(NodeRole role, const char* mode) {
   Serial.begin(115200);
   delay(250);  // Bounded settling time; never wait for a serial connection.
   Serial.printf("ROLE=%s\n", roleName(role));
@@ -39,7 +39,7 @@ void begin(NodeRole role) {
     Serial.printf("MAC=UNAVAILABLE (error=%d)\n", static_cast<int>(result));
   }
 
-  Serial.println("MODE=BOOT_ONLY");
+  Serial.printf("MODE=%s\n", mode);
 }
 
 }  // namespace FirmwareBoot
