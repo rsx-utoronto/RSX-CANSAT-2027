@@ -7,15 +7,16 @@
 // ---------------------------------------------------------------------------
 // The guide lets each team pick its own over-the-air format (binary or
 // ASCII), but the file handed to the judges must be ASCII CSV in a fixed
-// column order (GS13). The original plan was to send the packed binary
-// ContainerPacket from firmware_lib/inc/protocol.hpp and convert it to CSV on
-// the ground.
+// column order (GS13). The original plan was to send a packed binary
+// ContainerPacket and convert it to CSV on the ground. The team chose ASCII
+// CSV instead (2026-11-21), and the binary ContainerPacket was commented out.
+// The shared wire-format rules are at the top of firmware_lib/inc/protocol.hpp.
 //
-// We now send the CSV line itself. Reasons:
-//   * The ground radio bridge (ground_station/gs_radio_firmware) forwards
-//     each ESP-NOW packet to the PC as one text line ending in '\n'. A binary
-//     packet can contain the byte 0x0A ('\n') inside a float or counter,
-//     which would split it into two broken lines. Text never does.
+// We send the CSV line itself. Reasons:
+//   * The ground radio bridge forwards each ESP-NOW packet to the PC as one
+//     text line ending in "\r\n", and the GUI splits lines on those bytes.
+//     A binary packet can contain 0x0A ('\n') or 0x0D ('\r') inside a float
+//     or counter, which would split it into broken lines. Text never does.
 //   * The ground station can append the line to the CSV file as-is, so the
 //     container and the judges' file can't disagree about formatting or
 //     rounding.
@@ -25,10 +26,11 @@
 // still well under the 250-byte ESP-NOW limit.
 //
 // What changes because of this:
-//   * ContainerPacket in protocol.hpp is no longer sent by the container.
-//     It is left in place (and marked) until the ground code no longer
-//     references it.
-//   * The ground station must treat container packets as text lines.
+//   * The binary ContainerPacket and its serializer functions are commented
+//     out in protocol.hpp and firmware_lib telemetry.*, with the reason.
+//   * The ground station must treat container packets as text lines. The
+//     GUI recognises them by the "<team>C," prefix (gui-new
+//     code/data/process.py, ContainerTelemetry).
 //   * The same line is printed on the USB serial port for bench testing.
 //
 // ---------------------------------------------------------------------------

@@ -130,11 +130,18 @@ class SerialManager(QObject):
     # Process received data
     def recv_data(self):
         self._serial_buffer += self._active_serial.readAll().data()
+        # Lines are ASCII text ending in '\r', '\n' or "\r\n" (the radio
+        # bridge and the container use Serial.println, i.e. "\r\n"). Treat
+        # '\n' like '\r' so either terminator works; the empty piece between
+        # '\r' and '\n' is skipped below.
+        self._serial_buffer = self._serial_buffer.replace(b'\n', b'\r')
         while b'\r' in self._serial_buffer:
             line, self._serial_buffer = self._serial_buffer.split(b'\r', 1)
             if not line:
                 continue # Skip empty lines
-            msg = line.decode().strip()
+            # errors="replace": one corrupted byte must not raise and stop
+            # the reader; the line then fails the column check instead.
+            msg = line.decode("ascii", errors="replace").strip()
             if msg:
                 print(f"Received message: {msg}")  # Debug print for processed message
                 self.recv_data_signal.emit(msg)

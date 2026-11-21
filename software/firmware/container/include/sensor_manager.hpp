@@ -14,8 +14,8 @@
 //     stays correct after a mid-flight processor reset.
 //
 // Not its job: deciding the flight state (MissionManager), building or
-// sending telemetry (the telemetry layer copies readings() into a
-// ContainerPacket), or driving actuators.
+// sending telemetry (main.cpp copies readings() into a TelemetryFrame for
+// container_telemetry), or driving actuators.
 //
 // main.cpp calls begin() in setup(), then update() every loop before
 // MissionManager::updateState().

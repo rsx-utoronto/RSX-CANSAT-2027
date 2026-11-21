@@ -124,37 +124,45 @@ namespace Telemetry{
                while (length<capacity && text[length]!='\0') {length++;}
                return std::string(text, length);
           }
-          //read & write container
-          void writeContainer(Writer& writer, const ContainerPacket& packet){
-               writer.put(packet.team_id);
-               writer.put(packet.mission_time_ms);
-               writer.put(packet.packet_count);
-               writer.put(packet.command_count);
-               writer.put(packet.mode);
-               writer.put(packet.altitude_m);
-               writer.put(packet.pressure_pa);
-               writer.put(packet.temperature_c);
-               writer.put(packet.battery_v);
-               writer.put(packet.battery_ma);
-               writer.put(packet.mech_state);
-               writer.put(packet.state);
-               writer.putBytes(packet.cmd_echo, sizeof(packet.cmd_echo));
-          }
-          bool readContainer(Reader& reader, ContainerPacket& packet){
-               return reader.get(packet.team_id) &&
-                      reader.get(packet.mission_time_ms) &&
-                      reader.get(packet.packet_count) &&
-                      reader.get(packet.command_count) &&
-                      reader.get(packet.mode) &&
-                      reader.get(packet.altitude_m) &&
-                      reader.get(packet.pressure_pa) &&
-                      reader.get(packet.temperature_c) &&
-                      reader.get(packet.battery_v) &&
-                      reader.get(packet.battery_ma) &&
-                      reader.get(packet.mech_state) &&
-                      reader.get(packet.state) &&
-                      reader.getBytes(packet.cmd_echo, sizeof(packet.cmd_echo));
-          }
+          // COMMENTED OUT, NOT DELETED (2026-11-21): the team chose ASCII CSV as the
+          // over-the-air format, so the container no longer sends a binary packet
+          // (wire-format rules at the top of firmware_lib/inc/protocol.hpp). Binary
+          // packets can contain '\r'/'\n' bytes, which break the line framing used
+          // by the radio bridge and the GUI. The container builds its CSV line in
+          // software/firmware/container/include/container_telemetry.hpp instead.
+          // Kept here, commented, in case the decision is revisited. Do not re-enable
+          // without changing the bridge/GUI framing first.
+          // //read & write container
+          // void writeContainer(Writer& writer, const ContainerPacket& packet){
+          //      writer.put(packet.team_id);
+          //      writer.put(packet.mission_time_ms);
+          //      writer.put(packet.packet_count);
+          //      writer.put(packet.command_count);
+          //      writer.put(packet.mode);
+          //      writer.put(packet.altitude_m);
+          //      writer.put(packet.pressure_pa);
+          //      writer.put(packet.temperature_c);
+          //      writer.put(packet.battery_v);
+          //      writer.put(packet.battery_ma);
+          //      writer.put(packet.mech_state);
+          //      writer.put(packet.state);
+          //      writer.putBytes(packet.cmd_echo, sizeof(packet.cmd_echo));
+          // }
+          // bool readContainer(Reader& reader, ContainerPacket& packet){
+          //      return reader.get(packet.team_id) &&
+          //             reader.get(packet.mission_time_ms) &&
+          //             reader.get(packet.packet_count) &&
+          //             reader.get(packet.command_count) &&
+          //             reader.get(packet.mode) &&
+          //             reader.get(packet.altitude_m) &&
+          //             reader.get(packet.pressure_pa) &&
+          //             reader.get(packet.temperature_c) &&
+          //             reader.get(packet.battery_v) &&
+          //             reader.get(packet.battery_ma) &&
+          //             reader.get(packet.mech_state) &&
+          //             reader.get(packet.state) &&
+          //             reader.getBytes(packet.cmd_echo, sizeof(packet.cmd_echo));
+          // }
           void writePQ(Writer& writer, const PQPacket& packet){
                writer.put(packet.team_id);
                writer.put(packet.mission_time_ms);
@@ -220,15 +228,16 @@ namespace Telemetry{
                       reader.getBytes(packet.science_exp, sizeof(packet.science_exp));
           }
      }
-     bool serializeContainerPacket(const ContainerPacket& packet, uint8_t* buffer, size_t bufferSize, size_t& bytesWritten){
-          bytesWritten=0;
-          if (buffer==nullptr) {return false;}
-          Writer writer(buffer, bufferSize);
-          writeContainer(writer, packet);
-          if (!writer.ok()) {return false;}
-          bytesWritten=writer.size();
-          return true;
-     }
+     // Commented out with the binary ContainerPacket (ASCII CSV decision, see above).
+     // bool serializeContainerPacket(const ContainerPacket& packet, uint8_t* buffer, size_t bufferSize, size_t& bytesWritten){
+     //      bytesWritten=0;
+     //      if (buffer==nullptr) {return false;}
+     //      Writer writer(buffer, bufferSize);
+     //      writeContainer(writer, packet);
+     //      if (!writer.ok()) {return false;}
+     //      bytesWritten=writer.size();
+     //      return true;
+     // }
      bool serializePQPacket(const PQPacket& packet, uint8_t* buffer, size_t bufferSize, size_t& bytesWritten){
           bytesWritten=0;
           if (buffer==nullptr) {return false;}
@@ -238,13 +247,14 @@ namespace Telemetry{
           bytesWritten=writer.size();
           return true;
      }
-     bool deserializeContainerPacket(const uint8_t* buffer, size_t bufferSize, ContainerPacket& packet){
-          Reader reader(buffer, bufferSize);
-          ContainerPacket tempPacket;
-          if (!readContainer(reader, tempPacket) || !reader.finished()) {return false;}
-          packet = tempPacket;
-          return true;
-     }
+     // Commented out with the binary ContainerPacket (ASCII CSV decision, see above).
+     // bool deserializeContainerPacket(const uint8_t* buffer, size_t bufferSize, ContainerPacket& packet){
+     //      Reader reader(buffer, bufferSize);
+     //      ContainerPacket tempPacket;
+     //      if (!readContainer(reader, tempPacket) || !reader.finished()) {return false;}
+     //      packet = tempPacket;
+     //      return true;
+     // }
      bool deserializePQPacket(const uint8_t* buffer, size_t bufferSize, PQPacket& packet){
           Reader reader(buffer, bufferSize);
           PQPacket tempPacket;
@@ -268,29 +278,31 @@ namespace Telemetry{
                default: return "UNKNOWN";
           }
      }
-     const char* containerPacketToStringHeader(){
-          return "ID,MISSION_TIME,PACKET_COUNT,COMMAND_COUNT,MODE,ALTITUDE,PRESSURE,TEMPERATURE,BATTERY_V,BATTERY_MA,MECH_STATE,STATE,CMD_ECHO";
-     }
+     // Commented out with the binary ContainerPacket (ASCII CSV decision, see above).
+     // const char* containerPacketToStringHeader(){
+     //      return "ID,MISSION_TIME,PACKET_COUNT,COMMAND_COUNT,MODE,ALTITUDE,PRESSURE,TEMPERATURE,BATTERY_V,BATTERY_MA,MECH_STATE,STATE,CMD_ECHO";
+     // }
      const char* pqPacketToStringHeader(){
           return "ID,MISSION_TIME,PACKET_COUNT,COMMAND_COUNT,CMD_ECHO,MODE,ALTITUDE,PRESSURE,TEMPERATURE,BATTERY_V,BATTERY_MA,ROT_RATE_X,ROT_RATE_Y,ROT_RATE_Z,ACCEL_X,ACCEL_Y,ACCEL_Z,MAG_X,MAG_Y,MAG_Z,GNSS_LATITUDE,GNSS_LONGITUDE,GNSS_ALTITUDE,GNSS_TIME,GNSS_SATS,SOLAR_1,SOLAR_2,MECH_STATE,IMAGE_STABILIZATION,SCIENCE_EXP";
      }
-     std::string containerPacketToString(const ContainerPacket& packet){
-          std::ostringstream out;
-          out << packet.team_id << "," 
-          << packet.mission_time_ms << ','
-          << packet.packet_count << ','
-          << packet.command_count << ','
-          << modeToString(packet.mode) << ','
-          << packet.altitude_m << ','
-          << packet.pressure_pa << ','
-          << packet.temperature_c << ','
-          << packet.battery_v << ','
-          << packet.battery_ma << ','
-          << static_cast<unsigned int>(packet.mech_state) << ','
-          << opStateToString(packet.state) << ','
-          << fixedText(packet.cmd_echo, sizeof(packet.cmd_echo));
-          return out.str();
-     }
+     // Commented out with the binary ContainerPacket (ASCII CSV decision, see above).
+     // std::string containerPacketToString(const ContainerPacket& packet){
+     //      std::ostringstream out;
+     //      out << packet.team_id << "," 
+     //      << packet.mission_time_ms << ','
+     //      << packet.packet_count << ','
+     //      << packet.command_count << ','
+     //      << modeToString(packet.mode) << ','
+     //      << packet.altitude_m << ','
+     //      << packet.pressure_pa << ','
+     //      << packet.temperature_c << ','
+     //      << packet.battery_v << ','
+     //      << packet.battery_ma << ','
+     //      << static_cast<unsigned int>(packet.mech_state) << ','
+     //      << opStateToString(packet.state) << ','
+     //      << fixedText(packet.cmd_echo, sizeof(packet.cmd_echo));
+     //      return out.str();
+     // }
      std::string pqPacketToString(const PQPacket& packet){
           std::ostringstream out;
           out << std::fixed;

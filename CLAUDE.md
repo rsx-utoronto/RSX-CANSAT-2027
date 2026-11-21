@@ -23,10 +23,10 @@ rotates the camera view. Radio is **ESP-NOW** only (backup XBee optional).
 | `platformio.ini` | **Single root PlatformIO project.** Envs: `ground_station` (default), `pq`, `container`. |
 | `software/firmware/{container,PQ,ground}/` | Per-role `include/` + `src/`. Each env compiles only its own `src/`. |
 | `software/firmware_lib/` | Shared library (symlinked into every env): `inc/` headers, `src/` sources, `library.json` deps. |
-| `software/firmware_lib/inc/protocol.hpp` | Binary `PQPacket` (and the retired `ContainerPacket`; the container now sends ASCII CSV). |
+| `software/firmware_lib/inc/protocol.hpp` | Wire-format rules (ASCII CSV) and the binary `PQPacket` (PQ format still open). |
 | `software/firmware_lib/inc/espnow_link.hpp` | ESP-NOW transport (implemented in `src/espnow_link.cpp`). |
 | `software/firmware_lib/inc/drivers/` | Sensor drivers: `bmp581` (barometer), `ina236` (voltage/current). |
-| `software/common/src/telemetry.cpp` | Incomplete serializer; **not part of any build**. |
+| `software/firmware_lib/src/telemetry.cpp` | Binary `PQPacket` serializer and CSV-string helper (PQ only). Compiled into every env; the container doesn't use it. |
 | `software/tests/` | Host tests, container logic harness, hardware simulation-flight script. See `software/tests/README.md`. |
 | `software/Initial_testing/` | Old experiments. Not built. Leave alone. |
 | `ground_station/gui-2026/` | **Preserved** last-year GUI. Do not modify. |
@@ -69,12 +69,19 @@ python -m unittest discover -s software/tests -p 'test_*.py' -v
   never talk to each other. Peer with the GS MAC explicitly, filter received packets by
   MAC, **never use the broadcast address**. ESP-NOW payload max is 250 bytes. Team
   channel is assigned by the competition (X2).
-- **Wire format** is team-defined. The **container sends ASCII CSV lines** (exactly the
-  judges' column format, no terminator, one line per ESP-NOW packet). The ground radio
-  bridge frames packets as `
-`-terminated text, and a binary packet can contain `
-`.
-  The PQ format is still to be decided (`PQPacket` in `protocol.hpp` is binary).
+- **Wire format: ASCII CSV (team decision 2026-11-21).** Rules are at the top of
+  `firmware_lib/inc/protocol.hpp`. The container sends one judges'-format CSV line per
+  ESP-NOW packet, with no terminator. The ground radio bridge forwards each payload
+  unchanged plus `\r\n`. The GUI splits on `\r`/`\n`, so **never send binary structs
+  over the air**: they can contain those bytes. The binary `ContainerPacket` and its
+  serializer functions are commented out, with the reason, not deleted.
+  The PQ format is still open (`PQPacket` is binary, marked `**CHECK:**`). Under this
+  decision it should become CSV too.
+- **GUI side** (`gui-new/code/data/process.py`): lines matching `^\d+C,` are container
+  telemetry. They are parsed into `ContainerTelemetry`, plotted (Pa shown as kPa), and
+  saved verbatim to `code/output/container_telemetry.csv`. Lines starting with `#` are
+  container debug output and are ignored. Everything else still goes to last year's
+  34-column payload parser.
 - **Commands** use the existing GUI format `CMD,<team>,<OP>[,<value>]`, as ASCII over
   ESP-NOW. The container also accepts them on USB serial, for bench testing.
 - **ESP-NOW receive callbacks run in the Wi-Fi task**: copy bytes, set a flag, return.
@@ -144,6 +151,10 @@ before flight. The most important ones:
 4. **Thresholds** (launch, apogee, landing) are first guesses. Tune them with the
    judges' simulation profile (`software/tests/container_sim_flight.py`).
 5. **MEC** only implements `REL…`. Agree the full format with the GUI.
+   **GUI mismatches:** the GUI sends commands as team `1011` (`commands.py`), while the
+   firmware's `kTeamId` is `1000`. The container drops commands for other teams, so
+   these must match. The GUI's state list has no `PQ_RELEASE`, so that state isn't
+   highlighted yet.
 6. The PQ and ground roles are still boot-only skeletons. Nothing has been run on a
    board yet.
 

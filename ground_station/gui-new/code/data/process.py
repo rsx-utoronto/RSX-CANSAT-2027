@@ -52,6 +52,37 @@ class TelemetryData:
     ACCEL_Y: float | None # Y-axis acceleration
     ACCEL_Z: float | None
 
+# Container telemetry (CanSat 2027). The container sends one ASCII CSV line
+# per packet, already in the judges' column order, and the radio bridge
+# forwards it unchanged (wire-format rules: software/firmware_lib/inc/
+# protocol.hpp). The first field is the team number followed by 'C', e.g.
+#   1000C,12.345,42,3,F,123.4,101325,23.5,7.42,123,03,ASCENT,CAL
+# Units on the wire: MISSION_TIME s, ALTITUDE m, PRESSURE Pa, TEMPERATURE C,
+# BATT_V V, BATT_I mA, MECH_STATE hex bits.
+CONTAINER_COLUMNS = (
+    "ID", "MISSION_TIME", "PACKET_COUNT", "COMMAND_COUNT", "MODE", "ALTITUDE",
+    "PRESSURE", "TEMPERATURE", "BATT_V", "BATT_I", "MECH_STATE", "STATE", "CMD_ECHO",
+)
+CONTAINER_LINE = re.compile(r"^\d+C,")
+
+
+@dataclass(frozen=True)
+class ContainerTelemetry:
+    ID: str
+    MISSION_TIME: str
+    PACKET_COUNT: int | None
+    COMMAND_COUNT: int | None
+    MODE: str | None
+    ALTITUDE: float | None
+    PRESSURE: float | None  # Pa, as sent
+    TEMPERATURE: float | None
+    BATT_V: float | None
+    BATT_I: float | None  # mA
+    MECH_STATE: int | None
+    STATE: str | None
+    CMD_ECHO: str | None
+
+
 class DataProcessor(QObject):
 
     log_end_signal = pyqtSignal()
@@ -77,6 +108,10 @@ class DataProcessor(QObject):
         file_path = os.path.join(os.path.dirname(__file__), '..')
         self.output_dir = os.path.join(file_path, 'output')
         self._csv_path = os.path.join(self.output_dir, 'telemetry_data.csv')
+        # Container lines are saved verbatim, so this file is exactly what
+        # the judges receive (GS13).
+        self._container_csv_path = os.path.join(self.output_dir, 'container_telemetry.csv')
+        self._container_file = None
 
         try:
             os.makedirs(self.output_dir, exist_ok=True)
@@ -129,6 +164,22 @@ class DataProcessor(QObject):
         if self._csv_file is not None:
             if not self._csv_file.closed:
                 self._csv_file.close()
+        if self._container_file is not None and not self._container_file.closed:
+            self._container_file.close()
+
+    def _write_container_line(self, line):
+        # Opened on the first container packet, so runs without a container
+        # don't leave an empty file behind.
+        try:
+            if self._container_file is None or self._container_file.closed:
+                os.makedirs(self.output_dir, exist_ok=True)
+                self._container_file = open(self._container_csv_path, "w", newline="")
+                self._container_file.write(",".join(CONTAINER_COLUMNS) + "\n")
+            self._container_file.write(line + "\n")
+            self._container_file.flush()
+        except Exception as e:
+            self._csv_error_msg = str(e)
+            self.file_error_signal.emit(f"ERROR: container CSV write failed: {e}")
 
     def reset_csv(self):
         if not self.csv_check():
@@ -167,6 +218,16 @@ class DataProcessor(QObject):
             if not msg.strip():
                 return
         
+        # Container debug output ("# ..."), seen when the container's USB port
+        # is connected directly for bench testing. Not telemetry.
+        if msg.startswith('#'):
+            return
+
+        # Container telemetry line ("<team>C,...")
+        if CONTAINER_LINE.match(msg.strip()):
+            self.parse_container_line(msg.strip())
+            return
+
         # Message is a response
         if(msg.startswith('$')):
 
@@ -331,6 +392,68 @@ class DataProcessor(QObject):
         data_dict = asdict(data)
         self._write_csv_row(data_dict)
     
+    def parse_container_line(self, line: str):
+        self._graph_ui.update_packet_count()
+
+        data = self.extract_container_data(line)
+        if data is None:
+            # Wrong column count: count it as received but don't save or plot
+            # it, so a corrupted line can't shift columns in the judges' file.
+            self._graph_ui.update_packet_label()
+            return
+        self._write_container_line(line)
+
+        if data.ALTITUDE is not None:
+            self._graph_ui.update_alt_graph(data.ALTITUDE)
+        if data.TEMPERATURE is not None:
+            self._graph_ui.update_temp(data.TEMPERATURE)
+        if data.PRESSURE is not None:
+            # The GUI shows kPa; the container sends Pa.
+            self._graph_ui.update_pressure(round(data.PRESSURE / 1000.0, 3))
+        if data.BATT_V is not None:
+            self._graph_ui.update_volt_graph(data.BATT_V)
+        if data.BATT_I is not None:
+            self._graph_ui.update_current_graph(data.BATT_I)
+        if data.MISSION_TIME is not None:
+            self._graph_ui.update_mission_time(data.MISSION_TIME)
+        if data.PACKET_COUNT is not None:
+            self._graph_ui.update_packets_sent(data.PACKET_COUNT)
+        self._graph_ui.update_packet_label()
+        if data.MODE == "F":
+            self._graph_ui.update_mode("FLIGHT")
+        elif data.MODE == "S":
+            self._graph_ui.update_mode("SIM")
+        if data.STATE is not None:
+            self._graph_ui.update_state(data.STATE)
+        if data.CMD_ECHO is not None:
+            self._graph_ui.update_cmd_echo(data.CMD_ECHO)
+
+    def extract_container_data(self, line: str) -> ContainerTelemetry | None:
+        """Parse one container CSV line; None if the column count is wrong."""
+        parts = line.split(',')
+        if len(parts) != len(CONTAINER_COLUMNS):
+            return None
+        mech = self._field(parts, 10)
+        try:
+            mech_state = int(mech, 16) if mech is not None else None
+        except ValueError:
+            mech_state = None
+        return ContainerTelemetry(
+            ID            = parts[0].strip(),
+            MISSION_TIME  = self._field(parts, 1),
+            PACKET_COUNT  = self._parse_int(self._field(parts, 2)),
+            COMMAND_COUNT = self._parse_int(self._field(parts, 3)),
+            MODE          = self._field(parts, 4),
+            ALTITUDE      = self._parse_float(self._field(parts, 5)),
+            PRESSURE      = self._parse_float(self._field(parts, 6)),
+            TEMPERATURE   = self._parse_float(self._field(parts, 7)),
+            BATT_V        = self._parse_float(self._field(parts, 8)),
+            BATT_I        = self._parse_float(self._field(parts, 9)),
+            MECH_STATE    = mech_state,
+            STATE         = self._field(parts, 11),
+            CMD_ECHO      = self._field(parts, 12),
+        )
+
     def extract_data_str(self, msg: str) -> TelemetryData:
 
         fields = msg.split(',')

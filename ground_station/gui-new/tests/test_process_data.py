@@ -217,6 +217,87 @@ class DataProcessorResponseTests(unittest.TestCase):
         self.assertEqual(processor._graph_ui.attitude_indicator.yaw_updates, [])
 
 
+class ContainerTelemetryTests(unittest.TestCase):
+    # Same example line as container_telemetry.hpp in the container firmware.
+    LINE = "1000C,12.345,42,3,F,123.4,101325,23.5,7.42,123,03,ASCENT,CAL"
+
+    def make_processor(self, out_dir):
+        processor = DataProcessor(GraphStub(), SimpStub())
+        processor.output_dir = str(out_dir)
+        processor._container_csv_path = str(out_dir / "container_telemetry.csv")
+        self.addCleanup(processor.close_csv)
+        self.addCleanup(processor.close_logfile)
+        return processor
+
+    def make_out_dir(self):
+        out_dir = PROJECT_ROOT / "tests" / "_tmp_container_csv"
+        if out_dir.exists():
+            shutil.rmtree(out_dir)
+        out_dir.mkdir()
+        self.addCleanup(lambda: shutil.rmtree(out_dir, ignore_errors=True))
+        return out_dir
+
+    def test_extract_container_data_parses_all_columns(self):
+        processor = self.make_processor(self.make_out_dir())
+
+        data = processor.extract_container_data(self.LINE)
+
+        self.assertEqual(data.ID, "1000C")
+        self.assertEqual(data.MISSION_TIME, "12.345")
+        self.assertEqual(data.PACKET_COUNT, 42)
+        self.assertEqual(data.COMMAND_COUNT, 3)
+        self.assertEqual(data.MODE, "F")
+        self.assertEqual(data.ALTITUDE, 123.4)
+        self.assertEqual(data.PRESSURE, 101325.0)
+        self.assertEqual(data.TEMPERATURE, 23.5)
+        self.assertEqual(data.BATT_V, 7.42)
+        self.assertEqual(data.BATT_I, 123.0)
+        self.assertEqual(data.MECH_STATE, 0x03)
+        self.assertEqual(data.STATE, "ASCENT")
+        self.assertEqual(data.CMD_ECHO, "CAL")
+
+    def test_container_line_updates_gui_and_is_saved_verbatim(self):
+        out_dir = self.make_out_dir()
+        processor = self.make_processor(out_dir)
+
+        processor.process_data(self.LINE)
+
+        graph = processor._graph_ui
+        self.assertEqual(graph.altitude_updates, [123.4])
+        self.assertEqual(graph.pressure_updates, [101.325])  # Pa -> kPa
+        self.assertEqual(graph.voltage_updates, [7.42])
+        self.assertEqual(graph.current_updates, [123.0])
+        self.assertEqual(graph.mode_updates, ["FLIGHT"])
+        self.assertEqual(graph.state_updates, ["ASCENT"])
+        self.assertEqual(graph.cmd_echo_updates, ["CAL"])
+        self.assertEqual(graph.mission_time_updates, ["12.345"])
+        # Must not fall through to the old 34-column payload parser.
+        self.assertEqual(graph.gyro_updates, [])
+
+        processor.close_csv()
+        saved = (out_dir / "container_telemetry.csv").read_text().splitlines()
+        self.assertEqual(saved[0], "ID,MISSION_TIME,PACKET_COUNT,COMMAND_COUNT,MODE,ALTITUDE,"
+                                   "PRESSURE,TEMPERATURE,BATT_V,BATT_I,MECH_STATE,STATE,CMD_ECHO")
+        self.assertEqual(saved[1], self.LINE)
+
+    def test_truncated_container_line_is_counted_but_not_saved(self):
+        out_dir = self.make_out_dir()
+        processor = self.make_processor(out_dir)
+
+        processor.process_data("1000C,12.345,42,3,F,123.4")
+
+        self.assertEqual(processor._graph_ui.packet_count, 1)
+        self.assertEqual(processor._graph_ui.altitude_updates, [])
+        self.assertFalse((out_dir / "container_telemetry.csv").exists())
+
+    def test_container_debug_lines_are_ignored(self):
+        processor = self.make_processor(self.make_out_dir())
+
+        processor.process_data("# radio not up, telemetry on USB only")
+
+        self.assertEqual(processor._graph_ui.packet_count, 0)
+
+
 class PayloadSimTests(unittest.TestCase):
     def test_generated_telemetry_includes_uav_tail_fields(self):
         sim = PayloadSim()
