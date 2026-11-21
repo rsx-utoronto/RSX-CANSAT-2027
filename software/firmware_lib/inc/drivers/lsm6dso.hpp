@@ -54,7 +54,10 @@
 #define LSM6DSO_FIFO_DATA_OUT_Z_L       0x7D    // FIFO buffered Z-axis (or third 16-bit word) data LSB
 #define LSM6DSO_FIFO_DATA_OUT_Z_H       0x7E    // FIFO buffered Z-axis (or third 16-bit word) data MSB
 
+#define ODR_HIGH_PERF                   0x50    // Config map key for high sampling-rate mode
+#define ODR_NORMAL_PERF                 0x40    // Config map key for normal sampling-rate mode
 
+const float GYRO_INT16_TO_FLOAT = 0.00875f;
 
 struct gyroAngularVelocityData
 {
@@ -66,7 +69,9 @@ struct gyroAngularVelocityData
 class Lsm6dso {
     public:
         // Setup sequence
-        bool begin(uint8_t addr = LSM6DSO_ADDR_SDO_LOW, TwoWire& bus = Wire);
+        Lsm6dso(TwoWire& bus) : _bus(bus){};
+        bool begin(uint8_t addr = LSM6DSO_ADDR_SDO_LOW, uint8_t mode_ODR = ODR_NORMAL_PERF, TwoWire& bus = Wire);
+        void i2c_read(uint8_t regAddr, uint8_t* buffer, int readSize);  // Generic I2C read for object
         // Register Getters
         float get_XpitchAngularVelocity();              // Return gyro pitch
         float get_YrollAngularVelocity();               // Return gyro roll
@@ -76,11 +81,11 @@ class Lsm6dso {
     
 
     private:
-        int _address;                                   // I2C device address
+        int _address = 0;                                   // I2C device address
         TwoWire& _bus;                                  // Bus object for I2C
         
-        void i2c_write(uint8_t regAddr, uint16_t data); // Generic I2C write for object
-        void i2c_read(uint8_t regAddr, uint8_t* buffer, int readSize);        // Generic I2C read for object
+        void i2c_write(uint8_t regAddr, uint8_t data);                 // Generic I2C write for object
+        
 
         
 
