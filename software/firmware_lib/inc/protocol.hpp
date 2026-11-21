@@ -6,6 +6,12 @@ enum class OpState : uint8_t { LAUNCH_PAD, ASCENT, APOGEE, PQ_RELEASE };
 enum class Mode    : char    { FLIGHT = 'F', SIMULATION = 'S' };
 
 #pragma pack(push, 1)
+// NOT SENT OVER THE AIR ANY MORE. The container now transmits its telemetry
+// as the ASCII CSV line the judges' file uses (see
+// software/firmware/container/include/container_telemetry.hpp for the format
+// and the reasons: mainly that the ground radio bridge splits packets on
+// '\n', which a binary packet can contain). Kept only until the ground
+// station code no longer references it; delete it then.
 struct ContainerPacket {
   uint16_t team_id;
   uint32_t mission_time_ms;

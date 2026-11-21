@@ -15,6 +15,11 @@ ROLES = {
     "pq": ("PQ", "PQ"),
     "container": ("container", "CONTAINER"),
 }
+# Roles whose main.cpp is still a boot-only skeleton. The container now runs
+# real flight software (I2C, radio, flash), so it is excluded from the
+# "no hardware access" and boot-banner checks below; its pure logic is
+# covered by test_container_logic.py instead.
+BOOT_ONLY_ROLES = {env: role for env, role in ROLES.items() if env != "container"}
 
 ARDUINO_FAKE = r"""
 #pragma once
@@ -115,7 +120,7 @@ class ProjectConfigurationTests(unittest.TestCase):
     def test_active_sources_do_not_initialize_hardware(self):
         paths = [ROOT / "software/firmware_lib/src/firmware_boot.cpp"]
         paths.extend(ROOT / "software/firmware" / folder / "src/main.cpp"
-                     for folder, _ in ROLES.values())
+                     for folder, _ in BOOT_ONLY_ROLES.values())
         for path in paths:
             source = path.read_text(encoding="utf-8")
             with self.subTest(source=str(path)):
@@ -139,7 +144,7 @@ class BootBehaviorTests(unittest.TestCase):
         (build / "esp_mac.h").write_text(MAC_FAKE, encoding="utf-8")
         (build / "harness.cpp").write_text(HARNESS, encoding="utf-8")
         cls.executables = {}
-        for env, (folder, _) in ROLES.items():
+        for env, (folder, _) in BOOT_ONLY_ROLES.items():
             executable = build / env
             command = [compiler, "-std=c++17", "-Wall", "-Wextra", "-Werror",
                        f"-I{build}", f"-I{ROOT / 'software/firmware_lib/inc'}",
@@ -153,7 +158,7 @@ class BootBehaviorTests(unittest.TestCase):
             cls.executables[env] = executable
 
     def test_success_banner_for_every_role_and_silent_idle(self):
-        for env, (_, label) in ROLES.items():
+        for env, (_, label) in BOOT_ONLY_ROLES.items():
             with self.subTest(environment=env):
                 result = subprocess.run([str(self.executables[env])], capture_output=True,
                                         text=True, timeout=5)
@@ -163,7 +168,7 @@ class BootBehaviorTests(unittest.TestCase):
                                  f"ROLE={label}\nMAC=AA:BB:CC:DD:EE:FF\nMODE=BOOT_ONLY\n")
 
     def test_mac_failure_is_reported_without_hanging_for_every_role(self):
-        for env, (_, label) in ROLES.items():
+        for env, (_, label) in BOOT_ONLY_ROLES.items():
             with self.subTest(environment=env):
                 result = subprocess.run([str(self.executables[env]), "fail-mac"],
                                         capture_output=True, text=True, timeout=5)
