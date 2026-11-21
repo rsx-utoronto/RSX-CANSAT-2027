@@ -63,18 +63,7 @@ constexpr float kHeadingFilterTauS = 8.0f;  // plan: 5 to 10 s
 constexpr float kGyroBiasZDefaultDps = 0.0f;
 
 // ---------------------------------------------------------------------------
-// Camera drive: choose ONE option
-// ---------------------------------------------------------------------------
-enum class CameraDriveType : uint8_t {
-  Servo,    // Option A: positional hobby servo. No encoder needed. Start here.
-  DcMotor,  // Option B: DC gearmotor + H-bridge + AS5600 absolute encoder.
-};
-// MECH: does a 270 deg positional servo fit the camera stage inside the 2P
-// envelope? If yes, use Option A. If not, Option B.
-constexpr CameraDriveType kCameraDrive = CameraDriveType::Servo;
-
-// ---------------------------------------------------------------------------
-// Camera pointing (used by both options)
+// Camera pointing
 // ---------------------------------------------------------------------------
 // L in the plan: servo-plus-loop delay. The camera command leads the body's
 // spin by rate_z * L so the picture doesn't lag.
@@ -90,8 +79,12 @@ constexpr float kCamTravelMinDeg = -135.0f;
 constexpr float kCamTravelMaxDeg =  135.0f;
 
 // ---------------------------------------------------------------------------
-// Option A: camera servo
+// Camera servo
 // ---------------------------------------------------------------------------
+// A positional hobby servo turns the camera. Its own potentiometer and
+// controller hold the angle, so no encoder or position loop is needed.
+// MECH: the 270 deg camera servo must fit the camera stage inside the 2P
+// envelope.
 // **CHECK:** the PQ board isn't drawn yet. -1 means "not wired", and the
 // drive then reports itself unhealthy instead of driving a random pin.
 constexpr int kCamServoPin = -1;
@@ -101,33 +94,6 @@ constexpr float kCamServoMinUs  = 500.0f;    // pulse at kCamServoMinDeg
 constexpr float kCamServoMaxUs  = 2500.0f;   // pulse at kCamServoMaxDeg
 constexpr float kCamServoMinDeg = -135.0f;
 constexpr float kCamServoMaxDeg =  135.0f;
-
-// ---------------------------------------------------------------------------
-// Option B: camera DC gearmotor + AS5600 encoder
-// ---------------------------------------------------------------------------
-// MECH: mount a diametrically magnetized disc on the end of the camera
-// shaft, 0.5 to 3 mm above the AS5600 chip, and keep any magnet as far from
-// the boom magnetometer as possible.
-// **CHECK:** pins unknown until the board is drawn. -1 means "not wired".
-constexpr int      kCamMotorPinA    = -1;
-constexpr int      kCamMotorPinB    = -1;
-constexpr uint32_t kCamMotorPwmHz   = 20000;  // above hearing; check the H-bridge's limit
-constexpr uint8_t  kCamMotorPwmBits = 10;
-// Encoder reading when the camera points straight along the body (theta = 0),
-// and +1 or -1 so a clockwise camera turn reads positive.
-// **CHECK:** measure both after assembly.
-constexpr float kCamEncoderZeroDeg = 0.0f;
-constexpr float kCamEncoderSign    = 1.0f;
-// Position loop: motor output (-1..1) per degree of camera error.
-// **CHECK:** tune on the bench. Start with Ki = Kd = 0 and raise Kp slowly.
-constexpr float kCamMotorKp = 0.05f;
-constexpr float kCamMotorKi = 0.0f;
-constexpr float kCamMotorKd = 0.0f;
-constexpr float kCamMotorMaxOutput = 0.8f;   // fraction of full PWM
-constexpr float kCamMotorDeadbandDeg = 0.3f; // stop driving inside this error
-// The plan asks for the motor's position loop at 200 Hz or faster, which is
-// faster than kControlPeriodMs. See the TODO in camera_drive.hpp.
-constexpr uint32_t kCamMotorLoopHz = 200;
 
 // ---------------------------------------------------------------------------
 // Shared servo PWM settings (camera and panel servos)
