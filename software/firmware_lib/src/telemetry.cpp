@@ -1,4 +1,4 @@
-#include "telemetry.hpp"
+#include "../../firmware_lib/inc/telemetry.hpp"
 #include <cstring>
 #include <sstream>
 #include <iomanip>
