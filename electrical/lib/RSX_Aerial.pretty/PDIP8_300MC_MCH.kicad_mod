@@ -1,7 +1,7 @@
 (footprint "PDIP8_300MC_MCH"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "25LC1024-E/P ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start 0.127 -1.397)
 		(end 0.127 -1.08204)
@@ -676,18 +677,6 @@
 			)
 		)
 	)
-	(fp_text user "${REFERENCE}"
-		(at 3.81 3.81 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "9912a8de-304b-42ca-ae92-5647a6b2a88c")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(fp_text user "*"
 		(at 0.508 0 0)
 		(unlocked yes)
@@ -704,6 +693,18 @@
 		(at 0.508 0 0)
 		(layer "F.Fab")
 		(uuid "f702972b-070a-4805-adb3-8948d67eec0c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 3.81 3.81 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "9912a8de-304b-42ca-ae92-5647a6b2a88c")
 		(effects
 			(font
 				(size 1 1)

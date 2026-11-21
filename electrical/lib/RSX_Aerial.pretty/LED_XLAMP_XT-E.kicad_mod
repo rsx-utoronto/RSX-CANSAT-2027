@@ -1,7 +1,7 @@
 (footprint "LED_XLAMP_XT-E"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "XLAMP_XT-E"
 		(at 0.5 0.5 0)
@@ -54,6 +54,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_rect
 		(start -2.125 6)
 		(end 1.75 9.925)

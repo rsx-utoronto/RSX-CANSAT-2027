@@ -1,7 +1,7 @@
 (footprint "DBV5"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "SN74AUP1G04DBVR ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -0.302516 1.524)
 		(end 0.302516 1.524)
@@ -420,11 +421,10 @@
 			)
 		)
 	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
-		(unlocked yes)
+	(fp_text user "*"
+		(at -1.4478 -2.6518 0)
 		(layer "F.Fab")
-		(uuid "d7508218-b00d-4097-ba7f-da296901e809")
+		(uuid "e22f8c1b-7177-4a03-b720-580d9208a569")
 		(effects
 			(font
 				(size 1 1)
@@ -432,10 +432,11 @@
 			)
 		)
 	)
-	(fp_text user "*"
-		(at -1.4478 -2.6518 0)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "e22f8c1b-7177-4a03-b720-580d9208a569")
+		(uuid "d7508218-b00d-4097-ba7f-da296901e809")
 		(effects
 			(font
 				(size 1 1)

@@ -1070,8 +1070,8 @@
 		)
 		(uuid "f91576f5-71cd-4d63-98d0-5d6f7f41f6a2")
 	)
-	(global_label "GPIO16"
-		(shape input)
+	(global_label "GPS_TX"
+		(shape output)
 		(at 119.38 81.28 180)
 		(fields_autoplaced yes)
 		(effects
@@ -1082,7 +1082,7 @@
 		)
 		(uuid "1f6f726e-9c1f-442a-93d3-756bd1fff357")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 109.5005 81.28 0)
+			(at 109.5006 81.28 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

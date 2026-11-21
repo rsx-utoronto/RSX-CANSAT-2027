@@ -1005,20 +1005,12 @@
 		(uuid "f1f88ba5-23ec-466d-83be-ec69d3ba7c21")
 	)
 	(no_connect
-		(at 138.43 92.71)
-		(uuid "2ade0bc9-9a2b-471d-a3b7-f6320aa3d34f")
-	)
-	(no_connect
 		(at 138.43 100.33)
 		(uuid "31aedc2c-526b-44a2-8d07-bdf5fb0f2b36")
 	)
 	(no_connect
 		(at 87.63 95.25)
 		(uuid "44bface0-aab0-49ce-9d75-b3cce14fdd90")
-	)
-	(no_connect
-		(at 87.63 87.63)
-		(uuid "6ec61764-cd65-4e08-8383-86cd8e78681a")
 	)
 	(no_connect
 		(at 138.43 97.79)
@@ -1978,6 +1970,164 @@
 			(project "IMU"
 				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
 					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 87.63 87.63 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "552e5d96-8381-4d2d-a6a0-0a75ba83bfd1")
+		(property "Reference" "#PWR10"
+			(at 91.44 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 83.82 87.6299 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 87.63 87.63 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1e8039ca-8cc3-4d76-ae87-b51e91857413")
+		)
+		(instances
+			(project "IMU"
+				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
+					(reference "#PWR10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 138.43 92.71 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5192ce12-84d4-4ce1-a816-5ece69978238")
+		(property "Reference" "#PWR11"
+			(at 134.62 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 142.24 92.7099 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 138.43 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.43 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3V3\""
+			(at 138.43 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "19aa097e-5ac5-4052-a635-e76eb263070e")
+		)
+		(instances
+			(project "IMU"
+				(path "/48cd0a8c-b182-4e32-8997-6e0c1728d213"
+					(reference "#PWR11")
 					(unit 1)
 				)
 			)

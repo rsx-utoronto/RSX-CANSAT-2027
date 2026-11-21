@@ -1,7 +1,7 @@
 (footprint "logo_x2"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "G***"
 		(at 0 0 0)
@@ -51,6 +51,7 @@
 		)
 	)
 	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_poly
 		(pts
 			(xy 4.242364 7.655772) (xy 4.271764 7.667183) (xy 4.298908 7.686882) (xy 4.328455 7.718417) (xy 4.344853 7.751683)

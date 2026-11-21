@@ -1,7 +1,7 @@
 (footprint "capybara_bubble_tea"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "G***"
 		(at 0 0 0)
@@ -51,6 +51,7 @@
 		)
 	)
 	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_poly
 		(pts
 			(xy -2.489434 1.617483) (xy -2.492676 1.620724) (xy -2.495917 1.617483) (xy -2.492676 1.614241)

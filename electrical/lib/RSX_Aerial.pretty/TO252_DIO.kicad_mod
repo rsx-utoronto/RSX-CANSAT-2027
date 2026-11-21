@@ -1,7 +1,7 @@
 (footprint "TO252_DIO"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "SDT30B100D1-13 ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -3.429 -3.175)
 		(end -3.429 3.175)
@@ -406,18 +407,6 @@
 			)
 		)
 	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "494a6554-aefc-43db-bc6d-b4fc1e1f4ea4")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(fp_text user "*"
 		(at -2.286 2.794 0)
 		(layer "F.Fab")
@@ -434,6 +423,18 @@
 		(unlocked yes)
 		(layer "F.Fab")
 		(uuid "bad8fb40-abfb-49ef-9b48-464f1824a65d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "494a6554-aefc-43db-bc6d-b4fc1e1f4ea4")
 		(effects
 			(font
 				(size 1 1)

@@ -1,7 +1,7 @@
 (footprint "CONN_1x7-PH-UA_ADM"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "PH1-07-UA ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -1.397 -1.3716)
 		(end -1.397 1.3716)

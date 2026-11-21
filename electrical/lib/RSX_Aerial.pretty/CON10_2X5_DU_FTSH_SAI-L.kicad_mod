@@ -1,7 +1,7 @@
 (footprint "CON10_2X5_DU_FTSH_SAI-L"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "FTSH-105-01-L-DV ")
 	(property "Reference" "REF**"
@@ -55,6 +55,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -3.302 -1.8415)
 		(end -3.302 1.8415)
@@ -307,6 +308,30 @@
 		(layer "F.Fab")
 		(uuid "723ace29-37d5-499a-9339-ebb8208c6a04")
 	)
+	(fp_text user "2"
+		(at -3.683 -1.9812 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a7d10fe2-c487-4c6b-b21f-13f28f594eca")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "1"
+		(at -3.683 1.9812 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "f716b701-c745-4129-b5e8-fcb85dfed78f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(fp_text user "10"
 		(at 3.683 -1.9812 0)
 		(unlocked yes)
@@ -334,44 +359,8 @@
 	(fp_text user "2"
 		(at -3.683 -1.9812 0)
 		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "a7d10fe2-c487-4c6b-b21f-13f28f594eca")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "1"
-		(at -3.683 1.9812 0)
-		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "f716b701-c745-4129-b5e8-fcb85dfed78f")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
-		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "4fb83406-69b3-49ab-85e9-5e9e07c9912e")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "9"
-		(at 3.683 1.9812 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "98dd617b-f31e-484f-a887-8a20e99a9b57")
+		(uuid "f63d8451-10a1-4bac-8de0-d38da312e66b")
 		(effects
 			(font
 				(size 1 1)
@@ -391,6 +380,18 @@
 			)
 		)
 	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "4fb83406-69b3-49ab-85e9-5e9e07c9912e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(fp_text user "10"
 		(at 3.683 -1.9812 0)
 		(unlocked yes)
@@ -403,11 +404,11 @@
 			)
 		)
 	)
-	(fp_text user "2"
-		(at -3.683 -1.9812 0)
+	(fp_text user "9"
+		(at 3.683 1.9812 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "f63d8451-10a1-4bac-8de0-d38da312e66b")
+		(uuid "98dd617b-f31e-484f-a887-8a20e99a9b57")
 		(effects
 			(font
 				(size 1 1)

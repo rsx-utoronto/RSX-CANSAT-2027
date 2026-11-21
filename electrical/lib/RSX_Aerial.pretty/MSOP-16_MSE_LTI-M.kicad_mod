@@ -1,7 +1,7 @@
 (footprint "MSOP-16_MSE_LTI-M"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "LT8610ABEMSE-5-TRPBF ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -1.418874 2.1971)
 		(end 1.418874 2.1971)
@@ -943,18 +944,6 @@
 			)
 		)
 	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(uuid "36c5ffd4-2498-421d-bb5b-a85e5789fcea")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(fp_text user "*"
 		(at -1.1684 -1.9939 0)
 		(unlocked yes)
@@ -971,6 +960,18 @@
 		(at -1.1684 -1.9939 0)
 		(layer "F.Fab")
 		(uuid "f2fd1595-a6a7-4fd3-8bc1-28d15036fdec")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "36c5ffd4-2498-421d-bb5b-a85e5789fcea")
 		(effects
 			(font
 				(size 1 1)

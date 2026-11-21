@@ -1,7 +1,7 @@
 (footprint "TSOT23-8_MP3414A"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "MP3414AGJ-Z ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -0.9779 1.6256)
 		(end 0.9779 1.6256)
@@ -598,11 +599,11 @@
 			)
 		)
 	)
-	(fp_text user "${REFERENCE}"
-		(at 0 0 0)
+	(fp_text user "*"
+		(at -0.4699 -1.4224 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "cea4e11c-49d1-45a4-9356-afcc9b95ea88")
+		(uuid "fa51dfee-e774-415e-9fc0-82235937ea77")
 		(effects
 			(font
 				(size 1 1)
@@ -610,11 +611,11 @@
 			)
 		)
 	)
-	(fp_text user "*"
-		(at -0.4699 -1.4224 0)
+	(fp_text user "${REFERENCE}"
+		(at 0 0 0)
 		(unlocked yes)
 		(layer "F.Fab")
-		(uuid "fa51dfee-e774-415e-9fc0-82235937ea77")
+		(uuid "cea4e11c-49d1-45a4-9356-afcc9b95ea88")
 		(effects
 			(font
 				(size 1 1)

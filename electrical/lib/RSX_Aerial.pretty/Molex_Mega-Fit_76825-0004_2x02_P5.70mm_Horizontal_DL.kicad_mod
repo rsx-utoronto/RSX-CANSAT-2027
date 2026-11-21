@@ -1,7 +1,7 @@
 (footprint "Molex_Mega-Fit_76825-0004_2x02_P5.70mm_Horizontal_DL"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(descr "Molex Mega-Fit Power Connectors, 76825-0004 (compatible alternatives: 172064-0004, 172064-1004), 2 Pins per row (http://www.molex.com/pdm_docs/sd/1720640002_sd.pdf), generated with kicad-footprint-generator")
 	(tags "connector Molex Mega-Fit top entry")
@@ -52,6 +52,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -3.285 -16.01)
 		(end -3.285 -0.99)
@@ -303,6 +304,18 @@
 		(layer "F.Fab")
 		(uuid "10a58ad1-caa6-4993-baf6-03f92d48ee6b")
 	)
+	(fp_text user "3"
+		(at -2.8 5.5 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c5cb5c9a-132a-4be2-b742-571682abf0d0")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
 	(fp_text user "2"
 		(at 8.5 0 0)
 		(unlocked yes)
@@ -320,18 +333,6 @@
 		(unlocked yes)
 		(layer "F.SilkS")
 		(uuid "c1ad4f3f-b582-425b-ab11-b32adff8bae7")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
-	(fp_text user "3"
-		(at -2.8 5.5 0)
-		(unlocked yes)
-		(layer "F.SilkS")
-		(uuid "c5cb5c9a-132a-4be2-b742-571682abf0d0")
 		(effects
 			(font
 				(size 1 1)

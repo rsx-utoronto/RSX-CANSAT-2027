@@ -1,7 +1,7 @@
 (footprint "rsx_logo_3"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "G***"
 		(at 0 0 0)
@@ -51,6 +51,7 @@
 		)
 	)
 	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_poly
 		(pts
 			(xy -0.490669 -1.053377) (xy -0.41482 -1.053285) (xy -0.331791 -1.053127) (xy -0.241231 -1.052908)

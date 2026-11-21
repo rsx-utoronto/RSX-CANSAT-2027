@@ -1,7 +1,7 @@
 (footprint "Pheonix__FR1,27_20MV1337140"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 9 -6.75 0)
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start 1.59 -4.2)
 		(end 2.46 -4.2)
@@ -200,14 +201,14 @@
 		(at 0.97 -2.1)
 		(size 1 1.6)
 		(drill oval 1 1.6)
-		(layers "F&B.Cu" "*.Mask")
+		(layers "*.Cu" "*.Mask")
 		(uuid "6f0ea144-a770-487c-b65d-e0b4d8ffbdb8")
 	)
 	(pad "" np_thru_hole circle
 		(at 16.82 -2.1)
 		(size 1.6 1.6)
 		(drill 1.6)
-		(layers "F&B.Cu" "*.Mask")
+		(layers "*.Cu" "*.Mask")
 		(uuid "0d9f1eb7-8f56-42bf-b3d5-4910067c5c52")
 	)
 	(pad "A1" smd rect

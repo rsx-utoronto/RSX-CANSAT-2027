@@ -1,7 +1,7 @@
 (footprint "Molex_Micro-Fit_3.0_43045-0400_2x02_P3.00mm_Horizontal"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(descr "Molex Micro-Fit 3.0 Connector System, 43045-0400 (alternative finishes: 43045-040x), 2 Pins per row (https://www.molex.com/pdm_docs/sd/430450201_sd.pdf), generated with kicad-footprint-generator")
 	(tags "connector Molex Micro-Fit_3.0 horizontal")
@@ -52,6 +52,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -3.685 -8.03)
 		(end -2.685 -9.03)
@@ -284,11 +285,11 @@
 			)
 		)
 	)
-	(fp_text user "4"
-		(at 5 3.25 0)
+	(fp_text user "3"
+		(at -2 3.25 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "8a746112-b352-4f2c-adc1-5e64dbb38ef5")
+		(uuid "bf563b48-960b-45ce-b8f8-8a0c74009dba")
 		(effects
 			(font
 				(size 1 1)
@@ -308,11 +309,11 @@
 			)
 		)
 	)
-	(fp_text user "3"
-		(at -2 3.25 0)
+	(fp_text user "4"
+		(at 5 3.25 0)
 		(unlocked yes)
 		(layer "F.SilkS")
-		(uuid "bf563b48-960b-45ce-b8f8-8a0c74009dba")
+		(uuid "8a746112-b352-4f2c-adc1-5e64dbb38ef5")
 		(effects
 			(font
 				(size 1 1)

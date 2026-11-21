@@ -1,7 +1,7 @@
 (footprint "RES_3920R_L300x_BRN"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "CSS2H-3920R-L300FE ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -2.33405 2.8829)
 		(end 2.33405 2.8829)
@@ -258,8 +259,6 @@
 		(uuid "caa47738-6c99-4f12-ab1e-58b4e82f4619")
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layer "F.Cu")
 		(uuid "ab890242-86f6-4cf5-b424-45d069b0c686")
 		(hatch full 0.508)
@@ -267,7 +266,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.254)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks not_allowed)
 			(vias not_allowed)
@@ -282,6 +280,7 @@
 		(fill
 			(thermal_gap 0.508)
 			(thermal_bridge_width 0.508)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts

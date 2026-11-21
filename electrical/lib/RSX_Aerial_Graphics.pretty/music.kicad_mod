@@ -1,7 +1,7 @@
 (footprint "music"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "G***"
 		(at 0 0 0)
@@ -51,6 +51,7 @@
 		)
 	)
 	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_poly
 		(pts
 			(xy 1.493055 -1.046724) (xy 1.562592 -1.012128) (xy 1.635286 -0.956817) (xy 1.688292 -0.904716) (xy 1.742811 -0.836742)

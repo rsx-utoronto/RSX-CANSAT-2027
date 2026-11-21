@@ -1,7 +1,7 @@
 (footprint "IND_BLM41_1806_MUR-L"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "BLM41PG181SN1L ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -1.063113 1.0287)
 		(end 1.063113 1.0287)
@@ -280,8 +281,6 @@
 		(uuid "48937fb0-f836-480e-ae6f-923c2d482bf7")
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layer "F.Cu")
 		(uuid "7449ab35-1a9b-47dd-a598-5e19e2ba6964")
 		(hatch full 0.508)
@@ -289,7 +288,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.254)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks not_allowed)
 			(vias not_allowed)
@@ -304,6 +302,7 @@
 		(fill
 			(thermal_gap 0.508)
 			(thermal_bridge_width 0.508)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts

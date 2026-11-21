@@ -1,7 +1,7 @@
 (footprint "uoft_coat_of_arms_2"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "G***"
 		(at 0 0 0)
@@ -51,6 +51,7 @@
 		)
 	)
 	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_poly
 		(pts
 			(xy -0.296624 -0.303072) (xy -0.294309 -0.280114) (xy -0.296624 -0.277279) (xy -0.308125 -0.279934)

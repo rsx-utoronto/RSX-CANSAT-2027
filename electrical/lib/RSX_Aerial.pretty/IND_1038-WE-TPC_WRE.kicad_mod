@@ -1,7 +1,7 @@
 (footprint "IND_1038-WE-TPC_WRE"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(tags "744066100 ")
 	(property "Reference" "REF**"
@@ -53,6 +53,7 @@
 		)
 	)
 	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -5.2832 -5.2832)
 		(end -5.2832 -2.632741)
@@ -240,8 +241,6 @@
 		(uuid "3707d9fd-f373-4c93-b443-778ad1c5aa78")
 	)
 	(zone
-		(net 0)
-		(net_name "")
 		(layer "F.Cu")
 		(uuid "32d41893-9c28-4150-91c8-309863f2f07b")
 		(hatch full 0.508)
@@ -249,7 +248,6 @@
 			(clearance 0)
 		)
 		(min_thickness 0.254)
-		(filled_areas_thickness no)
 		(keepout
 			(tracks not_allowed)
 			(vias not_allowed)
@@ -264,6 +262,7 @@
 		(fill
 			(thermal_gap 0.508)
 			(thermal_bridge_width 0.508)
+			(island_removal_mode 0)
 		)
 		(polygon
 			(pts

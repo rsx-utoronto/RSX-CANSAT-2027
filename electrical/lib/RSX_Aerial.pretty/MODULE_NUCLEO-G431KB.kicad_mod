@@ -1,7 +1,7 @@
 (footprint "MODULE_NUCLEO-G431KB"
-	(version 20241229)
+	(version 20260206)
 	(generator "pcbnew")
-	(generator_version "9.0")
+	(generator_version "10.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at -6.346 -28.1809 0)
@@ -50,6 +50,7 @@
 		)
 	)
 	(attr through_hole)
+	(duplicate_pad_numbers_are_jumpers no)
 	(fp_line
 		(start -9.271 -25.146)
 		(end -9.271 25.146)
@@ -270,17 +271,6 @@
 		(layer "F.Fab")
 		(uuid "93167356-1fd6-46ec-adaa-90f4e2e6ac34")
 	)
-	(fp_text user "CN3"
-		(at 5.715 22.225 0)
-		(layer "F.Fab")
-		(uuid "6f9786ef-cda3-4229-a109-41b9b64dc14e")
-		(effects
-			(font
-				(size 1 1)
-				(thickness 0.15)
-			)
-		)
-	)
 	(fp_text user "CN4"
 		(at -8.89 22.225 0)
 		(layer "F.Fab")
@@ -296,6 +286,17 @@
 		(at 2.54 -22.86 0)
 		(layer "F.Fab")
 		(uuid "d85dd67d-2e32-4d8b-86b3-4aade7b2a03c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "CN3"
+		(at 5.715 22.225 0)
+		(layer "F.Fab")
+		(uuid "6f9786ef-cda3-4229-a109-41b9b64dc14e")
 		(effects
 			(font
 				(size 1 1)
