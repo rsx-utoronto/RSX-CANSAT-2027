@@ -10,12 +10,23 @@ void CameraPointing::park() {
   saturated_ = false;
 }
 
-void CameraPointing::lock(float body_heading_deg) {
-  // The camera may not be centred at lock-on, so lock to where the picture
-  // actually points: body heading plus the current camera angle. Any
-  // commanded offset already set is kept, and applies on top of this.
-  lock_deg_ = wrap360(body_heading_deg + command_deg_ - offset_deg_);
+void CameraPointing::lock(float body_heading_deg, float camera_measured_deg) {
+  // Lock-on happens once per flight, right after the spin is damped. A motor
+  // doesn't centre itself, so the camera may not be at 0 here: use the
+  // encoder's measured angle, or the last command if that isn't available.
+  const float camera_deg = isfinite(camera_measured_deg) ? camera_measured_deg
+                                                         : command_deg_;
+
+  // Hold the picture exactly where it points right now: no jump at lock-on.
+  lock_deg_ = wrap360(body_heading_deg + camera_deg);
+
+  // Start from where the camera really is, so the first command doesn't
+  // move it.
+  command_deg_ = camera_deg;
   locked_ = true;
+
+  // offset_deg_ is not subtracted: a turn commanded before lock-on still
+  // takes effect right after it.
 }
 
 float CameraPointing::targetPictureHeadingDeg() const {

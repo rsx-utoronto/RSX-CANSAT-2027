@@ -7,7 +7,7 @@
 //   theta_cmd       = target picture heading - body heading - rate_z * L
 //
 // L (kCamLeadS) makes the command lead the body's spin, to make up for the
-// servo and loop delay. The target picture heading is the heading at
+// camera drive and loop delay. The target picture heading is the heading at
 // lock-on plus the mission manager's commanded offset, so the 90 deg turn
 // (C11) is just a new offset.
 //
@@ -39,9 +39,13 @@ public:
   // Release and damping phases: hold the camera at the centre of its travel.
   void park();
 
-  // Lock-on: the picture heading right now becomes the target. Call when
-  // the body has stopped spinning fast (the plan's "Lock" phase).
-  void lock(float body_heading_deg);
+  // Lock-on: the picture heading right now becomes the target. Call once
+  // per flight, when the body has stopped spinning fast (the plan's "Lock"
+  // phase).
+  //   body_heading_deg    : from HeadingEstimator
+  //   camera_measured_deg : from CameraDrive::get_measuredDeg() (encoder),
+  //                         or NAN if unavailable
+  void lock(float body_heading_deg, float camera_measured_deg);
 
   // Commanded turn, from MissionManager::targetHeadingOffsetDeg().
   void setTargetOffsetDeg(float offset_deg) { offset_deg_ = offset_deg; }
@@ -60,8 +64,10 @@ public:
 private:
   Params p_;
   bool  locked_      = false;
-  float lock_deg_    = 0.0f;
-  float offset_deg_  = 0.0f;
+  float lock_deg_    = 0.0f;  // picture heading held since lock-on
+  float offset_deg_  = 0.0f;  // total turn commanded from the ground
+  // Where the camera should be, measured from centre: a position, not a
+  // step. CameraDrive turns the motor by (this - encoder reading).
   float command_deg_ = 0.0f;
   bool  saturated_   = false;
 };

@@ -223,7 +223,7 @@ int main(int argc, char** argv) {
         if (fabsf(rate) < kLockRateDps) {
           if (low_rate_since_s < 0.0f) low_rate_since_s = t;
           if ((t - low_rate_since_s) * 1000.0f >= kLockHoldMs) {
-            camera.lock(heading);
+            camera.lock(heading, cam_deg);  // cam_deg: the simulated encoder reading
             body_target_deg = heading;  // Body holds here; the camera absorbs the turn.
             spin.setMode(SpinController::Mode::Hold);
             locked = true;

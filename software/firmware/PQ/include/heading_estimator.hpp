@@ -11,7 +11,7 @@
 //
 // TODO: the caller (control_task) must pass NAN for the magnetometer
 // heading until the boom detector (PQ33) fires. While the boom is stowed
-// the magnetometer sits next to the servos.
+// the magnetometer sits next to the camera motor and the panel servo.
 // TODO: work out the magnetometer heading with tilt compensation (using the
 // accelerometer), because the PQ swings under its parachute. The MMC5983MA
 // driver isn't ported from electrical/test/mmc5983 yet.

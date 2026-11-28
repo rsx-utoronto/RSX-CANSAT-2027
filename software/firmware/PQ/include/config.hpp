@@ -65,9 +65,21 @@ constexpr float kGyroBiasZDefaultDps = 0.0f;
 // ---------------------------------------------------------------------------
 // Camera pointing
 // ---------------------------------------------------------------------------
-// L in the plan: servo-plus-loop delay. The camera command leads the body's
-// spin by rate_z * L so the picture doesn't lag.
-constexpr float kCamLeadS = 0.040f;  // plan: 0.03 to 0.05 s
+// L in the plan: the time from measuring the body to the camera actually
+// pointing there. The camera command leads the body's spin by rate_z * L so
+// the picture doesn't lag. L has two parts:
+//
+// 1. Drive lag, measured: IMU latency + CameraDrive picking up the new
+//    command (200 Hz loop) + the motor PID trailing a moving target.
+// **CHECK:** measure on the bench: turn the PQ steadily, log the commanded
+// and encoder-measured camera angle, and take the time shift between them
+// (then add the IMU latency). Re-measure whenever the kCamMotorK* gains
+// change, because the PID's trailing time depends on them.
+constexpr float kCamDriveLagS = 0.030f;
+// 2. Control step hold, calculated: a command is computed once per control
+//    step and held for the whole step, so on average it is half a step old.
+//    /1000 converts ms to s. Computed, so it follows kControlPeriodMs.
+constexpr float kCamLeadS = kCamDriveLagS + 0.5f * kControlPeriodMs / 1000.0f;
 // Camera travel relative to the body.
 // MECH: how far can the camera stage turn each way before it hits the
 // structure or the wire service loop runs out? The 90 deg turn (C11) needs
@@ -79,24 +91,41 @@ constexpr float kCamTravelMinDeg = -135.0f;
 constexpr float kCamTravelMaxDeg =  135.0f;
 
 // ---------------------------------------------------------------------------
-// Camera servo
+// Camera motor: DC gearmotor + H-bridge + AS5600 absolute encoder
 // ---------------------------------------------------------------------------
-// A positional hobby servo turns the camera. Its own potentiometer and
-// controller hold the angle, so no encoder or position loop is needed.
-// MECH: the 270 deg camera servo must fit the camera stage inside the 2P
-// envelope.
-// **CHECK:** the PQ board isn't drawn yet. -1 means "not wired", and the
-// drive then reports itself unhealthy instead of driving a random pin.
-constexpr int kCamServoPin = -1;
-// Pulse-width-to-angle map. **CHECK:** measure on the bench; datasheet
-// ranges vary from part to part. These suit a typical 270 deg micro servo.
-constexpr float kCamServoMinUs  = 500.0f;    // pulse at kCamServoMinDeg
-constexpr float kCamServoMaxUs  = 2500.0f;   // pulse at kCamServoMaxDeg
-constexpr float kCamServoMinDeg = -135.0f;
-constexpr float kCamServoMaxDeg =  135.0f;
+// A motor doesn't hold an angle by itself, so CameraDrive reads the encoder
+// on the camera shaft and runs its own position loop (PID). The encoder is
+// absolute, so the angle is known right after power-up or a reset (PQ22).
+// MECH: the gearmotor, its gearbox and the camera stage must fit inside the
+// 2P envelope.
+// MECH: mount a diametrically magnetized disc on the end of the camera
+// shaft, 0.5 to 3 mm above the AS5600 chip, and keep the magnet as far from
+// the boom magnetometer as possible. The plan estimates a 6 x 2.5 mm disc
+// adds about 6 mG at the boom tip, roughly 2 deg of heading error.
+// **CHECK:** pins unknown until the board is drawn. -1 means "not wired",
+// and the drive then reports itself unhealthy instead of driving a random pin.
+constexpr int      kCamMotorPinA    = -1;
+constexpr int      kCamMotorPinB    = -1;
+constexpr uint32_t kCamMotorPwmHz   = 20000;  // above hearing; check the H-bridge's limit
+constexpr uint8_t  kCamMotorPwmBits = 10;
+// Encoder reading when the camera points straight along the body (theta = 0),
+// and +1 or -1 so a clockwise camera turn reads positive.
+// **CHECK:** measure both after assembly.
+constexpr float kCamEncoderZeroDeg = 0.0f;
+constexpr float kCamEncoderSign    = 1.0f;
+// Position loop: motor output (-1..1) per degree of camera error.
+// **CHECK:** tune on the bench. Start with Ki = Kd = 0 and raise Kp slowly.
+constexpr float kCamMotorKp = 0.05f;
+constexpr float kCamMotorKi = 0.0f;
+constexpr float kCamMotorKd = 0.0f;
+constexpr float kCamMotorMaxOutput = 0.8f;   // fraction of full PWM
+constexpr float kCamMotorDeadbandDeg = 0.3f; // stop driving inside this error
+// The plan asks for the motor's position loop at 200 Hz or faster, which is
+// faster than kControlPeriodMs. See the TODO in camera_drive.hpp.
+constexpr uint32_t kCamMotorLoopHz = 200;
 
 // ---------------------------------------------------------------------------
-// Shared servo PWM settings (camera and panel servos)
+// Panel servo PWM settings
 // ---------------------------------------------------------------------------
 constexpr uint32_t kServoPwmHz   = 50;
 constexpr uint8_t  kServoPwmBits = 16;  // 0.31 us per count at 50 Hz
@@ -120,7 +149,8 @@ constexpr float kPanelTwistSign = 1.0f;
 constexpr float kPanelServoTrimDeg = 0.0f;
 // The servo's range must cover the hard stops times the gear ratio, e.g.
 // 12 deg x 3.5 = 42 deg each way.
-// **CHECK:** measure this servo's pulse map like the camera servo's.
+// **CHECK:** measure this servo's pulse-width-to-angle map on the bench;
+// datasheet ranges vary from part to part.
 constexpr float kPanelServoMinUs  = 1000.0f;
 constexpr float kPanelServoMaxUs  = 2000.0f;
 constexpr float kPanelServoMinDeg = -45.0f;
