@@ -23,10 +23,8 @@ rotates the camera view. Radio is **ESP-NOW** only (backup XBee optional).
 | `platformio.ini` | **Single root PlatformIO project.** Envs: `ground_station` (default), `pq`, `container`. |
 | `software/firmware/{container,PQ,ground}/` | Per-role `include/` + `src/`. Each env compiles only its own `src/`. |
 | `software/firmware_lib/` | Shared library (symlinked into every env): `inc/` headers, `src/` sources, `library.json` deps. |
-| `software/firmware_lib/inc/protocol.hpp` | Wire-format rules (ASCII CSV) and the binary `PQPacket` (PQ format still open). |
 | `software/firmware_lib/inc/espnow_link.hpp` | ESP-NOW transport (implemented in `src/espnow_link.cpp`). |
 | `software/firmware_lib/inc/drivers/` | Sensor drivers: `bmp581` (barometer), `ina236` (voltage/current). |
-| `software/firmware_lib/src/telemetry.cpp` | Binary `PQPacket` serializer and CSV-string helper (PQ only). Compiled into every env; the container doesn't use it. |
 | `software/tests/` | Host tests, container logic harness, hardware simulation-flight script. See `software/tests/README.md`. |
 | `software/Initial_testing/` | Old experiments. Not built. Leave alone. |
 | `ground_station/gui-2026/` | **Preserved** last-year GUI. Do not modify. |
@@ -70,13 +68,14 @@ python -m unittest discover -s software/tests -p 'test_*.py' -v
   MAC, **never use the broadcast address**. ESP-NOW payload max is 250 bytes. Team
   channel is assigned by the competition (X2).
 - **Wire format: ASCII CSV (team decision 2026-11-21).** Rules are at the top of
-  `firmware_lib/inc/protocol.hpp`. The container sends one judges'-format CSV line per
+  `container/include/container_telemetry.hpp`. The container sends one judges'-format CSV line per
   ESP-NOW packet, with no terminator. The ground radio bridge forwards each payload
   unchanged plus `\r\n`. The GUI splits on `\r`/`\n`, so **never send binary structs
-  over the air**: they can contain those bytes. The binary `ContainerPacket` and its
-  serializer functions are commented out, with the reason, not deleted.
-  The PQ format is still open (`PQPacket` is binary, marked `**CHECK:**`). Under this
-  decision it should become CSV too.
+  over the air**: they can contain those bytes. The old binary `ContainerPacket`,
+  `PQPacket` and serializers (`firmware_lib` `protocol.hpp`, `telemetry.*`) were
+  removed; they are in git history.
+  The PQ format is still open (`**CHECK:**` in `PQ/include/pq_telemetry.hpp`, which
+  holds the PQ field list). Under this decision it should become CSV too.
 - **GUI side** (`gui-new/code/data/process.py`): lines matching `^\d+C,` are container
   telemetry. They are parsed into `ContainerTelemetry`, plotted (Pa shown as kPa), and
   saved verbatim to `code/output/container_telemetry.csv`. Lines starting with `#` are
@@ -134,7 +133,7 @@ container records video of the release (CTR13). Batteries: no LiPo (E1).
 
 **PQ telemetry/sensors** are in guide pages 25–26 (IMU, mag in mGauss, GNSS, solar
 voltages to 0.01 V, MECH_STATE bits 0–3, IMAGE_STABILIZATION, SCIENCE_EXP).
-`PQPacket` in `protocol.hpp` mirrors it.
+`PqTelemetryFrame` in `PQ/include/pq_telemetry.hpp` mirrors it.
 
 ## Known gaps / decisions pending
 

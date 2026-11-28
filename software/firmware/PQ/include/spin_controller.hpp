@@ -20,8 +20,7 @@
 // TODO: descent_speed_mps must come from the PQ's barometer, but the PQ
 // sensor_manager is still a placeholder.
 // TODO: send twistDeg(), rateTargetDps() and gainScale() in the
-// IMAGE_STABILIZATION telemetry fields. PQPacket in protocol.hpp still has a
-// 32-byte text placeholder there.
+// IMAGE_STABILIZATION telemetry field (see the TODO in pq_telemetry.hpp).
 
 #include <stdint.h>
 

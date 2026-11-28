@@ -30,8 +30,6 @@ enum SimModeStatus {
     SIM_ON = 2
 };
 
-// **CHECK:** OperatingMode duplicates Mode in firmware_lib/inc/protocol.hpp.
-// Merge them into one enum before telemetry uses both.
 enum OperatingMode {
     OPMODE_FLIGHT = 0,
     OPMODE_SIM = 1

@@ -54,8 +54,8 @@ class TelemetryData:
 
 # Container telemetry (CanSat 2027). The container sends one ASCII CSV line
 # per packet, already in the judges' column order, and the radio bridge
-# forwards it unchanged (wire-format rules: software/firmware_lib/inc/
-# protocol.hpp). The first field is the team number followed by 'C', e.g.
+# forwards it unchanged (wire-format rules: software/firmware/container/
+# include/container_telemetry.hpp). The first field is the team number followed by 'C', e.g.
 #   1000C,12.345,42,3,F,123.4,101325,23.5,7.42,123,03,ASCENT,CAL
 # Units on the wire: MISSION_TIME s, ALTITUDE m, PRESSURE Pa, TEMPERATURE C,
 # BATT_V V, BATT_I mA, MECH_STATE hex bits.

@@ -3,14 +3,26 @@
 // Container telemetry: what goes over the radio, and how often.
 //
 // ---------------------------------------------------------------------------
+// Wire format rules (team decision 2026-11-21). These apply to the PQ too
+// (PQ/include/pq_telemetry.hpp points here).
+// ---------------------------------------------------------------------------
+//   * Each ESP-NOW packet carries exactly one telemetry line, already in the
+//     judges' column format, with no line terminator.
+//   * The ground-station radio bridge forwards each received payload to the
+//     GUI over USB unchanged, followed by "\r\n" (Serial.println). It must
+//     not decode, reformat or re-order fields.
+//   * Commands go the other way as ASCII "CMD,<team>,<OP>[,<value>]".
+//   * Never send a binary struct over the air (reasons below).
+//
+// ---------------------------------------------------------------------------
 // Why ASCII CSV instead of a binary packet
 // ---------------------------------------------------------------------------
 // The guide lets each team pick its own over-the-air format (binary or
 // ASCII), but the file handed to the judges must be ASCII CSV in a fixed
 // column order (GS13). The original plan was to send a packed binary
 // ContainerPacket and convert it to CSV on the ground. The team chose ASCII
-// CSV instead (2026-11-21), and the binary ContainerPacket was commented out.
-// The shared wire-format rules are at the top of firmware_lib/inc/protocol.hpp.
+// CSV instead, and the binary code (firmware_lib protocol.hpp and
+// telemetry.*) was removed; it is in git history if ever needed.
 //
 // We send the CSV line itself. Reasons:
 //   * The ground radio bridge forwards each ESP-NOW packet to the PC as one
@@ -26,8 +38,6 @@
 // still well under the 250-byte ESP-NOW limit.
 //
 // What changes because of this:
-//   * The binary ContainerPacket and its serializer functions are commented
-//     out in protocol.hpp and firmware_lib telemetry.*, with the reason.
 //   * The ground station must treat container packets as text lines. The
 //     GUI recognises them by the "<team>C," prefix (gui-new
 //     code/data/process.py, ContainerTelemetry).
